@@ -19,9 +19,9 @@ export const createComment = async (
       commentData,
       { headers: { authorization: `Bearer ${token}` } }
     );
-    if (response?.data.status === "success") {
-      successToast(response?.data.message, "addcsuccess");
-    }
+    // if (response?.data.status === "success") {
+    //   successToast(response?.data.message, "addcsuccess");
+    // }
     return response.data;
   } catch (error: any) {
     errorToast(error.response.data.message, "addcerr");
@@ -34,9 +34,9 @@ export const removeComment = async (commenID: string, token: string) => {
       `${server_url}/api/comments/${commenID}`,
       { headers: { authorization: `Bearer ${token}` } }
     );
-    if (response?.data.status === "success") {
-      successToast(response?.data.message, "delcomsuccess");
-    }
+    // if (response?.data.status === "success") {
+    //   successToast(response?.data.message, "delcomsuccess");
+    // }
     return response.data;
   } catch (error: any) {
     errorToast(error.response.data.message, "delcomcerr");
@@ -54,9 +54,9 @@ export const updateComment = async (
       comment,
       { headers: { authorization: `Bearer ${token}` } }
     );
-    if (response?.data.status === "success") {
-      successToast(response?.data.message, "delcomsuccess");
-    }
+    // if (response?.data.status === "success") {
+    //   successToast(response?.data.message, "delcomsuccess");
+    // }
     return response.data;
   } catch (error: any) {
     errorToast(error.response.data.message, "delcomcerr");

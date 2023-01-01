@@ -35,6 +35,9 @@
       .error__msg {
         background: pink;
         color: crimson;
+        @include mQ(700px) {
+          width: 100%;
+        }
       }
       form {
         max-width: 100%;

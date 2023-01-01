@@ -17,9 +17,9 @@ export const registerUser = async (credentials: registerType) => {
       `${server_url}/api/auth/signup`,
       credentials
     );
-    if (response?.data.status === "success") {
-      successToast(response?.data.message, "rsuccess");
-    }
+    // if (response?.data.status === "success") {
+    //   successToast(response?.data.message, "rsuccess");
+    // }
     return response.data;
   } catch (error: any) {
     errorToast(error.response.data.message, "rerror");
@@ -62,9 +62,9 @@ export const loginUser = async (credentials: loginType) => {
       `${server_url}/api/auth/login`,
       credentials
     );
-    if (response?.data.status === "success") {
-      successToast(response?.data.message, "rsuccess");
-    }
+    // if (response?.data.status === "success") {
+    //   successToast(response?.data.message, "rsuccess");
+    // }
     return response.data;
   } catch (error: any) {
     errorToast(error.response.data.message, "rerror");
