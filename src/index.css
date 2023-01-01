@@ -61,7 +61,7 @@ a.active {
   z-index: 100000 !important;
 }
 .Toastify__toast--error::after {
-  content: url("../assets/images/svg/closeToast.svg");
+  /* content: url("../assets/images/svg/closeToast.svg"); */
   position: absolute;
   color: #333333;
   font-size: 15px;
@@ -71,7 +71,7 @@ a.active {
   padding-top: 14px !important;
 }
 .Toastify__toast--error::before {
-  content: url("../assets/images/svg/errorToast.svg");
+  /* content: url("../assets/images/svg/errorToast.svg"); */
   position: relative;
   z-index: 100000 !important;
   left: 12px;
@@ -84,14 +84,14 @@ a.active {
   z-index: 100000 !important;
 }
 .Toastify__toast--success::before {
-  content: url("../assets/images/svg/successToast.svg");
+  /* content: url("../assets/images/svg/successToast.svg"); */
   position: relative;
   z-index: 100000 !important;
   left: 12px;
   top: 6px;
 }
 .Toastify__toast--success::after {
-  content: url("../assets/images/svg/closeToast.svg");
+  /* content: url("../assets/images/svg/closeToast.svg"); */
   position: absolute;
   color: #333333;
   font-size: 15px;
@@ -106,14 +106,14 @@ a.active {
   z-index: 100000 !important;
 }
 .Toastify__toast--warning::before {
-  content: url("../assets/images/svg/warnToast.svg");
+  /* content: url("../assets/images/svg/warnToast.svg"); */
   position: relative;
   z-index: 100000 !important;
   left: 12px;
   top: 6px;
 }
 .Toastify__toast--warning::after {
-  content: url("../assets/images/svg/closeToast.svg");
+  /* content: url("../assets/images/svg/closeToast.svg"); */
   position: absolute;
   color: #e78326;
   font-size: 15px;
