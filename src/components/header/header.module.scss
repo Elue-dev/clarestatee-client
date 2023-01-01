@@ -1,0 +1,322 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/colors" as *;
+@use "../../styles/variables" as *;
+
+.fixed {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  transition: 0.2s ease-in-out;
+}
+
+.header__wrapper {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: $box-shadow-100;
+  height: 4.7rem;
+  @include flexBox(center, center, column);
+  height: 3.7rem;
+  z-index: 1000;
+  .header__contents {
+    @include container();
+    @include flexBox(space-between, center, row);
+    opacity: 1;
+    .logo {
+      @include flexBox(flex-start, center, row);
+      font-family: "Lato", sans-serif;
+      gap: 0.4rem;
+      font-weight: 700;
+      img {
+        height: 45px;
+        width: 45px;
+        border-radius: 50%;
+      }
+      a {
+        h2 {
+          font-weight: 700;
+          color: $color-primary;
+          span {
+            color: $color-primary;
+          }
+        }
+      }
+    }
+    a.active {
+      font-weight: 700;
+    }
+    ul {
+      @include flexBox(center, center, row);
+      // animation: slide-up 0.5s ease;
+      gap: 1.7rem;
+      li {
+        list-style: none;
+        @include flexBox(center, center, row);
+        font-weight: 700;
+        text-transform: uppercase;
+        gap: 0.2rem;
+        transition: all 0.5s ease;
+        :nth-child(1) {
+          //   color: $color-primary;
+          font-size: 1.3rem;
+        }
+        .admin__btn {
+          //   @include button();
+          background: #222;
+          color: #fff;
+        }
+      }
+    }
+    .auth {
+      border: 1px solid rgb(207, 205, 205);
+      padding: 0.4rem 0.6rem;
+      border-radius: 1rem;
+      @include flexBox(center, center, row);
+      // animation: slide-left 0.5s ease;
+      gap: 0.5rem;
+      cursor: pointer;
+      position: relative;
+      :nth-child(1) {
+        font-size: 1.1rem;
+      }
+      :nth-child(2) {
+        font-size: 1.4rem;
+      }
+      .dot {
+        position: absolute;
+        top: -12px;
+        right: -5px;
+        font-size: 2.5rem;
+        color: rgb(11, 152, 11);
+      }
+      &:hover,
+      &:focus {
+        box-shadow: $box-shadow-100;
+      }
+      .user__initials {
+        font-size: 1rem;
+        font-weight: 700;
+        background: rgb(19, 26, 88);
+        color: #fff;
+        height: 33px;
+        width: 33px;
+        border-radius: 50%;
+        @include flexBox(center, center);
+      }
+    }
+    .auth__popup {
+      position: absolute;
+      top: 3rem;
+      right: 0rem;
+      z-index: 10000;
+      color: #333;
+      background: #fff;
+      border: 0.1px solid rgb(211, 211, 211);
+      height: auto;
+      width: 200px;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      box-shadow: $box-shadow-100;
+      line-height: 2.4;
+      transform: scale(0);
+      transition: transform 0.2s ease-in-out;
+      .auth_n_logged__in {
+        p {
+          @include flexBox(flex-start, center, row);
+          :first-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+      .logout__btn {
+        // @include button();
+        margin-top: 1rem;
+        display: block;
+        width: 100%;
+        background: $color-primary;
+        color: #fff;
+      }
+      .logged__in {
+        li {
+          list-style: none;
+          @include flexBox(left, center, row);
+          gap: 0.6rem;
+          :nth-child(1) {
+            color: $color-primary;
+            font-size: 1.3rem;
+          }
+        }
+      }
+      p {
+        border-bottom: 1px solid rgb(207, 205, 205);
+        @include flexBox(auto, center, auto);
+        gap: 0.5rem;
+        font-weight: 500;
+        :first-child {
+          font-size: 1.3rem;
+          margin-bottom: 2rem;
+        }
+      }
+      :nth-child(2) {
+        font-size: 1.2rem;
+      }
+      :last-child {
+        border-bottom: 0;
+      }
+      .header__verify__btn {
+        // @include button();
+        background: #111;
+        width: 100%;
+        color: #fff;
+        padding: 0.2rem 0.5rem;
+        margin-top: 0.8rem;
+      }
+    }
+    .user__img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+  .auth__popup.show {
+    transform: scale(1);
+  }
+}
+
+.nav__bottom {
+  display: none;
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(-5rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(5rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@include mQ(800px) {
+  .header__wrapper .header__contents {
+    width: 92%;
+  }
+}
+@include mQ(900px) {
+  .header__wrapper .header__contents ul {
+    display: none;
+  }
+  .nav__bottom {
+    position: fixed;
+    display: flex;
+    align-content: center;
+    cursor: pointer;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: $box-shadow-100;
+    background: #fff;
+    border-top: 1px solid #fff;
+    border-top: 1px solid rgb(207, 205, 205);
+    height: 4rem;
+    padding: 0 1rem;
+    margin-top: 3rem;
+    overflow-x: auto;
+    z-index: 1000000000;
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin: auto;
+      li {
+        list-style: none;
+        @include flexBox(center, center, column);
+        :nth-child(1) {
+          font-size: 1.7rem;
+          color: $color-primary;
+          margin-bottom: 0.2rem;
+        }
+        :nth-child(2) {
+          font-weight: 400;
+          font-size: 0.9rem;
+        }
+        span {
+          font-size: 0.8rem;
+        }
+      }
+      a.active {
+        font-weight: 700;
+        border-bottom: 1px solid $color-primary;
+        li {
+          :first-child {
+            color: #9e720a;
+          }
+          p {
+            font-weight: 700;
+          }
+        }
+      }
+    }
+    .admin__btn {
+      //   @include button();
+      padding: 0.5rem 0.8rem;
+      background: #333;
+      color: #fff;
+    }
+  }
+}
+
+@include mQ(500px) {
+  .header__wrapper .header__contents .logo img {
+    height: 37px;
+    width: 37px;
+  }
+  .header__wrapper .header__contents .logo h2 {
+    font-size: 1.3rem;
+  }
+}
+
+@include mQ(300px) {
+  .nav__bottom ul {
+    gap: 1.2rem;
+  }
+  .header__wrapper .header__contents .auth {
+    padding: 0.3em 0.5rem;
+  }
+  .header__wrapper .header__contents .user__img {
+    width: 20px;
+    height: 20px;
+  }
+  .header__wrapper .header__contents .auth .dot {
+    font-size: 1.6rem;
+    position: absolute;
+    top: -9px;
+    right: -5px;
+    color: rgb(11, 152, 11);
+  }
+  .header__wrapper .header__contents .logo img {
+    height: 30px;
+    width: 30px;
+  }
+  .header__wrapper .header__contents .logo a h2 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+  .header__wrapper .header__contents ul {
+    display: flex;
+    gap: 0.8rem;
+  }
+  .nav__bottom {
+    display: none;
+  }
+}

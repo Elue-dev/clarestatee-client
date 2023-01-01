@@ -1,0 +1,23 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/colors" as *;
+@use "../../styles/variables" as *;
+.admin__only {
+  @include container();
+  @include flexBox(center, center, column);
+  text-align: center;
+  h2 {
+    margin-bottom: 0.5rem;
+  }
+  p {
+    font-weight: 600;
+  }
+  button {
+    @include button();
+    background: transparent;
+    color: #222;
+    border: 1px solid #222;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 0.4rem 0.6rem;
+  }
+}

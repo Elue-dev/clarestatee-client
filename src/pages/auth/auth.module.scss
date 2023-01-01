@@ -1,0 +1,180 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/colors" as *;
+@use "../../styles/variables" as *;
+
+.auth {
+  color: #333;
+  .auth__wrapper {
+    display: flex;
+    @include mQ(700px) {
+      flex-direction: column;
+    }
+    .left__section {
+      width: 50%;
+      @include mQ(700px) {
+        width: 100%;
+        height: 100vh;
+      }
+      @include flexBox(center, center, column);
+      background: #f4f4f4;
+      h1 {
+        padding-bottom: 2rem;
+        text-transform: uppercase;
+        color: $color-primary;
+        letter-spacing: 2px;
+      }
+      .alert {
+        text-align: center;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        width: 400px;
+      }
+      .error__msg {
+        background: pink;
+        color: crimson;
+      }
+      form {
+        max-width: 100%;
+        label {
+          display: block;
+          margin-bottom: 1rem;
+          width: 400px;
+          &:focus {
+            .auth__wrap {
+              display: none;
+              border: 2px solid $color-primary;
+            }
+          }
+          span {
+            display: block;
+            padding-bottom: 0.8rem;
+            font-weight: 400;
+          }
+          input {
+            font-size: 14px;
+            padding: 0.8rem 1rem;
+            width: 100%;
+            border-radius: 0.3rem;
+            border: 0;
+            outline: 0;
+            margin-bottom: 0;
+            background: transparent;
+          }
+
+          .password__field {
+            @include flexBox(center, center, row);
+            border: 1px solid darkgray;
+            border-radius: 0.3rem;
+            padding: 0 0.8rem;
+            :first-child {
+              font-size: 1.4rem;
+              display: block;
+              color: darkgray;
+            }
+            input {
+              border: 0;
+              font-family: $font-family;
+            }
+            span {
+              cursor: pointer;
+            }
+          }
+          .auth__wrap {
+            display: flex;
+            border: 1px solid darkgray;
+            @include flexBox(flex-start, center, row);
+            border-radius: 0.3rem;
+            padding: 0 0.8rem;
+            :first-child {
+              font-size: 1.4rem;
+              color: darkgray;
+            }
+          }
+        }
+        .submit__btn {
+          width: 100%;
+          margin-top: 0.8rem;
+          background: $color-secondary;
+          font-weight: 700;
+          border-radius: 0.3rem;
+          font-size: 1.1rem;
+          padding: 0.7rem;
+          border: 0;
+          outline: 0;
+          cursor: pointer;
+        }
+        .auth__redirect {
+          padding-top: 0.6rem;
+          text-align: center;
+          font-weight: 600;
+          a {
+            color: $color-primary;
+            font-weight: 700;
+          }
+        }
+        .resend__label {
+          margin-bottom: 0;
+        }
+        .resend__btn {
+          background: #333;
+          color: #fff;
+        }
+      }
+      .resend {
+        cursor: pointer;
+        color: $color-primary;
+      }
+      .otp__wrapper {
+        @include flexBox(center, center, row);
+        padding: 2rem 0;
+        .otp__field {
+          width: 45px;
+          margin-right: 10px;
+          padding-left: 12px;
+          height: 45px;
+          outline: 0;
+          border: 1px solid darkgray;
+          font-size: 1.3rem;
+          font-weight: 700;
+          background: transparent;
+        }
+      }
+      .clear {
+        text-align: right;
+        cursor: pointer;
+      }
+      .info {
+        background: #eaeaea;
+        padding: 0.6rem;
+        border-left: 5px solid #333;
+        border-top-left-radius: 0.3rem;
+        border-bottom-left-radius: 0.3rem;
+        margin-bottom: 0.8rem;
+      }
+    }
+    .right__section {
+      width: 50%;
+      background: url("../../assets/logo1.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      object-fit: cover;
+      height: 100vh;
+      z-index: -1;
+      position: relative;
+      ::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.3);
+      }
+      @include mQ(700px) {
+        display: none;
+      }
+    }
+  }
+}

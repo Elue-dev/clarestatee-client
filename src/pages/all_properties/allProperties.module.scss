@@ -1,0 +1,461 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/colors" as *;
+@use "../../styles/variables" as *;
+
+.all__properties {
+  // @include container();
+  min-height: 100vh;
+  margin-bottom: 8rem;
+  .hero__all-p-wrapper {
+    background: url("../../assets/logo2.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 40vh;
+    position: relative;
+    z-index: 1;
+    text-align: left;
+    color: #333;
+    margin-bottom: 1rem;
+    &:after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: -1;
+    }
+    .hero__all-p {
+      @include container();
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      text-align: center;
+      label {
+        margin-top: 1rem;
+        input {
+          max-width: 420px;
+          width: 100%;
+          margin-top: 1rem;
+          height: 3rem;
+          border-radius: 1.2rem;
+          padding-left: 1rem;
+          outline: 0;
+          border: 1px solid #333;
+          transition: border 0.3s ease;
+          &:hover {
+            border: 4px solid $color-secondary;
+          }
+        }
+      }
+    }
+  }
+  .property__filters.show {
+    left: 0;
+  }
+
+  .layer {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+  }
+  .property__filters {
+    transition: left 0.5s ease;
+    position: fixed;
+    left: -270px;
+    top: 0;
+    background: #333;
+    color: #fff;
+    z-index: 10000000;
+    width: 270px;
+    height: 100vh;
+    padding: 1rem;
+    .close__filter {
+      position: absolute;
+      right: 12px;
+      font-size: 1.8rem;
+      cursor: pointer;
+      z-index: 3;
+    }
+    .locations__list {
+      padding-top: 2rem;
+      h2 {
+        padding-bottom: 0.8rem;
+      }
+      button {
+        display: block;
+        text-align: left;
+        width: 80%;
+        height: 3rem;
+        font-size: 1rem;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        border-bottom: 1px solid #777;
+        color: #fff;
+        z-index: 3;
+        &.active {
+          border-left: 4px solid $color-primary;
+          padding-left: 1rem;
+        }
+      }
+    }
+    .clear__filters {
+      @include button();
+      background-color: $color-primary;
+      color: #fff;
+      border-radius: 0.8rem;
+      padding: 0.4rem 0.7rem;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+  }
+  .heading_p {
+    text-align: center;
+    @include flexBox(center, center, center);
+    gap: 0.5rem;
+    margin: 3rem 0;
+    position: relative;
+    &::after {
+      position: absolute;
+      content: "";
+      background-color: #6e6c67;
+      height: 5px;
+      width: 81px;
+      top: 2.3rem;
+      left: auto;
+    }
+  }
+  .all__properties__wrapper {
+    display: flex;
+    gap: 2rem;
+    @include container();
+    .menu__filter {
+      font-size: 2.5rem;
+      cursor: pointer;
+      height: fit-content;
+      margin-top: -0.6rem;
+      color: #000;
+      transition: position 0.1s ease;
+    }
+    .fix_menu {
+      position: fixed;
+      top: 71px;
+      left: 10px;
+      background: #333;
+      color: #fff;
+      z-index: 1;
+      font-size: 1.2rem;
+      border-radius: 0.3rem;
+      padding: 0.3rem;
+    }
+    .properties__ {
+      width: 100%;
+      // box-shadow: $box-shadow;
+      padding: 1rem 0.9rem;
+      i,
+      b {
+        color: $color-primary;
+      }
+      h3 {
+        text-align: center;
+        padding-bottom: 1rem;
+      }
+      label {
+        display: flex;
+        justify-content: end;
+        gap: 0.3rem;
+        margin-bottom: 0.8rem;
+        max-height: 50px;
+        :focus {
+          border: 3px solid $color-primary;
+        }
+        input {
+          padding: 0.4rem;
+          width: 70%;
+          font-size: 1rem;
+          border: 2px solid #333;
+          border-radius: 0.5rem;
+          transition: border 0.5s ease;
+          margin-bottom: 0.9rem;
+          outline: 0;
+          :hover,
+          :focus {
+            border: 1.5px solid $color-primary;
+          }
+        }
+        select {
+          width: 100%;
+          height: 35px;
+          border-radius: 0.5rem;
+          border: 2px solid #333;
+          outline: 0;
+          font-size: 1rem;
+          color: #333;
+        }
+      }
+      .no__property {
+        position: absolute;
+        top: 33rem;
+        left: 54%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        .empty__icon {
+          font-size: 5rem;
+          color: $color-primary;
+        }
+      }
+      .prop__grid {
+        @include grid(repeat(3, 1fr), 0.7rem);
+        row-gap: 1rem;
+        :hover {
+          .image_ {
+            transform: scale(1.1);
+          }
+        }
+        .wrap_p {
+          box-shadow: $box-shadow-100;
+          border-radius: 0.3rem;
+          overflow: hidden;
+          position: relative;
+        }
+        .image_ {
+          position: relative;
+          transition: transform 0.5s ease;
+          img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            border: 0.5px solid rgb(200, 200, 200);
+            background-color: rgb(200, 200, 200);
+          }
+          .p_availability {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #fff;
+            border-radius: 0.2rem;
+            padding: 0.09rem 0.9rem;
+            font-weight: 500;
+          }
+          .p_location {
+            position: absolute;
+            bottom: 20px;
+            right: 16px;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 0.3rem 0.6rem;
+            border-radius: 0.2rem;
+          }
+        }
+        .inner_c {
+          padding: 0.9rem;
+          line-height: 1.9;
+          .name_ {
+            font-size: 0.8rem;
+            color: $color-primary;
+            line-height: 1.2;
+          }
+          .desc_ {
+            margin: 0.4rem 0;
+          }
+          .price_ {
+            font-size: 1.3rem;
+            font-weight: 700;
+            span {
+              font-weight: 500;
+            }
+          }
+          .more_ {
+            @include button();
+            @include flexBox(center, center, row);
+            gap: 0.4rem;
+            // background: rgb(225, 225, 225);
+            background: #333;
+            color: #fff;
+            // border: 1px solid #333;
+            font-weight: 700;
+            border-radius: 0.3rem;
+            padding: 0.6rem;
+            width: 100%;
+            margin-top: 0.6rem;
+            :first-child {
+              font-size: 1.1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  font-size: 1rem;
+}
+
+.pagination .page-num {
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-weight: normal;
+  color: #333;
+  border: 1px solid $color-primary;
+  margin: 2px;
+}
+
+.pagination .page-num:hover {
+  color: #fff;
+  background-color: $color-primary;
+}
+.activePage {
+  color: #fff;
+  background-color: $color-primary;
+  height: 100%;
+}
+
+.active {
+  position: relative;
+  // margin-bottom: 2px;
+  padding-left: 1rem;
+  .active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 2px;
+    height: 100%;
+    background-color: $color-primary;
+  }
+}
+
+@include mQ(1000px) {
+  .all__properties .all__properties__wrapper .properties__ .prop__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@include mQ(600px) {
+  .all__properties,
+  .all__properties__wrapper,
+  .properties__ .prop__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .all__properties .hero__all-p-wrapper .hero__all-p label input {
+    width: 338px;
+    height: 2.8rem;
+  }
+}
+@include mQ(500px) {
+  .all__properties .all__properties__wrapper .properties__ .prop__grid {
+    grid-template-columns: 1fr;
+  }
+  .all__properties .all__properties__wrapper {
+    gap: unset;
+    flex-direction: column;
+  }
+  .all__properties
+    .all__properties__wrapper
+    .properties__
+    .prop__grid
+    .image_
+    img {
+    height: 186px;
+  }
+
+  .all__properties .all__properties__wrapper .properties__ .no__property {
+    top: 33rem;
+    left: 49%;
+  }
+  .all__properties .all__properties__wrapper .properties__ .no__property h2 {
+    font-size: 1.1rem;
+  }
+  .all__properties .all__properties__wrapper .fix_menu {
+    font-size: 1.5rem;
+  }
+  .all__properties .property__filters .locations__list button {
+    height: 2.2rem;
+  }
+  .all__properties .heading_p {
+    font-size: 1.2rem;
+  }
+  .all__properties .all__properties__wrapper .menu__filter {
+    font-size: 1.5rem;
+  }
+  .all__properties
+    .all__properties__wrapper
+    .properties__
+    .prop__grid
+    .inner_c
+    .desc_ {
+    font-size: 0.85rem;
+  }
+  .all__properties
+    .all__properties__wrapper
+    .properties__
+    .prop__grid
+    .inner_c
+    .price_ {
+    font-size: 1.05rem;
+  }
+  .all__properties
+    .all__properties__wrapper
+    .properties__
+    .prop__grid
+    .inner_c
+    .name_ {
+    font-size: 0.7rem;
+  }
+  .all__properties
+    .all__properties__wrapper
+    .properties__
+    .prop__grid
+    .inner_c
+    .more_ {
+    padding: 0.2rem 0.5rem;
+  }
+  .all__properties
+    .all__properties__wrapper
+    .properties__
+    .prop__grid
+    .image_
+    .p_location {
+    font-size: 1.02rem;
+  }
+  .all__properties
+    .all__properties__wrapper
+    .properties__
+    .prop__grid
+    .image_
+    .p_availability {
+    font-size: 0.8rem;
+  }
+  .all__properties .all__properties__wrapper .properties__ h3 {
+    font-size: 1rem;
+  }
+}
+
+@include mQ(350px) {
+  .all__properties .hero__all-p-wrapper .hero__all-p label input {
+    width: 247px;
+  }
+  .all__properties .hero__all-p-wrapper .hero__all-p h2 {
+    font-size: 1.3rem;
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "clarestate",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^2.9.10",
+    "@reduxjs/toolkit": "^1.9.0",
+    "axios": "^1.2.1",
+    "dompurify": "^2.4.1",
+    "framer-motion": "^7.6.12",
+    "moment": "^2.29.4",
+    "notiflix": "^3.2.5",
+    "pnpm": "^7.17.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.41.1",
+    "react-icons": "^4.6.0",
+    "react-paginate": "^8.1.4",
+    "react-query": "^3.39.2",
+    "react-quill": "^2.0.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.4.3",
+    "react-select": "^5.7.0",
+    "react-spinners": "^0.13.6",
+    "react-star-rate": "^0.2.0",
+    "react-star-ratings": "^2.3.0",
+    "react-toastify": "^9.1.1",
+    "react-whatsapp": "^0.3.0",
+    "redux-persist": "^6.0.0",
+    "sass": "^1.57.1",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/react-star-ratings": "^2.3.0",
+    "@vitejs/plugin-react": "^2.2.0",
+    "toolkit": "@types/@reduxjs/toolkit",
+    "typescript": "^4.6.4",
+    "vite": "^3.2.3"
+  }
+}

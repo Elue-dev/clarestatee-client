@@ -1,0 +1,259 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/colors" as *;
+@use "../../styles/variables" as *;
+
+.dashboard {
+  @include container();
+  padding-top: 3rem;
+  @include mQ(900px) {
+    padding-bottom: 6rem;
+    flex-direction: column;
+  }
+  .dashboard__wrapper {
+    display: flex;
+    @include mQ(900px) {
+      flex-direction: column;
+    }
+    .left__dashboard {
+      width: 50%;
+      border-right: 1px solid rgb(226, 225, 225);
+      padding-right: 0.8rem;
+      @include mQ(900px) {
+        width: 100%;
+        border-right: 0;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgb(226, 225, 225);
+        padding-right: 0;
+      }
+      .user__det {
+        position: relative;
+        margin-bottom: 1rem;
+        img {
+          height: 150px;
+          width: 150px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+      h2 {
+        text-transform: uppercase;
+        color: $color-primary;
+      }
+      form {
+        margin-top: 1.5rem;
+        .fields {
+          @include grid(repeat(2, 1fr), 0.3rem);
+          row-gap: 1rem;
+          @include mQ(900px) {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          @include mQ(600px) {
+            grid-template-columns: 1fr;
+          }
+          textarea {
+            width: 100%;
+          }
+        }
+        label {
+          display: block;
+          //   width: 400px;
+          &:focus {
+            .auth__wrap {
+              display: none;
+              border: 2px solid $color-primary;
+            }
+          }
+          span {
+            display: block;
+            font-weight: 700;
+          }
+          input,
+          textarea {
+            font-size: 14px;
+            padding: 0.8rem 1rem;
+            border-radius: 0.3rem;
+            border: 0;
+            outline: 0;
+            margin-bottom: 0;
+            background: transparent;
+          }
+          textarea {
+            width: 1005;
+          }
+          .auth__wrap {
+            display: flex;
+            border: 1px solid darkgray;
+            @include flexBox(flex-start, center, row);
+            border-radius: 0.3rem;
+            padding: 0 0.8rem;
+            :first-child {
+              font-size: 1.4rem;
+              color: darkgray;
+            }
+          }
+        }
+        .submit__btn {
+          width: auto;
+          margin-top: 0.8rem;
+          background: $color-secondary;
+          font-weight: 700;
+          border-radius: 0.3rem;
+          font-size: 1.1rem;
+          padding: 0.7rem;
+          border: 0;
+          outline: 0;
+          cursor: pointer;
+          @include mQ(600px) {
+            width: 100%;
+          }
+        }
+      }
+      .form__label {
+        display: block;
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+      }
+      .photo__label {
+        color: #000;
+        text-decoration: underline;
+        cursor: pointer;
+        position: absolute;
+        bottom: -1.7rem;
+        left: 3.5rem;
+      }
+      .form__upload {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+      }
+      .form__upload:focus + label {
+        outline: 3px solid #55c57a;
+        outline-offset: 3px;
+      }
+      .form__upload + label {
+        color: #55c57a;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid #55c57a;
+        padding: 3px;
+        -webkit-transition: all 0.2s;
+        transition: all 0.2s;
+        cursor: pointer;
+      }
+      .form__upload + label:hover {
+        background-color: #55c57a;
+        color: #fff;
+        -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+        -webkit-transform: translateY(-2px);
+        transform: translateY(-2px);
+      }
+    }
+    .right__dashboard {
+      width: 50%;
+      padding-left: 0.8rem;
+      @include mQ(900px) {
+        width: 100%;
+        padding-left: 0;
+        padding-top: 0.7rem;
+      }
+      .users__prop {
+        .card {
+          margin-top: 1rem;
+          box-shadow: $box-shadow-100;
+          padding: 1rem;
+          line-height: 2;
+          position: relative;
+        }
+        .purpose {
+          padding: 0.1rem 1rem;
+          display: inline-block;
+          border-radius: 0.3rem;
+          font-weight: 700;
+          margin-top: 0.3rem;
+          color: #fff;
+        }
+        .sale {
+          background: #55c57a;
+        }
+        .rent {
+          background: #c55571;
+        }
+        .shortlet {
+          background: chocolate;
+        }
+        .details {
+          position: absolute;
+          top: 0;
+          right: 1rem;
+          font-size: 1.4rem;
+        }
+      }
+      form {
+        margin-top: 1.5rem;
+        max-width: 100%;
+        .fields {
+          @include grid(repeat(3, 1fr), 0.3rem);
+          row-gap: 1rem;
+          padding-top: 1rem;
+          @include mQ(600px) {
+            grid-template-columns: 1fr;
+          }
+        }
+        label {
+          display: block;
+          //   width: 400px;
+          &:focus {
+            .auth__wrap {
+              display: none;
+              border: 2px solid $color-primary;
+            }
+          }
+          span {
+            display: block;
+            font-weight: 700;
+          }
+          input,
+          textarea {
+            font-size: 14px;
+            padding: 0.8rem 1rem;
+            border-radius: 0.3rem;
+            border: 0;
+            outline: 0;
+            margin-bottom: 0;
+            background: transparent;
+            width: 90px;
+          }
+          .auth__wrap {
+            display: flex;
+            border: 1px solid darkgray;
+            @include flexBox(flex-start, center, row);
+            border-radius: 0.3rem;
+            padding: 0 0.8rem;
+            :first-child {
+              font-size: 1.4rem;
+              color: darkgray;
+            }
+          }
+        }
+        .submit__btn2 {
+          width: auto;
+          margin-top: 0.8rem;
+          background: $color-primary;
+          color: #fff;
+          font-weight: 700;
+          border-radius: 0.3rem;
+          font-size: 1.1rem;
+          padding: 0.7rem;
+          border: 0;
+          outline: 0;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
