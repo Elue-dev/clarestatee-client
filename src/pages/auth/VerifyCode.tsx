@@ -115,7 +115,7 @@ export default function VerifyCode() {
                 return (
                   <input
                     className={styles["otp__field"]}
-                    type="text"
+                    type="tel"
                     name="otp"
                     //@ts-ignore
                     maxLength="1"
