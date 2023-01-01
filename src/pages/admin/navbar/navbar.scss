@@ -1,0 +1,51 @@
+@use "../../../styles/mixins" as *;
+@use "../../../styles/colors" as *;
+@use "../../../styles/variables" as *;
+
+.admin__nav {
+  .admin__user {
+    text-align: center;
+    padding: 2rem;
+    color: rgb(241, 241, 241);
+    border-bottom: 1px solid rgb(197, 197, 197);
+    .admin__user__photo {
+      height: 70px;
+      width: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+  nav {
+    margin-top: 40px;
+    margin-left: 25px;
+    ul {
+      margin-left: 20px;
+      li {
+        list-style: none;
+        margin-bottom: 1.5rem;
+        a {
+          color: rgb(241, 241, 241);
+          display: flex;
+          padding: 10px;
+          text-decoration: none;
+          width: 100%;
+          color: #fff;
+          box-sizing: border-box;
+          @include flexBox(left, center, row);
+          gap: 1rem;
+          &.active {
+            color: #555;
+            background: #fff;
+            border-radius: 20px 0 0 20px;
+            @include mQ(600px) {
+              border-radius: 0;
+            }
+          }
+          :first-child {
+            font-size: 1.3rem;
+          }
+        }
+      }
+    }
+  }
+}

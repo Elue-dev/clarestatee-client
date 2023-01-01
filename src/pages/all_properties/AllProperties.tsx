@@ -242,7 +242,7 @@ export default function AllProperties() {
             {filteredProperties.length === 0 && (
               <div className={styles["no__property"]}>
                 <TbHomeOff className={styles["empty__icon"]} />
-                <h2>No properties found for '{search}'</h2>
+                <h2>No properties found</h2>
               </div>
             )}
             {currentItems?.map((property: any) => {

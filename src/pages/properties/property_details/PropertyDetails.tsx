@@ -24,6 +24,7 @@ import { server_url } from "../../../utils/junk";
 import Comments from "../../../components/properties/comments/Comments";
 import Loader from "../../../utils/Loader";
 import RightDetails from "../../../components/property_details/RightDetails";
+import DOMPurify from "dompurify";
 
 export default function PropertyDetail() {
   const { slug } = useParams();
@@ -149,7 +150,8 @@ export default function PropertyDetail() {
 
               <p>
                 <FaRegEdit />
-                <b>Last Updated:</b> {moment(property.updatedAt).fromNow()}
+                <b>Last Updated:</b>{" "}
+                {new Date(property.updatedAt).toDateString()}
               </p>
 
               <span>
@@ -196,7 +198,14 @@ export default function PropertyDetail() {
                 <TbListDetails />
                 Description
               </h2>
-              <p>{property.description}</p>
+              <p>
+                {" "}
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(property.description),
+                  }}
+                ></div>
+              </p>
             </div>
 
             <Comments propertyID={property._id} slug={property.slug} />
