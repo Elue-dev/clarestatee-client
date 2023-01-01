@@ -8,7 +8,7 @@ const admin_email = import.meta.env.VITE_REACT_APP_ADMIN_EMAIL;
 export default function AdminOnlyRoute({ children }: any) {
   const user: any = useSelector(getUser);
 
-  const userEmail = user.email;
+  const userEmail = user?.email;
 
   if (userEmail === admin_email || userEmail === admin_email) {
     return children;
@@ -31,7 +31,7 @@ export default function AdminOnlyRoute({ children }: any) {
 export function AdminOnlyLink({ children }: any) {
   const user: any = useSelector(getUser);
 
-  const userEmail = user.email;
+  const userEmail = user?.email;
 
   if (userEmail === admin_email) {
     return children;

@@ -38,8 +38,8 @@ export default function Header() {
 
   if (user) {
     const { first_name, last_name } = user;
-    const first = first_name.substring(0, 1);
-    const last = last_name.substring(0, 1);
+    const first = first_name?.substring(0, 1);
+    const last = last_name?.substring(0, 1);
     initials = first + last;
   }
 
