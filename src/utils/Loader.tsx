@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { PropagateLoader } from "react-spinners";
+import { PulseLoader } from "react-spinners";
 
 export default function Loader() {
   const [loading, setLoading] = useState(false);
@@ -10,13 +10,7 @@ export default function Loader() {
 
   return (
     <div className="loader">
-      {loading && (
-        <PropagateLoader
-          color={"rgb(18, 140, 200)"}
-          loading={loading}
-          size={30}
-        />
-      )}
+      {loading && <PulseLoader color={"#000"} loading={loading} size={20} />}
     </div>
   );
 }

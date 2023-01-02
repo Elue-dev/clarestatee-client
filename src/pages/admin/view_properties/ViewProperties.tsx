@@ -150,8 +150,16 @@ export default function ViewProperties() {
             </thead>
             <tbody>
               {currentItems?.map((property, index) => {
-                const { id, name, price, images, createdAt, location, slug } =
-                  property;
+                const {
+                  id,
+                  name,
+                  price,
+                  images,
+                  createdAt,
+                  location,
+                  slug,
+                  purpose,
+                } = property;
                 return (
                   <tr key={id}>
                     <td>{index + 1}</td>
@@ -166,7 +174,14 @@ export default function ViewProperties() {
                     <td>{name}</td>
                     <td>{location}</td>
                     <td>{new Date(createdAt).toDateString()}</td>
-                    <td>NGN {new Intl.NumberFormat().format(price)}/night</td>
+                    <td>
+                      NGN {new Intl.NumberFormat().format(price)}
+                      {purpose === "Rent"
+                        ? "/year"
+                        : purpose === "Shortlet"
+                        ? "/night"
+                        : null}
+                    </td>
                     <td className="icons">
                       <Link to={`/admin/edit-property/${slug}/${id}`}>
                         <FaEdit size={20} color="green" />

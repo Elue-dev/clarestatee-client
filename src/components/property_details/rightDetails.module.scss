@@ -3,9 +3,10 @@
 @use "../../styles/variables" as *;
 
 .right__contents {
-  width: 100%;
+  min-width: 100%;
   height: fit-content;
-  background: rgb(240, 240, 240);
+  background: rgb(251, 251, 251);
+  border: 1px solid rgb(234, 232, 232);
   padding: 1.5rem 1rem;
   border-top-right-radius: 0.3rem;
   border-bottom-right-radius: 0.3rem;

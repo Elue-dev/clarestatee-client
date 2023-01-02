@@ -20,7 +20,6 @@ import ReactPaginate from "react-paginate";
 import Select from "react-select";
 import styles from "./allProperties.module.scss";
 import DOMPurify from "dompurify";
-// import GoBack from "../../components/utilities/GoBack";
 // import { animateScroll as scroll } from "react-scroll";
 
 const sortOptions = [
@@ -29,6 +28,9 @@ const sortOptions = [
   { value: "highest-price", label: "Sort by Highest Price" },
   { value: "Available", label: "Sort: Available" },
   { value: "Not Available", label: "Sort: Not Available" },
+  { value: "For Sale", label: "Sort: For Sale" },
+  { value: "For Rent", label: "Sort: For Rent" },
+  { value: "For Shortlet", label: "Sort: For Shortlet" },
 ];
 
 export default function AllProperties() {
@@ -169,9 +171,8 @@ export default function AllProperties() {
         <div className={styles["locations__list"]}>
           <h2>Filter by location</h2>
           {allLocations.map((loc: any, index: number) => (
-            <div>
+            <div key={index}>
               <button
-                key={index}
                 //@ts-ignore
                 className={`${locations}` === loc ? `${styles.active}` : null}
                 type="button"
@@ -205,13 +206,6 @@ export default function AllProperties() {
               onChange={(option) => handleSelectChange(option)}
               className={styles["select__purpose"]}
             />
-            {/* <select value={sort} onChange={handleSelectChange}>
-              <option value="latest">Sorting: Latest</option>
-              <option value="lowest-price">Sort by Lowest Price</option>
-              <option value="highest-price">Sort by Highest Price</option>
-              <option value="Available">Sort: Available</option>
-              <option value="Not Available">Sort: Not Available</option>
-            </select> */}
           </label>
           {search && (
             <>
@@ -256,6 +250,7 @@ export default function AllProperties() {
                 images,
                 availability,
                 slug,
+                purpose,
               } = property;
               return (
                 <div className={styles["wrap_p"]} key={id}>
@@ -271,6 +266,19 @@ export default function AllProperties() {
                       }}
                     >
                       {availability}
+                    </p>
+                    <p className={styles["property__purpose"]}>
+                      <span
+                        className={
+                          purpose === "Sale"
+                            ? `${styles.sale} ${styles.purpose}`
+                            : purpose === "Rent"
+                            ? `${styles.rent}  ${styles.purpose}`
+                            : `${styles.shortlet}  ${styles.purpose}`
+                        }
+                      >
+                        {purpose}
+                      </span>
                     </p>
                     <p className={styles["p_location"]}>{location}</p>
                   </div>

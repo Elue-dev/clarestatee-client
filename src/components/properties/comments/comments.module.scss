@@ -61,9 +61,10 @@
           gap: 0.4rem;
           font-weight: 500;
           margin-bottom: 0.6rem;
+          font-size: 0.9rem;
           :first-child {
             color: $color-secondary;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
           }
         }
       }
@@ -117,6 +118,10 @@
         font-family: "Figtree", sans-serif;
         width: auto;
         margin-right: 1rem;
+        @include mQ(600px) {
+          display: block !important;
+          text-align: center;
+        }
       }
       .close__comment__btn {
         @include button();

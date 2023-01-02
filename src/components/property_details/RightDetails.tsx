@@ -23,13 +23,15 @@ import moment from "moment";
 import { errorToast } from "../../utils/alerts";
 import { useNavigate } from "react-router-dom";
 import Notiflix from "notiflix";
+import { Link } from "react-router-dom";
 
 export default function RightDetails({ property, refetch }: any) {
   const [revLoading, setRevLoading] = useState(false);
   const [delLoading, setDelLoading] = useState(false);
-  const [message, setMessage] = useState("");
   const [rating, setRating] = useState<number | undefined>(0);
   const [review, setReview] = useState("");
+  const [message, setMessage] = useState("");
+
   const [showInput, setShowInput] = useState(false);
   const [loading, setLoading] = useState(false);
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -104,6 +106,15 @@ export default function RightDetails({ property, refetch }: any) {
       <div className={styles["right__contents"]}>
         <div className={styles["contact__info"]}>
           <div className={styles["contact__info__details"]}>
+            {currentUser._id === property.addedBy._id ? (
+              <Link
+                to={`/edit-property/${property.slug}/${property._id}`}
+                style={{ fontWeight: 700 }}
+              >
+                Edit Property
+              </Link>
+            ) : null}
+
             <h2>
               <MdOutlineRealEstateAgent style={{ color: "#888" }} />
               Contact Agent
@@ -119,7 +130,6 @@ export default function RightDetails({ property, refetch }: any) {
             </div>
           </div>
         </div>
-
         <div>
           <h3>Need to reach out?</h3>
           <form>

@@ -251,6 +251,31 @@
             padding: 0.09rem 0.9rem;
             font-weight: 500;
           }
+          .property__purpose {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            border-radius: 0.2rem;
+            padding: 0.09rem 0.9rem;
+            font-weight: 500;
+          }
+          .purpose {
+            padding: 0.1rem 1rem;
+            display: inline-block;
+            border-radius: 0.3rem;
+            font-weight: 700;
+            margin-top: 0.3rem;
+            color: #fff;
+          }
+          .sale {
+            background: #55c57a;
+          }
+          .rent {
+            background: #c55571;
+          }
+          .shortlet {
+            background: chocolate;
+          }
           .p_location {
             position: absolute;
             bottom: 20px;
@@ -285,10 +310,9 @@
             @include button();
             @include flexBox(center, center, row);
             gap: 0.4rem;
-            // background: rgb(225, 225, 225);
-            background: #333;
-            color: #fff;
-            // border: 1px solid #333;
+            background: #e1e1e1;
+            color: #000;
+            border: 1px solid rgb(225, 225, 225);
             font-weight: 700;
             border-radius: 0.3rem;
             padding: 0.6rem;

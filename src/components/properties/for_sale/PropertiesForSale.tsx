@@ -1,17 +1,17 @@
 import { useQuery } from "react-query";
 import axios from "axios";
-import { server_url } from "../../utils/junk";
+import { server_url } from "../../../utils/junk";
 import { Link } from "react-router-dom";
-import { MdDateRange, MdFeaturedPlayList } from "react-icons/md";
+import { MdDateRange } from "react-icons/md";
+import { GiHouseKeys } from "react-icons/gi";
 import { ImLocation2 } from "react-icons/im";
 import { BsCamera } from "react-icons/bs";
 import styles from "./properties.module.scss";
 import { useDispatch } from "react-redux";
-import { SET_CAREGORIES } from "../../redux/slices/property_slice";
-import { MoonLoader } from "react-spinners";
-import Loader from "../../utils/Loader";
+import { SET_CAREGORIES } from "../../../redux/slices/property_slice";
+import Loader from "../../../utils/Loader";
 
-export default function Properties() {
+export default function PropertiesForSale() {
   const dispatch = useDispatch();
 
   const fetchProperties = async () => {
@@ -32,6 +32,10 @@ export default function Properties() {
 
   const properties = data?.data.properties;
 
+  const filteredProperties = properties?.filter(
+    (property: any) => property.purpose === "Sale"
+  );
+
   if (isSuccess) {
     dispatch(SET_CAREGORIES(properties));
   }
@@ -40,12 +44,11 @@ export default function Properties() {
     <>
       <section className={styles.properties}>
         <h2>
-          <MdFeaturedPlayList />
-          Featured Properties
+          <GiHouseKeys />
+          Featured Properties for Sale
         </h2>
-        <Link to="/all-properties">View all properties</Link>
         <div className={styles["properties__contents"]}>
-          {properties?.slice(0, 4)?.map((property: any) => {
+          {filteredProperties?.slice(0, 4)?.map((property: any) => {
             const {
               _id,
               name,
@@ -78,7 +81,6 @@ export default function Properties() {
                         {" "}
                         {availability}
                       </p>
-
                       <span className={styles["camera__icon"]}>
                         <BsCamera />
                         <span>{images.length}</span>
@@ -99,7 +101,6 @@ export default function Properties() {
                       </p>
                       <p className={styles["property__price"]}>
                         <span>NGN{new Intl.NumberFormat().format(price)}</span>
-                        /night
                       </p>
                     </div>
                   </div>

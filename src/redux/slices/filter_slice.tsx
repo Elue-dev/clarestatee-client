@@ -67,7 +67,22 @@ const filterSlice = createSlice({
       }
       if (sort === "Not Available") {
         tempProperties = properties.filter(
-          (property: any) => property.availability === "Not Available"
+          (property: any) => property.availability === "Unavailable"
+        );
+      }
+      if (sort === "For Sale") {
+        tempProperties = properties.filter(
+          (property: any) => property.purpose === "Sale"
+        );
+      }
+      if (sort === "For Rent") {
+        tempProperties = properties.filter(
+          (property: any) => property.purpose === "Rent"
+        );
+      }
+      if (sort === "For Shortlet") {
+        tempProperties = properties.filter(
+          (property: any) => property.purpose === "Shortlet"
         );
       }
 
