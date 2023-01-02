@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@hookform/resolvers': ^2.9.10
   '@reduxjs/toolkit': ^1.9.0
+  '@types/dompurify': ^2.4.0
   '@types/react': ^18.0.24
   '@types/react-dom': ^18.0.8
   '@types/react-router-dom': ^5.3.3
@@ -65,6 +66,7 @@ dependencies:
   yup: 0.32.11
 
 devDependencies:
+  '@types/dompurify': 2.4.0
   '@types/react': 18.0.26
   '@types/react-dom': 18.0.10
   '@types/react-router-dom': 5.3.3
@@ -606,6 +608,12 @@ packages:
     engines: {node: '>=14'}
     dev: false
 
+  /@types/dompurify/2.4.0:
+    resolution: {integrity: sha512-IDBwO5IZhrKvHFUl+clZxgf3hn2b/lU6H1KaBShPkQyGJUQ0xwebezIPSuiyGwfz1UzJWQl4M7BDxtHtCCPlTg==}
+    dependencies:
+      '@types/trusted-types': 2.0.2
+    dev: true
+
   /@types/history/4.7.11:
     resolution: {integrity: sha512-qjDJRrmvBMiTx+jyLxvLfJU7UznFuokDv4f3WRuriHKERccVpFU+8XMQUAbDzoiJCsmexxRExQeMwwCdamSKDA==}
     dev: true
@@ -675,6 +683,10 @@ packages:
 
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
+
+  /@types/trusted-types/2.0.2:
+    resolution: {integrity: sha512-F5DIZ36YVLE+PN+Zwws4kJogq47hNgX3Nx6WyDJ3kcplxyke3XIzB8uK5n/Lpm1HBsbGzd6nmGehL8cPekP+Tg==}
+    dev: true
 
   /@types/use-sync-external-store/0.0.3:
     resolution: {integrity: sha512-EwmlvuaxPNej9+T4v5AuBPJa2x2UOJVdjCtDHgcDqitUeOtjnJKJ+apYjVcAoBEMjKW1VVFGZLUb5+qqa09XFA==}
