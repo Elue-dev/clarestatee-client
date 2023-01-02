@@ -9,9 +9,9 @@ import StarRatings from "react-star-ratings";
 import StarsRating from "react-star-rate";
 import styles from "./rightDetails.module.scss";
 import { BsTelephoneForwardFill } from "react-icons/bs";
-import { BeatLoader, ClipLoader } from "react-spinners";
+import { BeatLoader, ClipLoader, PulseLoader } from "react-spinners";
 import { TiUserAddOutline } from "react-icons/ti";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { createReview, removeReview } from "../../services/review_service";
 import { useSelector } from "react-redux";
 import {
@@ -24,16 +24,18 @@ import { errorToast } from "../../utils/alerts";
 import { useNavigate } from "react-router-dom";
 import Notiflix from "notiflix";
 import { Link } from "react-router-dom";
+import { sendContactEmail } from "../..//services/users_services";
 
 export default function RightDetails({ property, refetch }: any) {
   const [revLoading, setRevLoading] = useState(false);
   const [delLoading, setDelLoading] = useState(false);
   const [rating, setRating] = useState<number | undefined>(0);
   const [review, setReview] = useState("");
-  const [message, setMessage] = useState("");
 
   const [showInput, setShowInput] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const [subject, setSubject] = useState("");
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const token: any = useSelector(getUserToken);
   const currentUser: any = useSelector(getUser);
@@ -101,6 +103,24 @@ export default function RightDetails({ property, refetch }: any) {
     );
   };
 
+  const sendEmail = async (e: FormEvent) => {
+    e.preventDefault();
+
+    if (!subject || !message) {
+      return errorToast("Both subject and message are required", "cterror");
+    }
+
+    const contactData = { message, subject };
+    try {
+      setLoading(true);
+      await sendContactEmail(token, contactData);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <div className={styles["right__contents"]}>
@@ -132,30 +152,14 @@ export default function RightDetails({ property, refetch }: any) {
         </div>
         <div>
           <h3>Need to reach out?</h3>
-          <form>
-            <label>
-              <FaUser />
-              <input
-                type="text"
-                name="user_name"
-                placeholder="Full Name"
-                required
-              />
-            </label>
-            <label>
-              <MdOutlineAlternateEmail />
-              <input
-                type="email"
-                name="user_email"
-                placeholder="Your email"
-                required
-              />
-            </label>
+          <form onSubmit={sendEmail}>
             <label>
               <MdOutlineSubject />
               <input
                 type="text"
                 name="subject"
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
                 placeholder="Subject, e.g Enquiry about a property"
                 required
               />
@@ -165,6 +169,7 @@ export default function RightDetails({ property, refetch }: any) {
                 name="message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
+                placeholder="e.g I want to book 2 bedroom apartment in Lekki"
                 cols={0}
                 rows={6}
                 required
@@ -176,7 +181,7 @@ export default function RightDetails({ property, refetch }: any) {
                 disabled
                 className={styles["property__message__btn"]}
               >
-                <BeatLoader loading={loading} size={10} color={"#fff"} />
+                <PulseLoader loading={loading} size={10} color={"#fff"} />
               </button>
             ) : (
               <button

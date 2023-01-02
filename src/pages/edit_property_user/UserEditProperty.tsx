@@ -5,8 +5,6 @@ import {
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
 import { motion } from "framer-motion";
 import { IoInformationCircleOutline } from "react-icons/io5";
 import Select from "react-select";
@@ -121,10 +119,8 @@ export default function UserEditProperty() {
     try {
       setLoading(true);
       const response = await updateProperty(propertyData, propertyID, token);
-      console.log(response);
-
       if (response) {
-        navigate("/");
+        navigate(`/property/${property.slug}`);
       }
       setLoading(false);
     } catch (error) {
@@ -332,14 +328,17 @@ export default function UserEditProperty() {
           />
         </label>
         <br />
+
         <label>
           <span>Property Description:</span>
-          <ReactQuill
-            theme="snow"
-            value={description}
-            onChange={setDescription}
-            modules={UserEditProperty.modules}
-            formats={UserEditProperty.formats}
+          <textarea
+            name="description"
+            value={property && property.description}
+            onChange={(e) => handleInputChange(e)}
+            placeholder="e.g: A beautiful 4 bedroom apartment with all en-suite private rooms, with 2 living room and a kitchen available for guests use. Apartment is in the centre of Abuja close to banks, Malls, shopping complex. It’s at a no distance from all key areas of... "
+            cols={30}
+            rows={10}
+            required
           />
         </label>
         <p className="feature__info check">
@@ -360,40 +359,3 @@ export default function UserEditProperty() {
     </motion.section>
   );
 }
-
-UserEditProperty.modules = {
-  toolbar: [
-    [{ header: "1" }, { header: "2" }, { font: [] }],
-    [{ size: [] }],
-    ["bold", "italic", "underline", "strike", "blockquote"],
-    [{ align: [] }],
-    [{ color: [] }, { background: [] }],
-    [
-      { list: "ordered" },
-      { list: "bullet" },
-      { indent: "-1" },
-      { indent: "+1" },
-    ],
-    ["clean"],
-  ],
-};
-UserEditProperty.formats = [
-  "header",
-  "font",
-  "size",
-  "bold",
-  "italic",
-  "underline",
-  "strike",
-  "blockquote",
-  "color",
-  "background",
-  "list",
-  "bullet",
-  "indent",
-  "link",
-  "video",
-  "image",
-  "code-block",
-  "align",
-];
