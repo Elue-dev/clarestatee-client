@@ -142,7 +142,7 @@ export default function AllProperties() {
       <div className={styles["hero__all-p-wrapper"]}>
         <div className={styles["hero__all-p"]}>
           <h2>EXPLORE OUR PROPERTIES</h2>
-          <label>
+          <label className={styles.label}>
             <input
               type="search"
               value={search}

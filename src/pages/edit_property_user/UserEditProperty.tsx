@@ -1,10 +1,28 @@
+import {
+  getSingleProperty,
+  updateProperty,
+} from "../../services/property_service";
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { PulseLoader } from "react-spinners";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { motion } from "framer-motion";
 import { IoInformationCircleOutline } from "react-icons/io5";
-import { PulseLoader } from "react-spinners";
 import Select from "react-select";
-import "./propertyForm.scss";
+import { useSelector } from "react-redux";
+import { getUserToken } from "../../redux/slices/auth_slice";
+
+const initialState = {
+  name: "",
+  price: "",
+  location: "",
+  bedrooms: "",
+  bathrooms: "",
+  toilets: "",
+  agentName: "",
+  agentContact: "",
+};
 
 const availabilityOptions = [
   { value: "Available", label: "Available " },
@@ -17,24 +35,116 @@ const purposeOptions = [
   { value: "Sale", label: "For Sale" },
 ];
 
-const PropertyForm = ({
-  loading,
-  error,
-  property,
-  description,
-  setDescription,
-  setPurpose,
-  setAvailability,
-  saveProperty,
-  images,
-  handleInputChange,
-  handleImageChange,
-  features,
-  newFeature,
-  featuresInput,
-  setNewFeature,
-  handleAddFeature,
-}: any) => {
+export default function UserEditProperty() {
+  const [property, setProperty] = useState<any>(null);
+  const [images, setImages] = useState<any>([]);
+  const [description, setDescription] = useState("");
+  const [purpose, setPurpose] = useState("");
+  const [availability, setAvailability] = useState("");
+  const [newFeature, setNewFeature] = useState("");
+  const [features, setFeatures] = useState<any>([]);
+  const featuresInput = useRef<any>(null);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const { propertySlug, propertyID }: any = useParams();
+  const token = useSelector(getUserToken);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const data = await getSingleProperty(propertySlug);
+        setProperty(data.property);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getProduct();
+  }, []);
+
+  useEffect(() => {
+    setDescription(
+      property && property.description ? property.description : ""
+    );
+  }, [property]);
+
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setProperty({ ...property, [name]: value });
+  };
+
+  const handleImageChange = (e: any) => {
+    const files = e.target.files;
+    setImages(files);
+  };
+
+  const handleAddFeature = (e: any) => {
+    e.preventDefault();
+    const feat = newFeature.trim();
+
+    if (feat && !features.includes(feat)) {
+      setFeatures((prevFeatures: any) => [...prevFeatures, feat]);
+    }
+
+    setNewFeature("");
+    featuresInput.current.focus();
+  };
+  const propertyData = new FormData();
+  propertyData.append("name", property?.name);
+  propertyData.append("price", property?.price);
+  propertyData.append("description", property?.description);
+  propertyData.append("location", property?.location);
+  propertyData.append("bedrooms", property?.bedrooms);
+  propertyData.append("bathrooms", property?.bathrooms);
+  propertyData.append("toilets", property?.toilets);
+  propertyData.append("agentName", property?.agentName);
+  propertyData.append("agentContact", property?.agentContact);
+  propertyData.append("purpose", purpose || property?.purpose);
+  propertyData.append("availability", availability || property?.availability);
+  if (images) {
+    Array.from(images).forEach((image: any) => {
+      propertyData.append("images", image);
+    });
+  }
+  if (features) {
+    Array.from(features).forEach((feature: any) => {
+      propertyData.append("features", feature);
+    });
+  }
+
+  const saveProperty = async (e: FormEvent) => {
+    e.preventDefault();
+
+    try {
+      setLoading(true);
+      const response = await updateProperty(propertyData, propertyID, token);
+      console.log(response);
+
+      if (response) {
+        navigate("/");
+      }
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  };
+
+  if (!property) {
+    return (
+      <div className="loader">
+        <PulseLoader
+          color={"rgba(14, 16, 30, 0.937)"}
+          loading={true}
+          size={15}
+        />
+      </div>
+    );
+  }
+
   return (
     <motion.section
       className="add__property"
@@ -228,8 +338,8 @@ const PropertyForm = ({
             theme="snow"
             value={description}
             onChange={setDescription}
-            modules={PropertyForm.modules}
-            formats={PropertyForm.formats}
+            modules={UserEditProperty.modules}
+            formats={UserEditProperty.formats}
           />
         </label>
         <p className="feature__info check">
@@ -249,9 +359,9 @@ const PropertyForm = ({
       </form>
     </motion.section>
   );
-};
+}
 
-PropertyForm.modules = {
+UserEditProperty.modules = {
   toolbar: [
     [{ header: "1" }, { header: "2" }, { font: [] }],
     [{ size: [] }],
@@ -267,7 +377,7 @@ PropertyForm.modules = {
     ["clean"],
   ],
 };
-PropertyForm.formats = [
+UserEditProperty.formats = [
   "header",
   "font",
   "size",
@@ -287,5 +397,3 @@ PropertyForm.formats = [
   "code-block",
   "align",
 ];
-
-export default PropertyForm;

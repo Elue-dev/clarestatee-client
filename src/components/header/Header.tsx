@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BiHomeAlt, BiLogInCircle } from "react-icons/bi";
 import { HiOutlineHomeModern } from "react-icons/hi2";
 import {
+  MdAddBusiness,
   MdOutlineAdminPanelSettings,
   MdOutlinePermContactCalendar,
 } from "react-icons/md";
@@ -123,6 +124,12 @@ export default function Header() {
                     <p>Contact</p>
                   </li>
                 </NavLink>
+                <NavLink to="/add-property">
+                  <li>
+                    <MdAddBusiness />
+                    <p>Add Property</p>
+                  </li>
+                </NavLink>
               </ul>
               <div
                 className={styles.auth}
@@ -204,6 +211,13 @@ export default function Header() {
             <li>
               <MdOutlinePermContactCalendar />
               <p>Contact</p>
+            </li>
+          </NavLink>
+
+          <NavLink to="/contact">
+            <li>
+              <MdAddBusiness />
+              <p>Add Property</p>
             </li>
           </NavLink>
 

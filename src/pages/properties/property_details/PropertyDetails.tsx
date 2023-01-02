@@ -95,6 +95,8 @@ export default function PropertyDetail() {
           <BiChevronsRight /> <span>{property?.name}</span>
         </p>
 
+        <Link to={`/edit-property/${property.slug}/${property._id}`}>Edit</Link>
+
         <div className={styles["property__details__contents"]}>
           <div className={styles["left__contents"]}>
             <div className={styles["property__details__images"]}>

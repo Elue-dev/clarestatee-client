@@ -14,6 +14,8 @@ import Contact from "../pages/contact/Contact";
 import AllProperties from "../pages/all_properties/AllProperties";
 import AdminOnlyRoute from "../components/admin_only/AdminOnlyRoute";
 import Admin from "../pages/admin/Admin";
+import AddProperty from "../pages/admin/add_property/AddProperty";
+import UserEditProperty from "../pages/edit_property_user/UserEditProperty";
 
 export default function AllRoutes() {
   return (
@@ -22,6 +24,22 @@ export default function AllRoutes() {
       <Route path="/property/:slug" element={<PropertyDetail />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/all-properties" element={<AllProperties />} />
+      <Route
+        path="/add-property"
+        element={
+          <Unauthenticated>
+            <AddProperty />
+          </Unauthenticated>
+        }
+      />
+      <Route
+        path="/edit-property/:propertySlug/:propertyID"
+        element={
+          <Unauthenticated>
+            <UserEditProperty />
+          </Unauthenticated>
+        }
+      />
       <Route
         path="/admin/*"
         element={

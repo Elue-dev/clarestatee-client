@@ -52,6 +52,9 @@
           }
         }
       }
+      .label {
+        display: block;
+      }
     }
   }
   .property__filters.show {
@@ -137,7 +140,7 @@
     }
   }
   .all__properties__wrapper {
-    display: flex;
+    // display: flex;
     gap: 2rem;
     @include container();
     .menu__filter {
