@@ -70,7 +70,9 @@ export const updateProperty = async (
       `${server_url}/api/properties/${propertyID}`,
       propertyData,
       {
-        headers: { authorization: `Bearer ${token}` },
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
       }
     );
 

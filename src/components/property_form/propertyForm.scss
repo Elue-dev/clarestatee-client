@@ -90,6 +90,9 @@
       font-weight: 600;
       font-size: 0.9rem;
     }
+    .check {
+      margin-top: 4.3rem;
+    }
     .preview__wrapper {
       display: flex;
       overflow-x: auto;
@@ -128,6 +131,9 @@
 h2 {
   @include flexBox(center, center, row);
   margin-top: 1rem;
+}
+.quill {
+  height: 300px !important;
 }
 
 @include mQ(600px) {

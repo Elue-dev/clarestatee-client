@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { motion } from "framer-motion";
 import { IoInformationCircleOutline } from "react-icons/io5";
 import { PulseLoader } from "react-spinners";
 import Select from "react-select";
@@ -18,7 +18,7 @@ const purposeOptions = [
   { value: "Sale", label: "For Sale" },
 ];
 
-export default function PropertyForm({
+const PropertyForm = ({
   loading,
   error,
   property,
@@ -35,7 +35,7 @@ export default function PropertyForm({
   featuresInput,
   setNewFeature,
   handleAddFeature,
-}: any) {
+}: any) => {
   return (
     <motion.section
       className="add__property"
@@ -89,7 +89,7 @@ export default function PropertyForm({
             min={0}
             value={property && property.price}
             onChange={(e) => handleInputChange(e)}
-            placeholder="e.g: 70000 not 70,000 (DON'T PUT COMMAS)"
+            placeholder="e.g: 70000"
             required
           />
         </label>
@@ -232,16 +232,6 @@ export default function PropertyForm({
             modules={PropertyForm.modules}
             formats={PropertyForm.formats}
           />
-          {/* <textarea
-            type="text"
-            name="description"
-            value={property && property.description}
-            onChange={(e) => handleInputChange(e)}
-            placeholder="e.g: A beautiful 4 bedroom apartment with all en-suite private rooms, with 2 living room and a kitchen available for guests use. Apartment is in the centre of Abuja close to banks, Malls, shopping complex. It’s at a no distance from all key areas of... "
-            rerquiredcols="30"
-            rows="10"
-            required
-          /> */}
         </label>
         <p className="feature__info check">
           PLEASE CHECK THAT ALL INPUTS ARE FILLED AND CONFIRM ALL THE DETAILS
@@ -260,7 +250,7 @@ export default function PropertyForm({
       </form>
     </motion.section>
   );
-}
+};
 
 PropertyForm.modules = {
   toolbar: [
@@ -298,3 +288,5 @@ PropertyForm.formats = [
   "code-block",
   "align",
 ];
+
+export default PropertyForm;
