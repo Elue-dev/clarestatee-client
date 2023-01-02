@@ -93,12 +93,12 @@ export default function AddProperty() {
       return errorToast("Please add images for this property", "uierr");
     }
 
-    // if (images.length <= 4) {
-    //   return errorToast(
-    //     "Please add at least 5 images for this property",
-    //     "uierr2"
-    //   );
-    // }
+    if (images.length <= 4) {
+      return errorToast(
+        "Please add at least 5 images for this property",
+        "uierr2"
+      );
+    }
 
     if (features.length <= 4) {
       return errorToast(

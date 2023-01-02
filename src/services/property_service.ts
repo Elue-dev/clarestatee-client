@@ -73,7 +73,6 @@ export const updateProperty = async (
         headers: { authorization: `Bearer ${token}` },
       }
     );
-    console.log(response);
 
     if (response?.data.status === "success") {
       successToast(response?.data.message, "delcsuccess");

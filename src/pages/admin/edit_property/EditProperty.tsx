@@ -5,7 +5,7 @@ import {
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { ClipLoader, PulseLoader } from "react-spinners";
+import { PulseLoader } from "react-spinners";
 import { getUserToken } from "../../../redux/slices/auth_slice";
 import PropertyForm from "../../../components/property_form/PropertyForm";
 import { AiOutlineEdit } from "react-icons/ai";
@@ -52,8 +52,8 @@ export default function EditProduct() {
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const propertyData = await getSingleProperty(propertySlug);
-        setProperty(propertyData.property);
+        const data = await getSingleProperty(propertySlug);
+        setProperty(data.property);
       } catch (error) {
         console.log(error);
       }
@@ -70,23 +70,24 @@ export default function EditProduct() {
 
   const saveProperty = async (e: FormEvent) => {
     e.preventDefault();
+
     try {
       setLoading(true);
-
-      console.log("PROPERTY", property.price);
-
       const propertyData = new FormData();
-      propertyData.append("name", property.name);
-      propertyData.append("price", property.price);
-      propertyData.append("description", property.description);
-      propertyData.append("location", property.location);
-      propertyData.append("bedrooms", property.bedrooms);
-      propertyData.append("bathrooms", property.bathrooms);
-      propertyData.append("toilets", property.toilets);
-      propertyData.append("agentName", property.agentName);
-      propertyData.append("purpose", property.purpose);
-      propertyData.append("availability", property.availability);
-      propertyData.append("agentContact", property.agentContact);
+      propertyData.append("name", property?.name);
+      propertyData.append("price", property?.price);
+      propertyData.append("description", property?.description);
+      propertyData.append("location", property?.location);
+      propertyData.append("bedrooms", property?.bedrooms);
+      propertyData.append("bathrooms", property?.bathrooms);
+      propertyData.append("toilets", property?.toilets);
+      propertyData.append("agentName", property?.agentName);
+      propertyData.append("agentContact", property?.agentContact);
+      propertyData.append("purpose", purpose || property?.purpose);
+      propertyData.append(
+        "availability",
+        availability || property?.availability
+      );
       if (images) {
         Array.from(images).forEach((image: any) => {
           propertyData.append("images", image);
@@ -98,17 +99,12 @@ export default function EditProduct() {
         });
       }
 
-      console.log(...propertyData);
-
       const res = await updateProperty(propertyData, propertyID, token);
-
       res ? navigate("/admin/view-properties") : null;
     } catch (error) {
       console.log(error);
       setLoading(false);
     }
-
-    // setLoading(false);
   };
 
   if (!property) {
