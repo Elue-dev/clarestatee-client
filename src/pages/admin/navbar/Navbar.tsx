@@ -38,9 +38,15 @@ export default function Navbar() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/admin/add-property/ADD">
+            <NavLink to="/admin/add-property">
               <MdAddBusiness />
               Add Property
+            </NavLink>
+          </li>
+          <li style={{ display: "none" }}>
+            <NavLink to="/admin/edit-property">
+              <MdAddBusiness />
+              Edit Property
             </NavLink>
           </li>
           <li>

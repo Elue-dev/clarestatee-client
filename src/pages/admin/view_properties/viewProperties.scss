@@ -4,6 +4,116 @@
 
 .view__prop__admin {
   padding: 2rem;
+
+  .table {
+    padding: 5px;
+    width: 100%;
+    overflow-x: auto;
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 1rem;
+
+      thead {
+        border-top: 2px solid $color-primary;
+        border-bottom: 2px solid $color-primary;
+      }
+
+      th {
+        border: 1px solid #eee;
+      }
+
+      th,
+      td {
+        vertical-align: top;
+        text-align: left;
+        padding: 8px;
+        &.icons {
+          > * {
+            margin-right: 5px;
+            cursor: pointer;
+          }
+        }
+      }
+
+      tr {
+        border-bottom: 1px solid #ccc;
+        cursor: pointer;
+      }
+
+      tr:nth-child(even) {
+        background-color: #eee;
+      }
+      .delievered {
+        color: $color-primary;
+        font-weight: 500;
+      }
+      .pending {
+        color: green;
+        font-weight: 500;
+      }
+    }
+  }
+
+  img {
+    height: 100px;
+    width: 200px;
+    object-fit: cover;
+  }
+  .search__field {
+    display: flex;
+    justify-content: right;
+  }
+  .pagination {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+    font-size: 1rem;
+  }
+
+  .pagination .page-num {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-weight: normal;
+    color: #333;
+    border: 1px solid $color-primary;
+    margin: 2px;
+  }
+
+  .pagination .page-num:hover {
+    color: #fff;
+    background-color: $color-primary;
+  }
+  .activePage {
+    color: #fff;
+    background-color: $color-primary;
+    height: 100%;
+  }
+
+  .active {
+    position: relative;
+    // margin-bottom: 2px;
+    padding-left: 1rem;
+    .active::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 2px;
+      height: 100%;
+      background-color: $color-primary;
+    }
+  }
+
+  @include mQ(600px) {
+    .table table {
+      font-size: 0.81rem;
+    }
+  }
 }
 
 label {
@@ -12,20 +122,24 @@ label {
   // margin-bottom: 1rem;
   //   max-height: 50px;
   :focus {
-    border: 3px solid $mainColor;
+    border: 3px solid $color-primary;
   }
   input {
     padding: 0.4rem;
-    width: 100%;
+    width: 30%;
     font-size: 1rem;
     border: 2px solid #333;
     border-radius: 0.5rem;
     transition: border 0.5s ease;
     margin-bottom: 0.9rem;
     outline: 0;
+    margin-left: auto;
     :hover,
     :focus {
-      border: 1.5px solid $mainColor;
+      border: 1.5px solid $color-primary;
+    }
+    @include mQ(600px) {
+      width: 85%;
     }
   }
 }

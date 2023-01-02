@@ -3,6 +3,7 @@ import Navbar from "./navbar/Navbar";
 import ViewProperties from "./view_properties/ViewProperties";
 import AddProperty from "./add_property/AddProperty";
 import "./admin.scss";
+import EditProduct from "./edit_property/EditProperty";
 
 export default function Admin() {
   return (
@@ -13,7 +14,11 @@ export default function Admin() {
       <div className="admin__contents">
         <Routes>
           <Route path="view-properties" element={<ViewProperties />} />
-          <Route path="add-property/:id" element={<AddProperty />} />
+          <Route path="add-property" element={<AddProperty />} />
+          <Route
+            path="edit-property/:propertySlug/:propertyID"
+            element={<EditProduct />}
+          />
         </Routes>
       </div>
     </div>

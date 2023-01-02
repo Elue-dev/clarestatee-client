@@ -19,6 +19,7 @@ import Loader from "../../utils/Loader";
 import ReactPaginate from "react-paginate";
 import Select from "react-select";
 import styles from "./allProperties.module.scss";
+import DOMPurify from "dompurify";
 // import GoBack from "../../components/utilities/GoBack";
 // import { animateScroll as scroll } from "react-scroll";
 
@@ -42,7 +43,7 @@ export default function AllProperties() {
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
-  const itemsPerPage = 3;
+  const itemsPerPage = 9;
 
   useEffect(() => {
     fetchAllProperties();
@@ -277,9 +278,14 @@ export default function AllProperties() {
                     <div className={styles["name_"]}>
                       <h2>{name}</h2>
                     </div>
-                    <div className={styles["desc_"]}>
-                      <p>{description.substring(0, 60)}...</p>
-                    </div>
+                    <div
+                      className={styles["desc_"]}
+                      dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize(
+                          description.substring(0, 80) + "......"
+                        ),
+                      }}
+                    ></div>
                     <div className={styles["price_"]}>
                       <p>
                         NGN {new Intl.NumberFormat().format(price)}

@@ -86,27 +86,33 @@ export default function AddProperty() {
     propertyData.append("features", feature);
   });
 
-  const addProperty = async (e: FormEvent) => {
+  const saveProperty = async (e: FormEvent) => {
     e.preventDefault();
-
-    console.log(images);
-    console.log(images.length);
 
     if (!images.length) {
       return errorToast("Please add images for this property", "uierr");
     }
+
     // if (images.length <= 4) {
     //   return errorToast(
     //     "Please add at least 5 images for this property",
     //     "uierr2"
     //   );
     // }
+
     if (features.length <= 4) {
       return errorToast(
         "Please add at least 5 features of this property",
         "ferr"
       );
-      return;
+    }
+
+    if (availability === "") {
+      return errorToast("Please select property availability", "averr");
+    }
+
+    if (purpose === "") {
+      return errorToast("Please select property purpose", "puerr");
     }
 
     try {
@@ -139,7 +145,7 @@ export default function AddProperty() {
         images={images}
         loading={loading}
         error={error}
-        addProperty={addProperty}
+        saveProperty={saveProperty}
         handleInputChange={handleInputChange}
         handleImageChange={handleImageChange}
       />

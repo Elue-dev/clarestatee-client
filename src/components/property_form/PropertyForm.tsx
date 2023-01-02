@@ -26,7 +26,7 @@ export default function PropertyForm({
   setDescription,
   setPurpose,
   setAvailability,
-  addProperty,
+  saveProperty,
   images,
   handleInputChange,
   handleImageChange,
@@ -43,7 +43,7 @@ export default function PropertyForm({
       animate={{ opacity: 1 }}
       transition={{ delay: 0.1 }}
     >
-      <form onSubmit={addProperty}>
+      <form onSubmit={saveProperty}>
         {error && <p className="alert error">{error}</p>}
         <label>
           <span>Property Name:</span>
@@ -98,7 +98,7 @@ export default function PropertyForm({
           <span>Availability of property</span>
           <Select
             options={availabilityOptions}
-            placeholder="Select aproperty availability"
+            placeholder="Select property availability"
             //@ts-ignore
             onChange={(option) => setAvailability(option.value)}
             className="select__style"
@@ -191,7 +191,7 @@ export default function PropertyForm({
           </div>
           <div className="features__list">
             <b>Features:</b>{" "}
-            {features.map((i: string, index: number) => (
+            {features?.map((i: string, index: number) => (
               <li key={index}>
                 <em key={i}>{i}.</em>
               </li>
