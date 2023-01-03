@@ -120,6 +120,7 @@
         margin-bottom: 0.6rem;
         width: 100%;
         cursor: pointer;
+        text-transform: uppercase;
       }
     }
     .del__rev {
@@ -180,6 +181,7 @@
     button {
       @include button();
       border-radius: 0.2rem;
+      padding: 0.4rem;
       background: $color-secondary;
       color: #fff;
       width: 100%;

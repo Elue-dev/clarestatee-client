@@ -66,14 +66,14 @@ export default function RightDetails({ property, refetch }: any) {
       );
     }
 
-    const revData = {
+    const reviewData = {
       review,
       rating,
     };
 
     try {
       setRevLoading(true);
-      await createReview(revData, property._id, token);
+      await createReview(reviewData, property._id, token);
       refetch();
       setReview("");
       setRating(0);

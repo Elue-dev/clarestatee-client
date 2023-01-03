@@ -56,10 +56,6 @@ export default function AllProperties() {
     setProperties(data.properties);
   };
 
-  if (!properties) {
-    return <Loader />;
-  }
-
   const allLocations = [
     "All",
     ...new Set(properties.map((property: any) => property.location)),
@@ -133,6 +129,10 @@ export default function AllProperties() {
     setCurrentItems(filteredProperties?.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(filteredProperties?.length / itemsPerPage));
   }, [itemOffset, itemsPerPage, filteredProperties]);
+
+  if (properties.length === 0) {
+    return <Loader />;
+  }
 
   return (
     <motion.section
@@ -234,89 +234,93 @@ export default function AllProperties() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.1 }}
           >
-            {filteredProperties.length === 0 && (
-              <div className={styles["no__property"]}>
-                <TbHomeOff className={styles["empty__icon"]} />
-                <h2>No properties found</h2>
-              </div>
+            {properties.length === 0 ? null : (
+              <>
+                {search || (sort && filteredProperties.length === 0) ? (
+                  <div className={styles["no__property"]}>
+                    <TbHomeOff className={styles["empty__icon"]} />
+                    <h2>No properties found</h2>
+                  </div>
+                ) : null}
+                {currentItems?.map((property: any) => {
+                  const {
+                    id,
+                    name,
+                    location,
+                    description,
+                    price,
+                    images,
+                    availability,
+                    slug,
+                    purpose,
+                  } = property;
+                  return (
+                    <div className={styles["wrap_p"]} key={id}>
+                      <div className={styles["image_"]}>
+                        <img src={images[0]} alt={name} />
+                        <p
+                          className={styles["p_availability"]}
+                          style={{
+                            background:
+                              availability === "Available"
+                                ? "rgba(136, 229, 29, 0.575)"
+                                : "rgba(243, 90, 52, 0.411)",
+                          }}
+                        >
+                          {availability}
+                        </p>
+                        <p className={styles["property__purpose"]}>
+                          <span
+                            className={
+                              purpose === "Sale"
+                                ? `${styles.sale} ${styles.purpose}`
+                                : purpose === "Rent"
+                                ? `${styles.rent}  ${styles.purpose}`
+                                : `${styles.shortlet}  ${styles.purpose}`
+                            }
+                          >
+                            {purpose}
+                          </span>
+                        </p>
+                        <p className={styles["p_location"]}>{location}</p>
+                      </div>
+                      <div className={styles["inner_c"]}>
+                        <div className={styles["name_"]}>
+                          <h2>{name}</h2>
+                        </div>
+                        <div
+                          className={styles["desc_"]}
+                          dangerouslySetInnerHTML={{
+                            __html: DOMPurify.sanitize(
+                              description.substring(0, 80) + "......"
+                            ),
+                          }}
+                        ></div>
+                        <div className={styles["price_"]}>
+                          <p>
+                            NGN {new Intl.NumberFormat().format(price)}
+                            <span>
+                              {" "}
+                              {purpose === "Rent"
+                                ? "/year"
+                                : purpose === "Shortlet"
+                                ? "/night"
+                                : null}
+                            </span>
+                          </p>
+                        </div>
+                        <Link to={`/property/${slug}`}>
+                          <button className={styles["more_"]}>
+                            <CiRead />
+                            MORE DETAILS
+                          </button>
+                        </Link>
+                      </div>
+                    </div>
+                  );
+                })}
+              </>
             )}
-            {currentItems?.map((property: any) => {
-              const {
-                id,
-                name,
-                location,
-                description,
-                price,
-                images,
-                availability,
-                slug,
-                purpose,
-              } = property;
-              return (
-                <div className={styles["wrap_p"]} key={id}>
-                  <div className={styles["image_"]}>
-                    <img src={images[0]} alt={name} />
-                    <p
-                      className={styles["p_availability"]}
-                      style={{
-                        background:
-                          availability === "Available"
-                            ? "rgba(136, 229, 29, 0.575)"
-                            : "rgba(243, 90, 52, 0.411)",
-                      }}
-                    >
-                      {availability}
-                    </p>
-                    <p className={styles["property__purpose"]}>
-                      <span
-                        className={
-                          purpose === "Sale"
-                            ? `${styles.sale} ${styles.purpose}`
-                            : purpose === "Rent"
-                            ? `${styles.rent}  ${styles.purpose}`
-                            : `${styles.shortlet}  ${styles.purpose}`
-                        }
-                      >
-                        {purpose}
-                      </span>
-                    </p>
-                    <p className={styles["p_location"]}>{location}</p>
-                  </div>
-                  <div className={styles["inner_c"]}>
-                    <div className={styles["name_"]}>
-                      <h2>{name}</h2>
-                    </div>
-                    <div
-                      className={styles["desc_"]}
-                      dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(
-                          description.substring(0, 80) + "......"
-                        ),
-                      }}
-                    ></div>
-                    <div className={styles["price_"]}>
-                      <p>
-                        NGN {new Intl.NumberFormat().format(price)}
-                        <span>
-                          {" "}
-                          {purpose === "Rent"
-                            ? "/year"
-                            : purpose === "Shortlet"
-                            ? "/night"
-                            : null}
-                        </span>
-                      </p>
-                    </div>
-                    <Link to={`/property/${slug}`}>
-                      <button className={styles["more_"]}>
-                        <CiRead />
-                        MORE DETAILS
-                      </button>
-                    </Link>
-                  </div>
-                </div>
-              );
-            })}
           </motion.div>
           {filteredProperties.length ? (
             <ReactPaginate
