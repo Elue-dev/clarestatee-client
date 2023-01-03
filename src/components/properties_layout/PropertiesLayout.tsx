@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 import styles from "../properties/for_sale/properties.module.scss";
 
 export default function PropertiesLayout({ filteredProperties }: any) {
+  if (!filteredProperties) {
+    return <Loader />;
+  }
+
   return (
     <div className={styles["properties__contents"]}>
       {filteredProperties?.length === 0 ? (
