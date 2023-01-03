@@ -217,7 +217,7 @@ export default function Header() {
           <NavLink to="/add-property">
             <li>
               <MdAddBusiness />
-              <p>Add Property</p>
+              <p>Add </p>
             </li>
           </NavLink>
 
