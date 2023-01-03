@@ -9,26 +9,14 @@ const filterSlice = createSlice({
   name: "filter",
   initialState,
   reducers: {
-    // FILTER_BY_PURPOSE: (state, action) => {
-    //   const { blogPosts, category } = action.payload;
-    //   console.log(action.payload);
-    //   let tempBlogs = [];
-    //   if (category === "All") {
-    //     tempBlogs = blogPosts;
-    //   } else {
-    //     tempBlogs = blogPosts.filter((post: any) => post.category === category);
-    //   }
-    //   state.filteredBlogs = tempBlogs;
-    // },
-    FILTER_BY_LOCATION: (state, action) => {
-      const { properties, location } = action.payload;
+    FILTER_BY_CITY: (state, action) => {
+      const { properties, city } = action.payload;
       let tempProperties = [];
-      if (location === "All") {
+      if (city === "All") {
         tempProperties = properties;
       } else {
         tempProperties = properties.filter(
-          (property: any) =>
-            property.location.toLowerCase() === location.toLowerCase()
+          (property: any) => property.city.toLowerCase() === city.toLowerCase()
         );
       }
       state.filteredProperties = tempProperties;
@@ -39,7 +27,8 @@ const filterSlice = createSlice({
       let tempProperties = properties.filter(
         (property: any) =>
           property.location.toLowerCase().includes(search.toLowerCase()) ||
-          property.name.toLowerCase().includes(search.toLowerCase())
+          property.name.toLowerCase().includes(search.toLowerCase()) ||
+          property.city.toLowerCase().includes(search.toLowerCase())
       );
       state.filteredProperties = tempProperties;
     },
@@ -67,7 +56,7 @@ const filterSlice = createSlice({
       }
       if (sort === "Not Available") {
         tempProperties = properties.filter(
-          (property: any) => property.availability === "Unavailable"
+          (property: any) => property.availability === "Not Available"
         );
       }
       if (sort === "For Sale") {
@@ -91,12 +80,8 @@ const filterSlice = createSlice({
   },
 });
 
-export const {
-  //   FILTER_BY_PURPOSE,
-  FILTER_BY_LOCATION,
-  FILTER_BY_SEARCH,
-  SORT_PROPERTIES,
-} = filterSlice.actions;
+export const { FILTER_BY_CITY, FILTER_BY_SEARCH, SORT_PROPERTIES } =
+  filterSlice.actions;
 
 export const selectFilteredProperties = (state: RootState) =>
   state.filter.filteredProperties;

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  FILTER_BY_LOCATION,
+  FILTER_BY_CITY,
   FILTER_BY_SEARCH,
   selectFilteredProperties,
   SORT_PROPERTIES,
@@ -35,7 +35,7 @@ const sortOptions = [
 
 export default function AllProperties() {
   const [properties, setProperties] = useState([]);
-  const [locations, setLocations] = useState("All");
+  const [cities, setCities] = useState("All");
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("latest");
   const [showFilter, setShowFilter] = useState(false);
@@ -56,9 +56,9 @@ export default function AllProperties() {
     setProperties(data.properties);
   };
 
-  const allLocations = [
+  const allCities = [
     "All",
-    ...new Set(properties.map((property: any) => property.location)),
+    ...new Set(properties.map((property: any) => property.city)),
   ];
 
   const handlePageClick = (event: any) => {
@@ -78,19 +78,19 @@ export default function AllProperties() {
   window.addEventListener("scroll", fixNavbar);
 
   const clearFilters = () => {
-    setLocations("All");
+    setCities("All");
     setSearch("");
     setSort("latest");
     setShowFilter(false);
   };
 
-  const filterByLocation = (loc: string) => {
-    setLocations(loc);
+  const filterByCity = (city: string) => {
+    setCities(city);
     window.scrollTo(0, 0);
     setSearch("");
     setSort("latest");
     setPageCount(1);
-    dispatch(FILTER_BY_LOCATION({ properties, location: loc }));
+    dispatch(FILTER_BY_CITY({ properties, city: city }));
     setShowFilter(false);
   };
 
@@ -102,8 +102,8 @@ export default function AllProperties() {
   };
 
   useEffect(() => {
-    dispatch(FILTER_BY_LOCATION({ properties, location: locations }));
-  }, [dispatch, properties, locations]);
+    dispatch(FILTER_BY_CITY({ properties, city: cities }));
+  }, [dispatch, properties, cities]);
 
   useEffect(() => {
     dispatch(
@@ -149,7 +149,7 @@ export default function AllProperties() {
               type="search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="LOCATION OR PROPERTY NAME..."
+              placeholder="LOCATION, CITY OR PROPERTY NAME..."
             />
           </label>
         </div>
@@ -169,16 +169,16 @@ export default function AllProperties() {
         </div>
 
         <div className={styles["locations__list"]}>
-          <h2>Filter by location</h2>
-          {allLocations.map((loc: any, index: number) => (
+          <h2>Filter by city</h2>
+          {allCities.map((city: any, index: number) => (
             <div key={index}>
               <button
                 //@ts-ignore
-                className={`${locations}` === loc ? `${styles.active}` : null}
+                className={`${cities}` === city ? `${styles.active}` : null}
                 type="button"
-                onClick={() => filterByLocation(loc)}
+                onClick={() => filterByCity(city)}
               >
-                {loc}
+                {city}
               </button>
             </div>
           ))}
