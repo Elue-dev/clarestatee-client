@@ -40,6 +40,14 @@ export default function RightDetails({ property, refetch }: any) {
   const currentUser: any = useSelector(getUser);
   const navigate = useNavigate();
 
+  console.log(property);
+
+  const userIDS: string[] = [];
+
+  property.reviews.map((review: any) => {
+    userIDS.push(review.user._id);
+  });
+
   const addReview = async () => {
     if (!isLoggedIn) {
       errorToast("You have to be logged in to add reviews", "addreverror");
@@ -53,6 +61,11 @@ export default function RightDetails({ property, refetch }: any) {
       return errorToast(
         "You cannot add reviews to properties you added",
         "addratueerror"
+      );
+    } else if (userIDS.includes(currentUser._id)) {
+      return errorToast(
+        "You cannot add multiple reviews to a property",
+        "addreverrorsec"
       );
     }
 
