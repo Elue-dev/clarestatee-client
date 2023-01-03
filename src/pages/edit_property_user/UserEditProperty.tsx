@@ -45,7 +45,7 @@ export default function UserEditProperty() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const { propertySlug, propertyID }: any = useParams();
-  const token = useSelector(getUserToken);
+  const token: any = useSelector(getUserToken);
   const navigate = useNavigate();
 
   useEffect(() => {
