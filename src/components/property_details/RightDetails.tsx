@@ -120,6 +120,12 @@ export default function RightDetails({ property, refetch }: any) {
   const sendEmail = async (e: FormEvent) => {
     e.preventDefault();
 
+    if (!isLoggedIn) {
+      errorToast("Please log in first.", "cterror");
+      navigate("/auth/login");
+      return;
+    }
+
     if (!subject || !message) {
       return errorToast("Both subject and message are required", "cterror");
     }

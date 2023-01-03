@@ -7,19 +7,28 @@ import { motion } from "framer-motion";
 import { BeatLoader } from "react-spinners";
 import styles from "./contact.module.scss";
 import { useSelector } from "react-redux";
-import { getUserToken } from "../../redux/slices/auth_slice";
+import { getUserToken, selectIsLoggedIn } from "../../redux/slices/auth_slice";
 import { sendContactEmail } from "../../services/users_services";
 import { errorToast } from "../../utils/alerts";
 import { SiGmail } from "react-icons/si";
+import { useNavigate } from "react-router-dom";
 
 export default function Contact() {
   const [message, setMessage] = useState("");
   const [subject, setSubject] = useState("");
   const [loading, setLoading] = useState(false);
   const token: any = useSelector(getUserToken);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const navigate = useNavigate();
 
   const sendEmail = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (!isLoggedIn) {
+      errorToast("Please log in first.", "cterror");
+      navigate("/auth/login");
+      return;
+    }
 
     if (!subject || !message) {
       return errorToast("Both subject and message are required", "cterror");
