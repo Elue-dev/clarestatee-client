@@ -26,6 +26,7 @@ export default function PropertiesLayout({ filteredProperties }: any) {
               location,
               images,
               slug,
+              purpose,
             } = property;
             return (
               <div key={_id}>
@@ -68,7 +69,11 @@ export default function PropertiesLayout({ filteredProperties }: any) {
                       </p>
                       <p className={styles["property__price"]}>
                         <span>NGN{new Intl.NumberFormat().format(price)}</span>
-                        /night
+                        {purpose === "Rent"
+                          ? "/year"
+                          : purpose === "Shortlet"
+                          ? "/night"
+                          : null}
                       </p>
                     </div>
                   </div>
