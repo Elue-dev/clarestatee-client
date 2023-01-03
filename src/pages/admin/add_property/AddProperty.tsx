@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { GrFormAdd } from "react-icons/gr";
 import PropertyForm from "../../../components/property_form/PropertyForm";
 import { createProperty } from "../../../services/property_service";

@@ -1,7 +1,7 @@
-import { FaUserCircle, FaBlogger } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { FiHome, FiUsers } from "react-icons/fi";
+import { FiUsers } from "react-icons/fi";
 import { SiHomeadvisor } from "react-icons/si";
 import { MdAddBusiness } from "react-icons/md";
 import { getUser } from "../../../redux/slices/auth_slice";

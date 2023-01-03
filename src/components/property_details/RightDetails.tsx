@@ -3,7 +3,6 @@ import {
   MdOutlineRealEstateAgent,
   MdOutlineSubject,
 } from "react-icons/md";
-import { FaUser } from "react-icons/fa";
 import StarRatings from "react-star-ratings";
 import StarsRating from "react-star-rate";
 import styles from "./rightDetails.module.scss";
@@ -40,12 +39,10 @@ export default function RightDetails({ property, refetch }: any) {
   const currentUser: any = useSelector(getUser);
   const navigate = useNavigate();
 
-  console.log(property);
-
-  const userIDS: string[] = [];
+  const revUserIDS: string[] = [];
 
   property.reviews.map((review: any) => {
-    userIDS.push(review.user._id);
+    revUserIDS.push(review.user._id);
   });
 
   const addReview = async () => {
@@ -62,7 +59,7 @@ export default function RightDetails({ property, refetch }: any) {
         "You cannot add reviews to properties you added",
         "addratueerror"
       );
-    } else if (userIDS.includes(currentUser._id)) {
+    } else if (revUserIDS.includes(currentUser._id)) {
       return errorToast(
         "You cannot add multiple reviews to a property",
         "addreverrorsec"
