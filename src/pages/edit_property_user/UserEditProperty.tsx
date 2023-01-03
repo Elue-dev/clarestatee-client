@@ -248,7 +248,6 @@ export default function UserEditProperty() {
             </label>
           </div>
         </label>
-
         <br />
         <label>
           <span>Agent Name</span>

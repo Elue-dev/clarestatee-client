@@ -152,6 +152,8 @@ export default function Dashboard() {
 
   const properties = data?.data.properties;
 
+  refetch();
+
   if (isLoading || !properties) {
     return (
       <h1>
