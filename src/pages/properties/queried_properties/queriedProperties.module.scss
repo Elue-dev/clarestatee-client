@@ -5,10 +5,13 @@
 .query {
   @include container();
   padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-bottom: 6rem;
   .heading {
     font-size: 1.5rem;
     padding-bottom: 2rem;
+    @include mQ(500px) {
+      padding-bottom: 0.3rem;
+    }
     span {
       color: $color-secondary;
       font-weight: 700;
@@ -17,11 +20,20 @@
 
   h3 {
     margin-top: 0.6rem;
-    font-style: italic;
     color: $color-primary;
   }
   .no__results {
     margin-top: 0.6rem;
+  }
+  .properties__wrap {
+    display: flex;
+    gap: 1rem;
+    @include mQ(600px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+    }
   }
   .properties__details {
     display: inline-block;
@@ -29,7 +41,7 @@
     .properties__details__image {
       position: relative;
       img {
-        width: 100%;
+        width: 300px;
         height: 230px;
         object-fit: cover;
         border-radius: 0.6rem;
