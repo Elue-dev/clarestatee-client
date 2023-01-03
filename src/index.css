@@ -26,6 +26,11 @@ a.active {
   color: #fff;
   padding: 0.5rem;
   border-radius: 0.3rem;
+  @media (max-width: 600px) {
+    background: #fff;
+    color: #000;
+    font-weight: 700;
+  }
 }
 .loader {
   position: absolute;

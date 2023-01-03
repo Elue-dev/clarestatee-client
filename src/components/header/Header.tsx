@@ -214,19 +214,21 @@ export default function Header() {
             </li>
           </NavLink>
 
-          <NavLink to="/contact">
+          <NavLink to="/add-property">
             <li>
               <MdAddBusiness />
               <p>Add Property</p>
             </li>
           </NavLink>
 
-          <NavLink to="admin/view-properties">
-            <li>
-              <div />
-              <button className={styles["admin__btn"]}>Admin</button>
-            </li>
-          </NavLink>
+          <AdminOnlyLink>
+            <NavLink to="admin/view-properties">
+              <li>
+                <div />
+                <button className={styles["admin__btn"]}>Admin</button>
+              </li>
+            </NavLink>
+          </AdminOnlyLink>
         </ul>
       </div>
     </div>
