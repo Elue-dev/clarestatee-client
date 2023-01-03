@@ -241,7 +241,7 @@ export default function RightDetails({ property, refetch }: any) {
                 onChange={(e) => setReview(e.target.value)}
               />
               {revLoading ? (
-                <button disabled>Processing...</button>
+                <button disabled>PROCESSING...</button>
               ) : (
                 <button onClick={addReview}>Add review</button>
               )}
