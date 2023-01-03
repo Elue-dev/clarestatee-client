@@ -1,12 +1,8 @@
 import { useState, FormEvent } from "react";
-import { BsInstagram } from "react-icons/bs";
-import { FaPhoneSquareAlt, FaUser } from "react-icons/fa";
+import { BsInstagram, BsLinkedin } from "react-icons/bs";
+import { FaPhoneSquareAlt } from "react-icons/fa";
 import { IoChatbubbles } from "react-icons/io5";
-import { GrMail } from "react-icons/gr";
-import { MdOutlineAlternateEmail, MdOutlineSubject } from "react-icons/md";
-import { SiRocketdotchat, SiFacebook } from "react-icons/si";
-import ReactWhatsapp from "react-whatsapp";
-// import Footer from "../../components/footer/Footer";
+import { MdOutlineSubject } from "react-icons/md";
 import { motion } from "framer-motion";
 import { BeatLoader } from "react-spinners";
 import styles from "./contact.module.scss";
@@ -14,6 +10,7 @@ import { useSelector } from "react-redux";
 import { getUserToken } from "../../redux/slices/auth_slice";
 import { sendContactEmail } from "../../services/users_services";
 import { errorToast } from "../../utils/alerts";
+import { SiGmail } from "react-icons/si";
 
 export default function Contact() {
   const [message, setMessage] = useState("");
@@ -54,12 +51,10 @@ export default function Contact() {
 
       <div className={styles.socials}>
         <a href="mailto: eluewisdom@gmail.com">
-          <GrMail className={styles["c_icon"]} />
-          {/* <img src={facebook} alt="" className="c_icon" /> */}
+          <SiGmail className={styles["c_icon"]} />
         </a>
-        <a href="https://www.facebook.com/dubbysmooth">
-          <SiFacebook className={styles["c_icon"]} />
-          {/* <img src={facebook} alt="" className="c_icon" /> */}
+        <a href="https://www.linkedin.com/in/wisdom-elue-8822a5188">
+          <BsLinkedin className={styles["c_icon"]} />
         </a>
         <a href="https://www.instagram.com/wisdomelue">
           <BsInstagram className={styles["c_icon"]} />
@@ -76,12 +71,8 @@ export default function Contact() {
                 us directly
               </p>
               <p>
-                <b style={{ fontSize: "1.1rem" }}>Line 1:</b>
-                &nbsp;&nbsp;<a href="tel:2349052014239">+234 905 201 4239</a>
-              </p>
-              <p>
-                <b style={{ fontSize: "1.1rem" }}>Line 2:</b>
-                &nbsp;&nbsp;<a href="tel:348168945509">+234 816 894 5509</a>
+                <b style={{ fontSize: "1.1rem" }}>Admin Line:</b>
+                &nbsp;&nbsp;<a href="tel:2349052014239">Call Admin</a>
               </p>
             </div>
             <br />

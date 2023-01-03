@@ -192,45 +192,48 @@ export default function Header() {
           </header>
         </>
       ) : null}
-      <div className={styles["nav__bottom"]}>
-        <ul>
-          <NavLink to="/">
-            <li>
-              <BiHomeAlt />
-              <p>Home</p>
-            </li>
-          </NavLink>
-          <NavLink to="/all-properties">
-            <li>
-              <SiHomebridge />
-              <p>Properties</p>
-            </li>
-          </NavLink>
 
-          <NavLink to="/contact">
-            <li>
-              <MdOutlinePermContactCalendar />
-              <p>Contact</p>
-            </li>
-          </NavLink>
-
-          <NavLink to="/add-property">
-            <li>
-              <MdAddBusiness />
-              <p>Add </p>
-            </li>
-          </NavLink>
-
-          <AdminOnlyLink>
-            <NavLink to="admin/view-properties">
+      {!location.pathname.includes("auth") && (
+        <div className={styles["nav__bottom"]}>
+          <ul>
+            <NavLink to="/">
               <li>
-                <div />
-                <button className={styles["admin__btn"]}>Admin</button>
+                <BiHomeAlt />
+                <p>Home</p>
               </li>
             </NavLink>
-          </AdminOnlyLink>
-        </ul>
-      </div>
+            <NavLink to="/all-properties">
+              <li>
+                <SiHomebridge />
+                <p>Properties</p>
+              </li>
+            </NavLink>
+
+            <NavLink to="/contact">
+              <li>
+                <MdOutlinePermContactCalendar />
+                <p>Contact</p>
+              </li>
+            </NavLink>
+
+            <NavLink to="/add-property">
+              <li>
+                <MdAddBusiness />
+                <p>Add </p>
+              </li>
+            </NavLink>
+
+            <AdminOnlyLink>
+              <NavLink to="admin/view-properties">
+                <li>
+                  <div />
+                  <button className={styles["admin__btn"]}>Admin</button>
+                </li>
+              </NavLink>
+            </AdminOnlyLink>
+          </ul>
+        </div>
+      )}
     </div>
   );
 }

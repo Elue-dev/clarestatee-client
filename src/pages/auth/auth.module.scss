@@ -24,6 +24,10 @@
         text-transform: uppercase;
         color: $color-primary;
         letter-spacing: 2px;
+        @include mQ(700px) {
+          padding-bottom: 0.5rem;
+          font-size: 1.3rem;
+        }
       }
       .alert {
         text-align: center;
@@ -52,6 +56,7 @@
           width: 400px;
           @include mQ(700px) {
             width: 100%;
+            margin-bottom: 0.5rem;
           }
           &:focus {
             .auth__wrap {
@@ -62,7 +67,7 @@
           span {
             display: block;
             padding-bottom: 0.8rem;
-            font-weight: 400;
+            font-weight: 600;
           }
           input {
             font-size: 14px;
@@ -73,6 +78,9 @@
             outline: 0;
             margin-bottom: 0;
             background: transparent;
+            @include mQ(500px) {
+              padding: 0.6rem 1rem;
+            }
           }
 
           .password__field {
@@ -138,7 +146,10 @@
       .home {
         position: absolute;
         bottom: 0.5rem;
-        color: $color-dark-pri;
+        color: rgb(105, 105, 105);
+        a {
+          color: rgb(105, 105, 105);
+        }
       }
       .resend {
         cursor: pointer;

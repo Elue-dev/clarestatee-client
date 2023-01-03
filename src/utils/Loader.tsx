@@ -10,7 +10,7 @@ export default function Loader() {
 
   return (
     <div className="loader">
-      {loading && <PulseLoader color={"#000"} loading={loading} size={20} />}
+      {loading && <PulseLoader color={"#000"} loading={loading} size={15} />}
     </div>
   );
 }
