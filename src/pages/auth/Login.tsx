@@ -60,9 +60,8 @@ export default function Login() {
   const redirectUser = () => {
     if (previousURL.includes("property")) {
       return navigate(-1);
-    } else {
-      navigate("/");
     }
+    navigate("/");
   };
 
   const signinUser = async (e: FormEvent) => {
