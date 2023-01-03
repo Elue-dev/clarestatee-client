@@ -163,30 +163,6 @@ export default function UserEditProperty() {
         </label>
         <br />
         <label>
-          <span>Property Images:</span>
-          <div className="preview__wrapper">
-            {Array.from(images).map((item: any, index: number) => (
-              <span key={index}>
-                <img
-                  //@ts-ignore
-                  src={item ? URL.createObjectURL(item) : null}
-                  className="image__preview"
-                />
-              </span>
-            ))}
-          </div>
-
-          <input
-            type="file"
-            accept="image/*"
-            multiple
-            onChange={(e) => handleImageChange(e)}
-            placeholder="Images of the property"
-          />
-          <br />
-        </label>
-        <br />
-        <label>
           <span>Property Price</span>
           <input
             type="number"
@@ -272,37 +248,7 @@ export default function UserEditProperty() {
             </label>
           </div>
         </label>
-        <br />
-        <label>
-          <span>Property Features:</span>
-          <p className="feature__info">
-            <IoInformationCircleOutline />
-            Must not be less than 5. Enter the features one after the other,
-            start each with a capital letter (e.g: 24hrs Electricity, WiFi
-            access, Great security)
-          </p>
-          <div className="features">
-            <input
-              type="text"
-              name="features"
-              value={newFeature}
-              ref={featuresInput}
-              onChange={(e) => setNewFeature(e.target.value)}
-              placeholder="ENTER ONE, THEN CLICK ADD BUTTON"
-            />
-            <button onClick={handleAddFeature} className="features__btn">
-              Add
-            </button>
-          </div>
-          <div className="features__list">
-            <b>Features:</b>{" "}
-            {features?.map((i: string, index: number) => (
-              <li key={index}>
-                <em key={i}>{i}.</em>
-              </li>
-            ))}
-          </div>
-        </label>
+
         <br />
         <label>
           <span>Agent Name</span>

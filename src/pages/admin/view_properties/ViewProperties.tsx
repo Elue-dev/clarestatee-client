@@ -13,10 +13,7 @@ import { Link } from "react-router-dom";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Notiflix from "notiflix";
 import "./viewProperties.scss";
-import {
-  getAllProperties,
-  removeProperty,
-} from "../../../services/property_service";
+import { removeProperty } from "../../../services/property_service";
 import { getUserToken } from "../../../redux/slices/auth_slice";
 
 export default function ViewProperties() {
@@ -61,8 +58,10 @@ export default function ViewProperties() {
 
   const deleteProperty = async (propertyID: string) => {
     try {
-      await removeProperty(propertyID, token);
-      await getAllProperties();
+      const res = await removeProperty(propertyID, token);
+      if (res) {
+        window.location.reload();
+      }
     } catch (error) {
       console.log(error);
     }
