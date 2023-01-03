@@ -9,9 +9,14 @@ import AllRoutes from "./utils/routes";
 import Header from "./components/header/Header";
 import ScrollToTop from "./utils/scroll_to_top";
 import { logoutUser } from "./services/auth_services";
+import useNetworkStatus from "./hooks/useNetworkStatus";
+import OfflinePage from "./pages/offline_page/OfflinePage";
 
 function App() {
   const dispatch = useDispatch();
+  const status = useNetworkStatus();
+
+  console.log(status);
 
   useEffect(() => {
     setTimeout(async () => {
@@ -22,17 +27,23 @@ function App() {
 
   return (
     <div>
-      <BrowserRouter>
-        <Header />
-        <AllRoutes />
-        <ScrollToTop />
-        <ToastContainer
-          toastStyle={{
-            backgroundColor: "rgba(44, 134, 179, 0.364)",
-            color: "#fff",
-          }}
-        />
-      </BrowserRouter>
+      {!status ? (
+        <OfflinePage />
+      ) : (
+        <>
+          <BrowserRouter>
+            <Header />
+            <AllRoutes />
+            <ScrollToTop />
+            <ToastContainer
+              toastStyle={{
+                backgroundColor: "rgba(44, 134, 179, 0.364)",
+                color: "#fff",
+              }}
+            />
+          </BrowserRouter>
+        </>
+      )}
     </div>
   );
 }

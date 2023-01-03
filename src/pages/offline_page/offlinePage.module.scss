@@ -1,0 +1,36 @@
+@use "../../styles/colors" as *;
+
+.offline {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  h1 {
+    margin-bottom: 0.6rem;
+  }
+  h1,
+  span {
+    color: $color-primary;
+  }
+  .icon {
+    font-size: 8rem;
+    color: #3c4448;
+  }
+  p {
+    color: rgb(119, 118, 118);
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .offline {
+    h1 {
+      font-size: 1.6rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
+}
