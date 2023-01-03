@@ -156,9 +156,8 @@ b {
       }
       .details__warning {
         @include flexBox(flex-start, center, center);
-        // width: fit-content;
         gap: 0.6rem;
-        background: rgb(193, 180, 100);
+        background: darkgray;
         color: #fff;
         padding: 0.1rem 0.4rem;
         border-radius: 0.3rem;

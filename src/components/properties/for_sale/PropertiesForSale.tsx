@@ -15,7 +15,7 @@ export default function PropertiesForSale() {
     return await axios.get(`${server_url}/api/properties`);
   };
 
-  const { data, isLoading, isSuccess } = useQuery(
+  const { data, isLoading, isSuccess, refetch } = useQuery(
     "properties",
     fetchProperties,
     {
@@ -32,6 +32,8 @@ export default function PropertiesForSale() {
   const filteredProperties = properties?.filter(
     (property: any) => property.purpose === "Sale"
   );
+
+  refetch();
 
   if (isSuccess) {
     dispatch(SET_CAREGORIES(properties));
