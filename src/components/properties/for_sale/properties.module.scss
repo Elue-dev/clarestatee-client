@@ -5,7 +5,7 @@
 .properties {
   @include container();
   padding-top: 3rem;
-  padding-bottom: 0.7rem;
+  padding-bottom: 7rem;
   border-bottom: 4px solid rgb(224, 224, 224);
   h2 {
     @include flexBox(flex-start, center, row);
