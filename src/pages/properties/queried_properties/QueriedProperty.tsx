@@ -2,7 +2,7 @@ import { server_url } from "../../../utils/junk";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { FadeLoader, MoonLoader } from "react-spinners";
+import { PulseLoader } from "react-spinners";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { BsCamera } from "react-icons/bs";
@@ -45,13 +45,7 @@ export default function QueriedProperty() {
 
       {loading ? (
         <h2 className={styles["no__results"]}>
-          <FadeLoader
-            loading={loading}
-            //@ts-ignore
-            size={10}
-            speedMultiplie={3}
-            color="rgb(18, 140, 200)"
-          />
+          <PulseLoader loading={loading} size={10} color="rgb(18, 140, 200)" />
         </h2>
       ) : (
         <>

@@ -295,7 +295,9 @@ export default function Dashboard() {
           ) : (
             <>
               {properties.length === 0 ? (
-                <h3>You have not added any properties yet</h3>
+                <h3 className={styles.noprop}>
+                  You have not added any properties yet.
+                </h3>
               ) : (
                 <div className={styles["users__prop"]}>
                   <h3>
