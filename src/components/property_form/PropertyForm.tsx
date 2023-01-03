@@ -125,6 +125,17 @@ const PropertyForm = ({
           />
         </label>
         <label>
+          <span>Property City:</span>
+          <input
+            type="text"
+            name="city"
+            value={property && property.city}
+            onChange={(e) => handleInputChange(e)}
+            placeholder="e.g: Abuja"
+            required
+          />
+        </label>
+        <label>
           <div className="flex__info">
             <label>
               <span>No. of Bedrooms</span>

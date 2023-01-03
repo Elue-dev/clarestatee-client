@@ -11,6 +11,7 @@ const initialState = {
   name: "",
   price: "",
   location: "",
+  city: "",
   bedrooms: "",
   description: "",
   bathrooms: "",
@@ -36,6 +37,7 @@ export default function AddProperty() {
     name,
     price,
     location,
+    city,
     description,
     bedrooms,
     bathrooms,
@@ -73,6 +75,7 @@ export default function AddProperty() {
   propertyData.append("price", price);
   propertyData.append("description", description);
   propertyData.append("location", location);
+  propertyData.append("city", city);
   propertyData.append("bedrooms", bedrooms);
   propertyData.append("bathrooms", bathrooms);
   propertyData.append("toilets", toilets);

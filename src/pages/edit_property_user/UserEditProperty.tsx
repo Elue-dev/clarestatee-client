@@ -15,6 +15,7 @@ const initialState = {
   name: "",
   price: "",
   location: "",
+  city: "",
   bedrooms: "",
   bathrooms: "",
   toilets: "",
@@ -39,9 +40,7 @@ export default function UserEditProperty() {
   const [description, setDescription] = useState("");
   const [purpose, setPurpose] = useState("");
   const [availability, setAvailability] = useState("");
-  const [newFeature, setNewFeature] = useState("");
   const [features, setFeatures] = useState<any>([]);
-  const featuresInput = useRef<any>(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const { propertySlug, propertyID }: any = useParams();
@@ -74,27 +73,12 @@ export default function UserEditProperty() {
     setProperty({ ...property, [name]: value });
   };
 
-  const handleImageChange = (e: any) => {
-    const files = e.target.files;
-    setImages(files);
-  };
-
-  const handleAddFeature = (e: any) => {
-    e.preventDefault();
-    const feat = newFeature.trim();
-
-    if (feat && !features.includes(feat)) {
-      setFeatures((prevFeatures: any) => [...prevFeatures, feat]);
-    }
-
-    setNewFeature("");
-    featuresInput.current.focus();
-  };
   const propertyData = new FormData();
   propertyData.append("name", property?.name);
   propertyData.append("price", property?.price);
   propertyData.append("description", property?.description);
   propertyData.append("location", property?.location);
+  propertyData.append("city", property?.city);
   propertyData.append("bedrooms", property?.bedrooms);
   propertyData.append("bathrooms", property?.bathrooms);
   propertyData.append("toilets", property?.toilets);
@@ -203,6 +187,18 @@ export default function UserEditProperty() {
             type="text"
             name="location"
             value={property && property.location}
+            onChange={(e) => handleInputChange(e)}
+            placeholder="e.g: Victoria Island"
+            required
+          />
+        </label>
+        <br />
+        <label>
+          <span>Property City:</span>
+          <input
+            type="text"
+            name="city"
+            value={property && property.city}
             onChange={(e) => handleInputChange(e)}
             placeholder="e.g: Victoria Island"
             required
