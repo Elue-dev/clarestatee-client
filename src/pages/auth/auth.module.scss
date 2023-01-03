@@ -20,7 +20,7 @@
       }
       @include flexBox(center, center, column);
       h1 {
-        padding-bottom: 2rem;
+        padding-bottom: 1rem;
         text-transform: uppercase;
         color: $color-primary;
         letter-spacing: 2px;
@@ -31,17 +31,20 @@
       }
       .alert {
         text-align: center;
-        padding: 1rem;
+        padding: 0.6rem;
         border-radius: 0.5rem;
-        margin-bottom: 1rem;
+        margin-bottom: 0.2rem;
         font-weight: 700;
         width: 400px;
+        @include mQ(700px) {
+          margin-bottom: 0;
+        }
       }
       .error__msg {
         background: pink;
         color: crimson;
         @include mQ(700px) {
-          width: 100%;
+          width: 90%;
         }
       }
       form {
@@ -115,16 +118,19 @@
         }
         .submit__btn {
           width: 100%;
-          margin-top: 0.8rem;
+          margin-top: 0.2rem;
           background: $color-secondary;
           font-weight: 700;
           color: #fff;
           border-radius: 0.3rem;
           font-size: 1.1rem;
-          padding: 0.7rem;
+          padding: 0.5rem;
           border: 0;
           outline: 0;
           cursor: pointer;
+          @include mQ(500px) {
+            padding: 0.5rem;
+          }
         }
         .auth__redirect {
           padding-top: 0.6rem;
@@ -146,6 +152,7 @@
       .home {
         position: absolute;
         bottom: 0.5rem;
+        font-size: 0.9rem;
         color: rgb(105, 105, 105);
         a {
           color: rgb(105, 105, 105);

@@ -32,7 +32,7 @@ export default function Signup() {
   const validateForm = () => {
     if (!first_name) {
       setError("First Name is required");
-      setTimeout(() => setError(""), 4000);
+      // setTimeout(() => setError(""), 4000);
       return;
     } else if (!last_name) {
       setError("Last Name is required");
