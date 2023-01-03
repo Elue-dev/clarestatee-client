@@ -26,6 +26,10 @@ b {
   p {
     color: $color-dark-pri;
   }
+  h2 {
+    display: flex;
+    justify-content: left;
+  }
   .contacts__bottom__wrapper {
     box-shadow: $box-shadow-100;
     position: fixed;

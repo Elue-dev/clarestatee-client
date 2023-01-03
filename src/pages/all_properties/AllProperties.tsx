@@ -149,7 +149,7 @@ export default function AllProperties() {
               type="search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="SEARCH BY LOCATION OR PROPERTY NAME..."
+              placeholder="LOCATION OR PROPERTY NAME..."
             />
           </label>
         </div>

@@ -56,7 +56,7 @@
         gap: 0.2rem;
         transition: all 0.5s ease;
         :nth-child(1) {
-          //   color: $color-primary;
+          // color: $color-primary;
           font-size: 1.3rem;
         }
         .admin__btn {
@@ -182,7 +182,18 @@
     transform: scale(1);
   }
 }
-
+.tnav.active {
+  font-weight: 700;
+  background: #333;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  @media (max-width: 600px) {
+    background: #fff;
+    color: #000;
+    font-weight: 700;
+  }
+}
 .nav__bottom {
   display: none;
 }
@@ -236,13 +247,14 @@
       align-items: center;
       gap: 2rem;
       margin: auto;
+
       li {
         list-style: none;
         @include flexBox(center, center, column);
-        color: #fff;
+        // color: #fff;
         :nth-child(1) {
           font-size: 1.7rem;
-          color: $color-primary;
+          color: $color-dark-pri;
           margin-bottom: 0.2rem;
         }
         :nth-child(2) {
@@ -256,6 +268,9 @@
       a.active {
         font-weight: 700;
         border-bottom: 1px solid $color-primary;
+        :nth-child(1) {
+          color: $color-primary;
+        }
         li {
           :first-child {
             color: #fff;
@@ -263,6 +278,10 @@
           p {
             font-weight: 700;
           }
+        }
+        @include mQ(600px) {
+          color: #000;
+          background: none;
         }
       }
     }

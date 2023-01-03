@@ -309,6 +309,7 @@
           .more_ {
             @include button();
             @include flexBox(center, center, row);
+            font-size: 1rem;
             gap: 0.4rem;
             background: #e1e1e1;
             color: #000;

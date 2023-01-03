@@ -5,6 +5,10 @@
 .add__property {
   @include flexBox(center, center, column);
   padding: 1rem;
+  h2 {
+    @include flexBox(center, center, row);
+    margin-top: 1rem;
+  }
   form {
     width: 500px;
     padding-top: 1rem;
@@ -111,10 +115,6 @@
   .select__input {
     color: #333;
   }
-}
-h2 {
-  @include flexBox(center, center, row);
-  margin-top: 1rem;
 }
 
 @include mQ(600px) {

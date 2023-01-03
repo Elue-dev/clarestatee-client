@@ -13,16 +13,18 @@
   h3 {
     text-align: center;
     margin-bottom: 0.7rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
   }
   .contact__info {
     padding: 0.5rem 0;
     text-align: center;
     border-bottom: 1px dashed rgb(177, 176, 176);
     .contact__info__details {
+      margin-bottom: 2rem;
       h2 {
         @include flexBox(center, center, center);
         gap: 0.3rem;
+        margin-top: 1rem;
       }
       p {
         font-size: 1.3rem;
@@ -84,6 +86,7 @@
     box-shadow: $box-shadow-100;
     background: #fff;
     padding: 1rem;
+    margin-top: 2rem;
     .rev__head {
       @include flexBox(space-between, center);
       h3 {
@@ -175,7 +178,7 @@
       @include button();
       border-radius: 0.2rem;
       background: $color-secondary;
-      color: #000;
+      color: #fff;
       width: 100%;
       margin-bottom: 0.6rem;
       font-weight: 700;

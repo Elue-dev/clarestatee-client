@@ -126,7 +126,7 @@ export default function RightDetails({ property, refetch }: any) {
       <div className={styles["right__contents"]}>
         <div className={styles["contact__info"]}>
           <div className={styles["contact__info__details"]}>
-            {currentUser._id === property.addedBy._id ? (
+            {currentUser?._id === property.addedBy._id ? (
               <Link
                 to={`/edit-property/${property.slug}/${property._id}`}
                 style={{ fontWeight: 700 }}
@@ -144,7 +144,7 @@ export default function RightDetails({ property, refetch }: any) {
               <div className={styles.contact}>
                 <a href={`tel:${property.agentContact}`}>
                   <BsTelephoneForwardFill />
-                  &nbsp; {property.agentContact}
+                  &nbsp; Call Agent
                 </a>
               </div>
             </div>
@@ -281,7 +281,7 @@ export default function RightDetails({ property, refetch }: any) {
               );
             })
           ) : (
-            <h3>No reviews for this property yet.</h3>
+            <h3>No reviews for this property.</h3>
           )}
         </div>
         {/* <SimilarProducts /> */}

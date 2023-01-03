@@ -24,6 +24,7 @@ import Loader from "../../../utils/Loader";
 import RightDetails from "../../../components/property_details/RightDetails";
 import DOMPurify from "dompurify";
 import GoBack from "../../../utils/GoBack";
+import { FiUserPlus } from "react-icons/fi";
 
 export default function PropertyDetail() {
   const { slug } = useParams();
@@ -131,9 +132,9 @@ export default function PropertyDetail() {
               <p>
                 <AiOutlineCalendar />
                 <b>Date Added:</b> {new Date(property.createdAt).toDateString()}{" "}
-                (By{" "}
+                {/* (By{" "}
                 <b>{`${property.addedBy.first_name} ${property.addedBy.last_name}`}</b>
-                )
+                ) */}
               </p>
 
               <p>
@@ -145,6 +146,12 @@ export default function PropertyDetail() {
               <span>
                 <VscTypeHierarchy />
                 <b>Property Type:</b> {property.purpose}
+              </span>
+
+              <span>
+                <FiUserPlus />
+                <b>Added By:</b>{" "}
+                {`${property.addedBy.first_name} ${property.addedBy.last_name}`}
               </span>
               {alert && (
                 <p
