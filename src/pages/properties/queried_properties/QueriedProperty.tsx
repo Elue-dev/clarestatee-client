@@ -127,7 +127,6 @@ export default function QueriedProperty() {
                       <p>
                         <FaToilet /> {toilets}
                       </p>
-
                       <p>
                         <FaBath /> {bathrooms}
                       </p>

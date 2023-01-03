@@ -179,6 +179,16 @@ b {
       h2 {
         padding-bottom: 0.9rem;
       }
+      .interior__info {
+        display: flex;
+        gap: 5rem;
+        padding-bottom: 1rem;
+        p {
+          :first-child {
+            color: $color-secondary;
+          }
+        }
+      }
       .flex__features {
         @include grid(repeat(2, 1fr), 1rem);
         ul {

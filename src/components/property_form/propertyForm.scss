@@ -6,6 +6,10 @@
   @include flexBox(center, center, column);
   padding: 1rem;
   padding-bottom: 4rem;
+  h2 {
+    @include flexBox(center, center, row);
+    margin-top: 1rem;
+  }
   form {
     width: 500px;
     padding-top: 1rem;
@@ -128,10 +132,7 @@
     color: #333;
   }
 }
-h2 {
-  @include flexBox(center, center, row);
-  margin-top: 1rem;
-}
+
 .quill {
   height: 300px !important;
 }

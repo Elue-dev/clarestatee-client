@@ -8,7 +8,7 @@ import { AiFillCheckCircle } from "react-icons/ai";
 import { MdBookmarkAdd } from "react-icons/md";
 import { BiChevronsRight } from "react-icons/bi";
 import { MdSwipe } from "react-icons/md";
-import { FaRegEdit } from "react-icons/fa";
+import { FaBath, FaBed, FaRegEdit, FaToilet } from "react-icons/fa";
 import { VscTypeHierarchy } from "react-icons/vsc";
 import { motion } from "framer-motion";
 import styles from "./propertyDetails.module.scss";
@@ -106,7 +106,7 @@ export default function PropertyDetail() {
                 </p>
               </div>
               <h3>
-                NGN{new Intl.NumberFormat().format(property.price)}
+                NGN {new Intl.NumberFormat().format(property.price)}
                 {property.purpose === "Rent"
                   ? "/year"
                   : property.purpose === "Shortlet"
@@ -172,6 +172,17 @@ export default function PropertyDetail() {
 
             <div className={styles["property__features"]}>
               <h2>Features</h2>
+              <div className={styles["interior__info"]}>
+                <p>
+                  <FaBed /> {property.bedrooms}
+                </p>
+                <p>
+                  <FaToilet /> {property.toilets}
+                </p>
+                <p>
+                  <FaBath /> {property.bathrooms}
+                </p>
+              </div>
               <div className={styles["flex__features"]}>
                 {property.features.map((feature: string, index: number) => (
                   <ul key={index}>
