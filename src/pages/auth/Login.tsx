@@ -142,6 +142,10 @@ export default function Login() {
               </p>
             </div>
           </form>
+          <p className={styles.home}>
+            <Link to="/"> Home </Link>&nbsp; &nbsp;&copy;{" "}
+            {new Date().getFullYear()}. Clarestate Inc.
+          </p>
         </div>
         <div className={styles["right__section"]}>
           <span></span>

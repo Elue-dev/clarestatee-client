@@ -196,6 +196,10 @@ export default function Signup() {
               </p>
             </div>
           </form>
+          <p className={styles.home}>
+            <Link to="/"> Home </Link>&nbsp; &nbsp;&copy;{" "}
+            {new Date().getFullYear()}. Clarestate Inc.
+          </p>
         </div>
         <div className={styles["right__section"]}>
           <h1></h1>
