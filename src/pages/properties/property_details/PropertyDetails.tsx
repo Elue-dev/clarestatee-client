@@ -93,7 +93,7 @@ export default function PropertyDetail() {
                 {property && <h2>{property.name}</h2>}
                 <p className={styles["property__location"]}>
                   <IoLocation />
-                  {property.location}
+                  {property.location}, {property.city}
                 </p>
               </div>
               <h3>
