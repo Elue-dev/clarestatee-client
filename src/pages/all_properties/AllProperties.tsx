@@ -297,7 +297,14 @@ export default function AllProperties() {
                     <div className={styles["price_"]}>
                       <p>
                         NGN {new Intl.NumberFormat().format(price)}
-                        <span>/night</span>
+                        <span>
+                          {" "}
+                          {purpose === "Rent"
+                            ? "/year"
+                            : purpose === "Shortlet"
+                            ? "/night"
+                            : null}
+                        </span>
                       </p>
                     </div>
                     <Link to={`/property/${slug}`}>
