@@ -1,11 +1,7 @@
 import { useQuery } from "react-query";
 import axios from "axios";
 import { server_url } from "../../../utils/junk";
-import { Link } from "react-router-dom";
-import { MdDateRange } from "react-icons/md";
 import { GiHouseKeys } from "react-icons/gi";
-import { ImLocation2 } from "react-icons/im";
-import { BsCamera } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { SET_CAREGORIES } from "../../../redux/slices/property_slice";
 import Loader from "../../../utils/Loader";

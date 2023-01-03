@@ -36,5 +36,6 @@ export const { SET_ACTIVE_USER, REMOVE_ACTIVE_USER, SET_USER_TOKEN, SAVE_URL } =
 export const selectIsLoggedIn = (state: RootState) => state.auth.isLoggedIn;
 export const getUser = (state: RootState) => state.auth.user;
 export const getUserToken = (state: RootState) => state.auth.token;
+export const selectPreviousURL = (state: RootState) => state.auth.previousURL;
 
 export default auth_slice.reducer;

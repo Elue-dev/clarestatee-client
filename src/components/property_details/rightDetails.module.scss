@@ -10,6 +10,7 @@
   padding: 1.5rem 1rem;
   border-top-right-radius: 0.3rem;
   border-bottom-right-radius: 0.3rem;
+
   h3 {
     text-align: center;
     margin-bottom: 0.7rem;
@@ -99,6 +100,7 @@
     .add_rev {
       padding-top: 0.6rem;
       border-bottom: 1px dashed rgb(177, 176, 176);
+
       textarea {
         width: 100%;
         outline: 0;
@@ -114,8 +116,9 @@
         border: 0;
         outline: 0;
         border-radius: 0.3rem;
-        padding: 0.4rem;
+        padding: 0.6rem;
         margin-bottom: 0.6rem;
+        width: 100%;
         cursor: pointer;
       }
     }
@@ -182,6 +185,18 @@
       width: 100%;
       margin-bottom: 0.6rem;
       font-weight: 700;
+    }
+  }
+  .adder {
+    padding-top: 3rem;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    img {
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      object-fit: cover;
     }
   }
 }

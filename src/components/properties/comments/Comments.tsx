@@ -4,12 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { FaCommentMedical, FaUserEdit } from "react-icons/fa";
 import { MdOutlineDateRange, MdOutlineDeleteForever } from "react-icons/md";
 import { FaRegComment } from "react-icons/fa";
-import { BiDotsHorizontal } from "react-icons/bi";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 import styles from "./comments.module.scss";
 import { useQuery } from "react-query";
 import axios from "axios";
-import BeatLoader from "react-spinners/BeatLoader";
 import { server_url } from "../../../utils/junk";
 import {
   getUser,

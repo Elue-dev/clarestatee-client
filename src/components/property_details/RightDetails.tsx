@@ -1,5 +1,4 @@
 import {
-  MdOutlineAlternateEmail,
   MdOutlineDeleteForever,
   MdOutlineRealEstateAgent,
   MdOutlineSubject,
@@ -9,7 +8,7 @@ import StarRatings from "react-star-ratings";
 import StarsRating from "react-star-rate";
 import styles from "./rightDetails.module.scss";
 import { BsTelephoneForwardFill } from "react-icons/bs";
-import { BeatLoader, ClipLoader, PulseLoader } from "react-spinners";
+import { ClipLoader, PulseLoader } from "react-spinners";
 import { TiUserAddOutline } from "react-icons/ti";
 import { FormEvent, useState } from "react";
 import { createReview, removeReview } from "../../services/review_service";
@@ -50,6 +49,11 @@ export default function RightDetails({ property, refetch }: any) {
       return errorToast("Please add your review", "addreverror2");
     } else if (!rating) {
       return errorToast("Please leave a rating", "addrateerror");
+    } else if (currentUser._id === property.addedBy._id) {
+      return errorToast(
+        "You cannot add reviews to properties you added",
+        "addratueerror"
+      );
     }
 
     const revData = {
@@ -213,6 +217,7 @@ export default function RightDetails({ property, refetch }: any) {
             <div className={styles["add_rev"]}>
               <StarsRating
                 value={rating}
+                classNamePrefix="react-star-rate"
                 onChange={(rating) => {
                   setRating(rating);
                 }}
@@ -283,6 +288,18 @@ export default function RightDetails({ property, refetch }: any) {
           ) : (
             <h3>No reviews for this property.</h3>
           )}
+        </div>
+        <div className={styles.adder}>
+          <div>
+            <img
+              src={property.addedBy.photo}
+              alt={property.addedBy.first_name}
+            />
+            <p>
+              <b>{`${property.addedBy.first_name} ${property.addedBy.last_name}`}</b>{" "}
+              added this property {moment(property.createdAt).fromNow()}.
+            </p>
+          </div>
         </div>
         {/* <SimilarProducts /> */}
       </div>

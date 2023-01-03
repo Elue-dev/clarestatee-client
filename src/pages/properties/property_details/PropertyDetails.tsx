@@ -1,9 +1,8 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { BsInfoCircle } from "react-icons/bs";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { IoLocation } from "react-icons/io5";
-import { TbListDetails } from "react-icons/tb";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { MdBookmarkAdd } from "react-icons/md";
 import { BiChevronsRight } from "react-icons/bi";
@@ -12,10 +11,6 @@ import { FaBath, FaBed, FaRegEdit, FaToilet } from "react-icons/fa";
 import { VscTypeHierarchy } from "react-icons/vsc";
 import { motion } from "framer-motion";
 import styles from "./propertyDetails.module.scss";
-// import Footer from "../footer/Footer";
-import { useDispatch, useSelector } from "react-redux";
-// import { SAVE_URL } from "../../redux/slice/authSlice";
-import moment from "moment";
 import { useQuery } from "react-query";
 import axios from "axios";
 import { server_url } from "../../../utils/junk";
@@ -29,11 +24,7 @@ import { FiUserPlus } from "react-icons/fi";
 export default function PropertyDetail() {
   const { slug } = useParams();
   const [alert, setAlert] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const form = useRef();
   const [fixPropName, setFixPropName] = useState(false);
-
-  const url = window.location.href;
 
   const fetchProperties = async () => {
     return await axios.get(`${server_url}/api/properties/${slug}`);
@@ -48,6 +39,7 @@ export default function PropertyDetail() {
   }
 
   const property = data?.data.property;
+  refetch();
 
   if (!property) {
     return <Loader />;
@@ -132,9 +124,6 @@ export default function PropertyDetail() {
               <p>
                 <AiOutlineCalendar />
                 <b>Date Added:</b> {new Date(property.createdAt).toDateString()}{" "}
-                {/* (By{" "}
-                <b>{`${property.addedBy.first_name} ${property.addedBy.last_name}`}</b>
-                ) */}
               </p>
 
               <p>
@@ -205,7 +194,7 @@ export default function PropertyDetail() {
                 ></div>
               </p>
             </div>
-
+            <div></div>
             <Comments propertyID={property._id} slug={property.slug} />
           </div>
           <RightDetails property={property} refetch={refetch} />

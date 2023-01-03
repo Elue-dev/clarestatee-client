@@ -5,8 +5,12 @@ import { HiOutlineMail } from "react-icons/hi";
 import { MdOutlinePassword } from "react-icons/md";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { PulseLoader } from "react-spinners";
-import { useDispatch } from "react-redux";
-import { SET_ACTIVE_USER, SET_USER_TOKEN } from "../../redux/slices/auth_slice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectPreviousURL,
+  SET_ACTIVE_USER,
+  SET_USER_TOKEN,
+} from "../../redux/slices/auth_slice";
 import { loginUser } from "../../services/auth_services";
 import styles from "./auth.module.scss";
 
@@ -21,6 +25,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const passwordRef = useRef<any | undefined>();
+  const previousURL = useSelector(selectPreviousURL);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -52,6 +57,14 @@ export default function Login() {
     }
   };
 
+  const redirectUser = () => {
+    if (previousURL.includes("property")) {
+      return navigate(-1);
+    } else {
+      navigate("/");
+    }
+  };
+
   const signinUser = async (e: FormEvent) => {
     e.preventDefault();
 
@@ -63,7 +76,7 @@ export default function Login() {
         if (response) {
           dispatch(SET_ACTIVE_USER(response.user));
           dispatch(SET_USER_TOKEN(response.token));
-          navigate("/");
+          redirectUser();
         }
       }
       setLoading(false);

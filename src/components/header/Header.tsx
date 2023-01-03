@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { BiHomeAlt, BiLogInCircle } from "react-icons/bi";
-import { HiOutlineHomeModern } from "react-icons/hi2";
 import {
   MdAddBusiness,
   MdOutlineAdminPanelSettings,

@@ -17,7 +17,6 @@ export default function PropertiesLayout({ filteredProperties }: any) {
           location,
           images,
           slug,
-          purpose,
         } = property;
         return (
           <div key={_id}>
