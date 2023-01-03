@@ -6,9 +6,10 @@
   @include container();
   padding-top: 3rem;
   padding-bottom: 0.7rem;
-  border-bottom: 2px solid rgb(242, 241, 241);
+  border-bottom: 4px solid rgb(224, 224, 224);
   h2 {
     @include flexBox(flex-start, center, row);
+    color: $color-secondary;
     gap: 0.4rem;
     font-size: 1.7rem;
     :first-child {

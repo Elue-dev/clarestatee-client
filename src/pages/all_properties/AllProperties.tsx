@@ -211,10 +211,7 @@ export default function AllProperties() {
             <>
               {filteredProperties.length !== 0 && (
                 <h3>
-                  Search results for{" "}
-                  <b>
-                    <em>'{search}'</em>
-                  </b>{" "}
+                  Search results for <b>'{search}'</b>{" "}
                 </h3>
               )}
 
@@ -236,7 +233,7 @@ export default function AllProperties() {
           >
             {properties.length === 0 ? null : (
               <>
-                {search || (sort && filteredProperties.length === 0) ? (
+                {filteredProperties.length === 0 ? (
                   <div className={styles["no__property"]}>
                     <TbHomeOff className={styles["empty__icon"]} />
                     <h2>No properties found</h2>

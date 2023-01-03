@@ -12,6 +12,7 @@ const initialState = {
   price: "",
   location: "",
   bedrooms: "",
+  description: "",
   bathrooms: "",
   toilets: "",
   agentName: "",
@@ -21,7 +22,6 @@ const initialState = {
 export default function AddProperty() {
   const [property, setProperty] = useState<any>(initialState);
   const [images, setImages] = useState<any>([]);
-  const [description, setDescription] = useState("");
   const [purpose, setPurpose] = useState("");
   const [availability, setAvailability] = useState("");
   const [newFeature, setNewFeature] = useState("");
@@ -36,6 +36,7 @@ export default function AddProperty() {
     name,
     price,
     location,
+    description,
     bedrooms,
     bathrooms,
     toilets,
@@ -93,12 +94,12 @@ export default function AddProperty() {
       return errorToast("Please add images for this property", "uierr");
     }
 
-    // if (images.length <= 4) {
-    //   return errorToast(
-    //     "Please add at least 5 images for this property",
-    //     "uierr2"
-    //   );
-    // }
+    if (images.length <= 4) {
+      return errorToast(
+        "Please add at least 5 images for this property",
+        "uierr2"
+      );
+    }
 
     if (features.length <= 4) {
       return errorToast(
@@ -119,9 +120,11 @@ export default function AddProperty() {
 
     try {
       setLoading(true);
-      await createProperty(propertyData, token);
+      const response = await createProperty(propertyData, token);
+      if (response) {
+        navigate("/");
+      }
       setLoading(false);
-      navigate("/");
     } catch (error) {
       setLoading(false);
       console.log(error);
@@ -135,8 +138,6 @@ export default function AddProperty() {
       </h2>
       <PropertyForm
         property={property}
-        description={description}
-        setDescription={setDescription}
         newFeature={newFeature}
         features={features}
         featuresInput={featuresInput}

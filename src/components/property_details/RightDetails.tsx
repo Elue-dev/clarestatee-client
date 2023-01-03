@@ -195,7 +195,7 @@ export default function RightDetails({ property, refetch }: any) {
                 disabled
                 className={styles["property__message__btn"]}
               >
-                <PulseLoader loading={loading} size={10} color={"#fff"} />
+                <PulseLoader loading={loading} size={10} color={"#000"} />
               </button>
             ) : (
               <button

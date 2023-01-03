@@ -24,9 +24,7 @@ export default function Navbar() {
 
         <h3>{`${user.first_name} ${user.last_name}`}</h3>
         <p>
-          <b>
-            <i>ADMINISTRATOR</i>
-          </b>
+          <b>ADMINISTRATOR</b>
         </p>
       </div>
       <nav>

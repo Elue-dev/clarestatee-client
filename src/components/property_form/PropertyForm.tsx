@@ -238,7 +238,7 @@ const PropertyForm = ({
         </p>
         {loading && (
           <button type="submit" className="submit__property__btn">
-            <PulseLoader loading={loading} size={10} color={"#fff"} />
+            <PulseLoader loading={loading} size={10} color={"#000"} />
           </button>
         )}
         {!loading && (
