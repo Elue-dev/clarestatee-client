@@ -1,0 +1,33 @@
+@use "../../styles//colors" as *;
+@use "../../styles/mixins" as *;
+
+.error {
+  min-height: 100vh;
+  position: relative;
+  .content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.7;
+    h1 {
+      font-size: 8rem;
+      @include mQ(600px) {
+        font-size: 4rem;
+      }
+    }
+    h2 {
+      font-size: 2.5rem;
+      line-height: 1.2;
+      @include mQ(600px) {
+        font-size: 1rem;
+      }
+    }
+    p {
+      margin: 1rem 0 0.5rem 0;
+    }
+    a {
+      color: $color-primary;
+    }
+  }
+}
