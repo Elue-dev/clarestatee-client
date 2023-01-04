@@ -60,7 +60,10 @@ export default function Login() {
   const redirectUser = () => {
     if (previousURL.includes("property")) {
       return navigate(-1);
+    }  else if(previousURL.includes("contact")) {
+      return navigate(-1);
     }
+
     navigate("/");
   };
 
