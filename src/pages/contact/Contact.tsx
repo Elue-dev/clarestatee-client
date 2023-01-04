@@ -4,7 +4,7 @@ import { FaPhoneSquareAlt } from "react-icons/fa";
 import { IoChatbubbles } from "react-icons/io5";
 import { MdOutlineSubject } from "react-icons/md";
 import { motion } from "framer-motion";
-import { BeatLoader } from "react-spinners";
+import { PulseLoader } from "react-spinners";
 import styles from "./contact.module.scss";
 import { useSelector } from "react-redux";
 import { getUserToken, selectIsLoggedIn } from "../../redux/slices/auth_slice";
@@ -37,7 +37,11 @@ export default function Contact() {
     const contactData = { message, subject };
     try {
       setLoading(true);
-      await sendContactEmail(token, contactData);
+      const response = await sendContactEmail(token, contactData);
+      if (response) {
+        setSubject("");
+        setMessage("");
+      }
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -126,7 +130,7 @@ export default function Contact() {
                   disabled
                   className={styles["property__message__btn"]}
                 >
-                  <BeatLoader loading={loading} size={10} color={"#fff"} />
+                  <PulseLoader loading={loading} size={10} color={"#000"} />
                 </button>
               ) : (
                 <button
