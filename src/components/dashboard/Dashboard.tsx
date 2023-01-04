@@ -308,7 +308,7 @@ export default function Dashboard() {
                   {properties.map((property: any) => {
                     const { name, price, slug, purpose } = property;
                     return (
-                      <div className={styles.card}>
+                      <div className={styles.card} key={slug}>
                         <div>
                           <b>Property Name:</b>
                           &nbsp;{name}

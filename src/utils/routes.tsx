@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import ForgotPassword from "../pages/auth/ForgotPassword";
 import ResetPassword from "../pages/auth/ResetPassword";
 import VerifyCode from "../pages/auth/VerifyCode";
+import EmergencyReset from "../pages/auth/EmergencyReset";
 import Unauthenticated from "../components/protect_routes/unauthenticated";
 import PropertyDetail from "../pages/properties/property_details/PropertyDetails";
 import QueriedProperty from "../pages/properties/queried_properties/QueriedProperty";
@@ -86,6 +87,14 @@ export default function AllRoutes() {
         element={
           <Authenticated>
             <ResetPassword />
+          </Authenticated>
+        }
+      />
+      <Route
+        path="/auth/emergency-reset/:userID"
+        element={
+          <Authenticated>
+            <EmergencyReset />
           </Authenticated>
         }
       />

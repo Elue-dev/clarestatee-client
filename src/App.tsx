@@ -16,8 +16,6 @@ function App() {
   const dispatch = useDispatch();
   const status = useNetworkStatus();
 
-  console.log(status);
-
   useEffect(() => {
     setTimeout(async () => {
       await logoutUser();

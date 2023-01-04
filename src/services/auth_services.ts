@@ -124,3 +124,19 @@ export const updatePassword = async (token: string, credentials: any) => {
     errorToast(error.response.data.message, "rerror");
   }
 };
+
+export const emergencyReset = async (userID: any, email: string) => {
+  try {
+    const response = await axios.put(
+      `${server_url}/api/auth/emergency-password-reset/${userID}`,
+      { email }
+    );
+    if (response?.data.status === "success") {
+      successToast(response?.data.message, "rsuccess");
+    }
+
+    return response.data;
+  } catch (error: any) {
+    errorToast(error.response.data.message, "rerror");
+  }
+};
