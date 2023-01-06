@@ -297,7 +297,6 @@ export default function AllProperties() {
                           <p>
                             NGN {new Intl.NumberFormat().format(price)}
                             <span>
-                              {" "}
                               {purpose === "Rent"
                                 ? "/year"
                                 : purpose === "Shortlet"

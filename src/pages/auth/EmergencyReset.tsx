@@ -5,6 +5,7 @@ import styles from "./auth.module.scss";
 import { emergencyReset } from "../../services/auth_services";
 import { HiOutlineMail } from "react-icons/hi";
 import { useParams } from "react-router-dom";
+import { errorToast } from "../../utils/alerts";
 
 export default function EmergencyReset() {
   const [email, setEmail] = useState("");
@@ -14,6 +15,10 @@ export default function EmergencyReset() {
 
   const resetPassword = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (!email) {
+      return errorToast("Please enter your email", "ererr");
+    }
 
     try {
       setLoading(true);

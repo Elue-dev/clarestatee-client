@@ -7,6 +7,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { PulseLoader } from "react-spinners";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  SAVE_URL,
   selectPreviousURL,
   SET_ACTIVE_USER,
   SET_USER_TOKEN,
@@ -63,7 +64,7 @@ export default function Login() {
     } else if (previousURL.includes("contact")) {
       return navigate(-1);
     }
-
+    dispatch(SAVE_URL(""));
     navigate("/");
   };
 

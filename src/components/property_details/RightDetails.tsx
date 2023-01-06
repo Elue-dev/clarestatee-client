@@ -137,7 +137,7 @@ export default function RightDetails({ property, refetch }: any) {
 
   const confirmPropDelete = (propertyID: string) => {
     Notiflix.Confirm.show(
-      "Delete Prooperty",
+      "Delete Property",
       "Are you sure you want to delete this property?",
       "DELETE",
       "CLOSE",
