@@ -30,6 +30,7 @@ export default function QueriedProperty() {
       `${server_url}/api/properties?city=${city}&purpose=${purpose}`
     );
     setProperties(response.data?.properties);
+
     setLoading(false);
   };
 
@@ -72,6 +73,7 @@ export default function QueriedProperty() {
                 toilets,
                 bedrooms,
                 bathrooms,
+                location,
               } = property;
               return (
                 <Link key={_id} to={`/property/${slug}`}>
@@ -109,7 +111,7 @@ export default function QueriedProperty() {
                       </p>
                       <p className={styles["property__location"]}>
                         <ImLocation2 />
-                        {city}
+                        {location}
                       </p>
                       <div className={styles["interior__info"]}>
                         <p>
