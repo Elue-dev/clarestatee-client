@@ -54,10 +54,7 @@ export default function PropertyDetail() {
       <section className={styles["property__details"]}>
         <GoBack />
         <div className={styles["contacts__bottom__wrapper"]}>
-          <div className={styles["contacts__bottom"]}>
-            <div className={styles["single__item"]}></div>
-            <div className={styles["single__item"]}></div>
-          </div>
+          <div className={styles["contacts__bottom"]}></div>
         </div>
 
         <p className={styles["details__links"]}>
@@ -192,7 +189,6 @@ export default function PropertyDetail() {
           </div>
           <RightDetails property={property} refetch={refetch} />
         </div>
-        {/* <Footer /> */}
       </section>
     </motion.section>
   );

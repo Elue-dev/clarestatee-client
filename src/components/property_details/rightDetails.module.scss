@@ -10,6 +10,14 @@
   padding: 1.5rem 1rem;
   border-top-right-radius: 0.3rem;
   border-bottom-right-radius: 0.3rem;
+  .disclaimer {
+    margin-top: 3rem;
+    background: rgb(113, 171, 193);
+    padding: 0.5rem;
+    color: #fff;
+    border-left: 4px solid #000;
+    font-weight: 600;
+  }
 
   h3 {
     text-align: center;

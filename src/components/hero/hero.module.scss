@@ -38,17 +38,27 @@
       width: max-content;
       max-width: 350px;
     }
+    @include mQ(350px) {
+      width: max-content;
+      max-width: 239px;
+    }
     h1 {
       font-size: 2.4rem;
       text-transform: uppercase;
       @include mQ(600px) {
         font-size: 1.55rem;
       }
+      @include mQ(350px) {
+        font-size: 1.12rem;
+      }
     }
     p {
       font-size: 1.5rem;
       @include mQ(600px) {
         font-size: 1.1rem;
+      }
+      @include mQ(350px) {
+        font-size: 0.9rem;
       }
     }
     .hero__btn {

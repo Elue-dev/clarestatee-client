@@ -168,6 +168,13 @@ b {
           color: #fff;
         }
       }
+      .disclaimer {
+        @include flexBox(center, center, column);
+        padding-bottom: 1rem;
+        @include mQ(600px) {
+          font-size: 0.7rem;
+        }
+      }
     }
 
     .property__features {

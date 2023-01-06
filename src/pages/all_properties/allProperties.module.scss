@@ -327,6 +327,17 @@
       }
     }
   }
+  .disclaimer {
+    text-align: right;
+    background: rgb(113, 171, 193);
+    padding: 0.7rem;
+    border-left: 1px solid #333;
+    color: #fff;
+    @include flexBox(center, center, column);
+    @include mQ(600px) {
+      font-size: 0.7rem;
+    }
+  }
 }
 
 .pagination {

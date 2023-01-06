@@ -56,6 +56,10 @@ const PropertyForm = ({
         <br />
         <label>
           <span>Property Images:</span>
+          <p className="images__info">
+            <IoInformationCircleOutline />
+            At least 5 images must be added
+          </p>
           <div className="preview__wrapper">
             {Array.from(images).map((item: any, index: number) => (
               <span key={index}>
@@ -249,7 +253,7 @@ const PropertyForm = ({
         </p>
         {loading && (
           <button type="submit" className="submit__property__btn">
-            <PulseLoader loading={loading} size={10} color={"#000"} />
+            <PulseLoader loading={loading} size={10} color={"#fff"} />
           </button>
         )}
         {!loading && (

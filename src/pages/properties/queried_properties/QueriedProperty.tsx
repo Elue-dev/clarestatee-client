@@ -15,7 +15,7 @@ import Loader from "../../../utils/Loader";
 export default function QueriedProperty() {
   const queryString = useLocation().search;
   const queryParams = new URLSearchParams(queryString);
-  const location = queryParams.get("location");
+  const city = queryParams.get("city");
   const purpose = queryParams.get("purpose");
   const [loading, setLoading] = useState(true);
 
@@ -27,7 +27,7 @@ export default function QueriedProperty() {
 
   const getQueriedProperties = async () => {
     const response = await axios.get(
-      `${server_url}/api/properties?location=${location}&purpose=${purpose}`
+      `${server_url}/api/properties?city=${city}&purpose=${purpose}`
     );
     setProperties(response.data?.properties);
     setLoading(false);
@@ -40,7 +40,7 @@ export default function QueriedProperty() {
   return (
     <section className={styles.query}>
       <div className={styles.heading}>
-        Properties in <span>{location}</span> for <span>{purpose}</span>
+        Properties in <span>{city}</span> for <span>{purpose}</span>
       </div>
 
       {loading ? (
@@ -109,7 +109,7 @@ export default function QueriedProperty() {
                       </p>
                       <p className={styles["property__location"]}>
                         <ImLocation2 />
-                        {location}
+                        {city}
                       </p>
                       <div className={styles["interior__info"]}>
                         <p>

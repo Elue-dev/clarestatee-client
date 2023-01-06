@@ -338,6 +338,13 @@ export default function AllProperties() {
           ) : null}
         </div>
       </div>
+      <div className={styles.disclaimer}>
+        <h3>
+          DISCLAIMER: We do not own any property here. This site is just a
+          personal project to showcase my skills. We are not selling or renting
+          any of these properties
+        </h3>
+      </div>
     </motion.section>
   );
 }

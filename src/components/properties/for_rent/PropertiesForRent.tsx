@@ -4,7 +4,7 @@ import { server_url } from "../../../utils/junk";
 import { BsFillHouseFill } from "react-icons/bs";
 import styles from "../for_sale/properties.module.scss";
 import { useDispatch } from "react-redux";
-import { SET_CAREGORIES } from "../../../redux/slices/property_slice";
+import { SET_CITIES } from "../../../redux/slices/property_slice";
 import Loader from "../../../utils/Loader";
 import PropertiesLayout from "../../properties_layout/PropertiesLayout";
 
@@ -34,7 +34,7 @@ export default function PropertiesForRent() {
   );
 
   if (isSuccess) {
-    dispatch(SET_CAREGORIES(properties));
+    dispatch(SET_CITIES(properties));
   }
 
   return (

@@ -146,13 +146,17 @@ export default function RightDetails({ property, refetch }: any) {
       <div className={styles["right__contents"]}>
         <div className={styles["contact__info"]}>
           <div className={styles["contact__info__details"]}>
-            {currentUser?._id === property.addedBy._id ? (
-              <Link
-                to={`/edit-property/${property.slug}/${property._id}`}
-                style={{ fontWeight: 700 }}
-              >
-                Edit Property
-              </Link>
+            {currentUser?._id === property.addedBy._id ||
+            currentUser.role === "admin" ? (
+              <div className={styles.actions}>
+                <Link
+                  to={`/edit-property/${property.slug}/${property._id}`}
+                  style={{ fontWeight: 700, color: "#edb637" }}
+                >
+                  Edit Property
+                </Link>
+                <p>Delete Property</p>
+              </div>
             ) : null}
 
             <h2>
@@ -317,7 +321,11 @@ export default function RightDetails({ property, refetch }: any) {
             </p>
           </div>
         </div>
-        {/* <SimilarProducts /> */}
+        <p className={styles.disclaimer}>
+          DISCLAIMER: We do not own any property here. This site is just a
+          personal project to showcase my skills. We are not selling or renting
+          any of these properties
+        </p>
       </div>
     </div>
   );

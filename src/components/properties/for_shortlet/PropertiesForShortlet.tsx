@@ -3,7 +3,7 @@ import axios from "axios";
 import { server_url } from "../../../utils/junk";
 import styles from "../for_sale/properties.module.scss";
 import { useDispatch } from "react-redux";
-import { SET_CAREGORIES } from "../../../redux/slices/property_slice";
+import { SET_CITIES } from "../../../redux/slices/property_slice";
 import Loader from "../../../utils/Loader";
 import { FaLaptopHouse } from "react-icons/fa";
 import PropertiesLayout from "../../properties_layout/PropertiesLayout";
@@ -30,7 +30,7 @@ export default function PropertiesForShortLet() {
   const properties = data?.data.properties;
 
   if (isSuccess) {
-    dispatch(SET_CAREGORIES(properties));
+    dispatch(SET_CITIES(properties));
   }
 
   const filteredProperties = properties?.filter(

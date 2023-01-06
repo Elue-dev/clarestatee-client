@@ -3,7 +3,7 @@ import axios from "axios";
 import { server_url } from "../../../utils/junk";
 import { GiHouseKeys } from "react-icons/gi";
 import { useDispatch } from "react-redux";
-import { SET_CAREGORIES } from "../../../redux/slices/property_slice";
+import { SET_CITIES } from "../../../redux/slices/property_slice";
 import Loader from "../../../utils/Loader";
 import styles from "./properties.module.scss";
 import PropertiesLayout from "../../properties_layout/PropertiesLayout";
@@ -36,7 +36,7 @@ export default function PropertiesForSale() {
   refetch();
 
   if (isSuccess) {
-    dispatch(SET_CAREGORIES(properties));
+    dispatch(SET_CITIES(properties));
   }
 
   return (
