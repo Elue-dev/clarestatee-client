@@ -60,7 +60,7 @@ export default function Login() {
   const redirectUser = () => {
     if (previousURL.includes("property")) {
       return navigate(-1);
-    }  else if(previousURL.includes("contact")) {
+    } else if (previousURL.includes("contact")) {
       return navigate(-1);
     }
 
@@ -73,8 +73,12 @@ export default function Login() {
     try {
       setLoading(true);
       setError("");
+      const loginDetails = {
+        emailOrPhone: emailOrPhone.trim(),
+        password: password.trim(),
+      };
       if (validateForm()) {
-        const response = await loginUser(credentials);
+        const response = await loginUser(loginDetails);
         if (response) {
           dispatch(SET_ACTIVE_USER(response.user));
           dispatch(SET_USER_TOKEN(response.token));
