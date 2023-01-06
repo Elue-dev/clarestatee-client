@@ -18,6 +18,16 @@
     border-left: 4px solid #000;
     font-weight: 600;
   }
+  .actions {
+    @include flexBox(center, center);
+    gap: 0.3rem;
+    span {
+      font-size: 0.9rem;
+      color: $color-primary;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  }
 
   h3 {
     text-align: center;

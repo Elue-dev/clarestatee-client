@@ -22,11 +22,15 @@ import { errorToast } from "../../utils/alerts";
 import { useNavigate } from "react-router-dom";
 import Notiflix from "notiflix";
 import { Link } from "react-router-dom";
-import { sendContactEmail } from "../..//services/users_services";
+import { sendContactEmail } from "../../services/users_services";
+import { FiEdit } from "react-icons/fi";
+import { AiFillDelete } from "react-icons/ai";
+import { removeProperty } from "../../services/property_service";
 
 export default function RightDetails({ property, refetch }: any) {
   const [revLoading, setRevLoading] = useState(false);
-  const [delLoading, setDelLoading] = useState(false);
+  const [revDelLoading, setRevDelLoading] = useState(false);
+  const [delpropLoading, setDelPropLoading] = useState(false);
   const [rating, setRating] = useState<number | undefined>(0);
   const [review, setReview] = useState("");
 
@@ -87,17 +91,17 @@ export default function RightDetails({ property, refetch }: any) {
 
   const deleteReview = async (revewID: string) => {
     try {
-      setDelLoading(true);
+      setRevDelLoading(true);
       await removeReview(revewID, token);
       refetch();
-      setDelLoading(false);
+      setRevDelLoading(false);
     } catch (error) {
-      setDelLoading(false);
+      setRevDelLoading(false);
       console.log(error);
     }
   };
 
-  const confirmDelete = (revewID: string) => {
+  const confirmRevDelete = (revewID: string) => {
     Notiflix.Confirm.show(
       "Delete Review",
       "Are you sure you want to delete your review on this property?",
@@ -105,6 +109,40 @@ export default function RightDetails({ property, refetch }: any) {
       "CLOSE",
       function okCb() {
         deleteReview(revewID);
+      },
+      function cancelCb() {},
+      {
+        width: "320px",
+        borderRadius: "5px",
+        titleColor: "crimson",
+        okButtonBackground: "crimson",
+        cssAnimationStyle: "zoom",
+      }
+    );
+  };
+
+  const deleteProperty = async (propertyID: string) => {
+    try {
+      setDelPropLoading(true);
+      const response = await removeProperty(propertyID, token);
+      if (response) {
+        navigate("/");
+      }
+      setDelPropLoading(false);
+    } catch (error) {
+      setDelPropLoading(false);
+      console.log(error);
+    }
+  };
+
+  const confirmPropDelete = (propertyID: string) => {
+    Notiflix.Confirm.show(
+      "Delete Prooperty",
+      "Are you sure you want to delete this property?",
+      "DELETE",
+      "CLOSE",
+      function okCb() {
+        deleteProperty(propertyID);
       },
       function cancelCb() {},
       {
@@ -147,15 +185,26 @@ export default function RightDetails({ property, refetch }: any) {
         <div className={styles["contact__info"]}>
           <div className={styles["contact__info__details"]}>
             {currentUser?._id === property.addedBy._id ||
-            currentUser.role === "admin" ? (
+            currentUser?.role === "admin" ? (
               <div className={styles.actions}>
                 <Link
                   to={`/edit-property/${property.slug}/${property._id}`}
                   style={{ fontWeight: 700, color: "#edb637" }}
                 >
-                  Edit Property
+                  <FiEdit size={20} color="green" />
                 </Link>
-                <p>Delete Property</p>
+                <span onClick={() => confirmPropDelete(property._id)}>
+                  {delpropLoading ? (
+                    <ClipLoader
+                      loading={delpropLoading}
+                      //@ts-ignore
+                      size={20}
+                      color="crimson"
+                    />
+                  ) : (
+                    <AiFillDelete size={23} color="crimson" />
+                  )}
+                </span>
               </div>
             ) : null}
 
@@ -275,11 +324,11 @@ export default function RightDetails({ property, refetch }: any) {
                       {currentUser?._id === user._id && (
                         <span
                           className={styles["del__rev"]}
-                          onClick={() => confirmDelete(_id)}
+                          onClick={() => confirmRevDelete(_id)}
                         >
-                          {delLoading ? (
+                          {revDelLoading ? (
                             <ClipLoader
-                              loading={delLoading}
+                              loading={revDelLoading}
                               //@ts-ignore
                               size={12}
                               color="crimson"
