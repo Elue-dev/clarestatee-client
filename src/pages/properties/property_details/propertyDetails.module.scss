@@ -154,6 +154,15 @@ b {
         margin-bottom: 0.8rem;
         font-weight: 600;
       }
+      .available {
+        color: rgba(136, 229, 29, 0.575);
+        font-weight: 700;
+      }
+      .navailable {
+        color: rgba(243, 90, 52, 0.411);
+        font-weight: 700;
+      }
+
       .details__warning {
         @include flexBox(flex-start, center, center);
         gap: 0.6rem;

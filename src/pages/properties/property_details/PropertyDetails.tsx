@@ -107,12 +107,11 @@ export default function PropertyDetail() {
                 <MdBookmarkAdd />
                 <b>Availability status:</b>
                 <span
-                  style={{
-                    color:
-                      property.availability === "Available"
-                        ? `${styles.green}`
-                        : `${styles.crimson}`,
-                  }}
+                  className={
+                    property.availability === "Available"
+                      ? `${styles.available}`
+                      : `${styles.navailable}`
+                  }
                 >
                   {property.availability}
                 </span>
