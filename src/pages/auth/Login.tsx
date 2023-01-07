@@ -64,7 +64,7 @@ export default function Login() {
     } else if (previousURL.includes("contact")) {
       return navigate(-1);
     }
-    dispatch(SAVE_URL(""));
+    // dispatch(SAVE_URL(""));
     navigate("/");
   };
 
