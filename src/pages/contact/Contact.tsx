@@ -9,7 +9,7 @@ import styles from "./contact.module.scss";
 import { useSelector } from "react-redux";
 import { getUserToken, selectIsLoggedIn } from "../../redux/slices/auth_slice";
 import { sendContactEmail } from "../../services/users_services";
-import { errorToast } from "../../utils/alerts";
+import { errorHotToast } from "../../utils/alerts";
 import { SiGmail } from "react-icons/si";
 import { useNavigate } from "react-router-dom";
 
@@ -25,13 +25,13 @@ export default function Contact() {
     e.preventDefault();
 
     if (!isLoggedIn) {
-      errorToast("Please log in first.", "cterror");
+      errorHotToast("Please log in first.");
       navigate("/auth/login");
       return;
     }
 
     if (!subject || !message) {
-      return errorToast("Both subject and message are required", "cterror");
+      return errorHotToast("Both subject and message are required");
     }
 
     const contactData = { message, subject };
