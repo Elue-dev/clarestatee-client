@@ -32,7 +32,7 @@ export default function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const defaultImg = "https://i.ibb.co/4pDNDk1/avatar.png";
+  const defaultImg = "https://a0.muscache.com/defaults/user_pic-50x50.png?v=3";
 
   let initials;
 

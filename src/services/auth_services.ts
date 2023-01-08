@@ -30,7 +30,7 @@ export const verifyEmail = async (code: string, userID: string | undefined) => {
       { code }
     );
     if (response?.data.status === "success") {
-      successToast(response?.data.message, "vsuccess");
+      // successToast(response?.data.message, "vsuccess");
     }
     return response.data;
   } catch (error: any) {
