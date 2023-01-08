@@ -19,9 +19,6 @@ export const createComment = async (
       commentData,
       { headers: { authorization: `Bearer ${token}` } }
     );
-    if (response?.data.status === "success") {
-      successHotToast("Comment added");
-    }
     return response.data;
   } catch (error: any) {
     errorHotToast(error.response.data.message);
@@ -34,9 +31,6 @@ export const removeComment = async (commenID: string, token: string) => {
       `${server_url}/api/comments/${commenID}`,
       { headers: { authorization: `Bearer ${token}` } }
     );
-    if (response?.data.status === "success") {
-      successHotToast("Comment removed");
-    }
     return response.data;
   } catch (error: any) {
     errorHotToast(error.response.data.message);
@@ -54,9 +48,6 @@ export const updateComment = async (
       comment,
       { headers: { authorization: `Bearer ${token}` } }
     );
-    if (response?.data.status === "success") {
-      successHotToast("Comment updated");
-    }
     return response.data;
   } catch (error: any) {
     errorHotToast(error.response.data.message);
