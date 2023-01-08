@@ -16,12 +16,12 @@ function App() {
   const dispatch = useDispatch();
   const status = useNetworkStatus();
 
-  useEffect(() => {
-    setTimeout(async () => {
-      await logoutUser();
-      dispatch(REMOVE_ACTIVE_USER());
-    }, d);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(async () => {
+  //     await logoutUser();
+  //     dispatch(REMOVE_ACTIVE_USER());
+  //   }, d);
+  // }, []);
 
   return (
     <div>
