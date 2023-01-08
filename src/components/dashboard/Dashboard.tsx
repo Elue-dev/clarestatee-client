@@ -127,8 +127,8 @@ export default function Dashboard() {
       setLoading_Sec(true);
       const response = await updatePassword(token, passwords);
       if (response) {
-        // dispatch(REMOVE_ACTIVE_USER());
-        // navigate("/auth/login");
+        dispatch(REMOVE_ACTIVE_USER());
+        navigate("/auth/login");
       }
       setLoading_Sec(false);
     } catch (error) {
