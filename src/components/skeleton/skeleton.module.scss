@@ -1,0 +1,118 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/colors" as *;
+@use "../../styles/variables" as *;
+
+.properties__details {
+  .properties__details__image {
+    position: relative;
+    img {
+      min-width: 100%;
+      min-height: 230px;
+      object-fit: cover;
+      border-radius: 0.6rem;
+      border: 0.5px solid rgb(200, 200, 200);
+      transition: transform 0.3s ease-in-out;
+      background: #e2e2e2;
+    }
+    .property__availability {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: #fff;
+      border-radius: 0.2rem;
+      padding: 0.09rem 0.9rem;
+      font-weight: 500;
+    }
+    .property__purpose {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: #000;
+      border-radius: 0.2rem;
+      padding: 0.09rem 0.9rem;
+      font-weight: 500;
+      background: rgb(237, 182, 55);
+    }
+    .properties__purpose {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: #000;
+      border-radius: 0.2rem;
+      padding: 0.09rem 0.9rem;
+      font-weight: 500;
+      background: $color-secondary;
+    }
+    .camera__icon {
+      position: absolute;
+      bottom: 20px;
+      right: 16px;
+      font-weight: 500;
+      font-size: 1.3rem;
+      color: #fff;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 0.1rem 0.6rem;
+      border-radius: 0.2rem;
+      @include flexBox(flex-start, center, center);
+      gap: 0.3rem;
+      :last-child {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+    }
+    .exclusive__image__wrapper {
+      position: relative;
+    }
+    .view__in__detail {
+      position: absolute;
+      color: #fff;
+      font-size: 3rem;
+      bottom: 1rem;
+      right: 1rem;
+      padding: 0.1rem 0.6rem;
+      border-radius: 0.4rem;
+      background: #e2e2e2;
+    }
+  }
+  .properties__details__texts {
+    line-height: 1.9;
+    .property__name {
+      font-weight: 700;
+      font-size: 1.15rem;
+      line-height: 1.3;
+      color: #000;
+      width: 12rem;
+      height: 1rem;
+      background: #e2e2e2;
+      @include flexBox(space-between, center, row);
+    }
+    .property__price {
+      @include flexBox(flex-start, center, row);
+      span {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #000;
+        width: 12rem;
+        height: 1rem;
+        background: #e2e2e2;
+        margin-top: 1rem;
+      }
+    }
+    .property__id,
+    .property__location {
+      color: #717171;
+      width: 12rem;
+      height: 1rem;
+      background: #e2e2e2;
+      margin-top: 1rem;
+      @include flexBox(flex-start, center, center);
+      gap: 0.3rem;
+    }
+  }
+  &:hover {
+    img {
+      transform: scale(1.02);
+    }
+  }
+}

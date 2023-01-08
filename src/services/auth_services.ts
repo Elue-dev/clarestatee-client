@@ -1,5 +1,5 @@
 import { loginType, registerType, resetType } from "@/types/auth_types";
-import { errorToast, successToast } from "../utils/alerts";
+import { errorHotToast, successHotToast } from "../utils/alerts";
 import axios from "axios";
 
 //@ts-ignore
@@ -19,7 +19,7 @@ export const registerUser = async (credentials: registerType) => {
     );
     return response.data;
   } catch (error: any) {
-    errorToast(error.response.data.message, "rerror");
+    errorHotToast(error.response.data.message);
   }
 };
 
@@ -29,12 +29,9 @@ export const verifyEmail = async (code: string, userID: string | undefined) => {
       `${server_url}/api/auth/verify-email/${userID}`,
       { code }
     );
-    if (response?.data.status === "success") {
-      // successToast(response?.data.message, "vsuccess");
-    }
     return response.data;
   } catch (error: any) {
-    errorToast(error.response.data.message, "veerror");
+    errorHotToast(error.response.data.message);
   }
 };
 
@@ -45,11 +42,11 @@ export const sendVerificationCode = async (email: string) => {
       { email }
     );
     if (response?.data.status === "success") {
-      successToast(response?.data.message, "svsuccess");
+      successHotToast(response?.data.message);
     }
     return response.data;
   } catch (error: any) {
-    errorToast(error.response.data.message, "sverror");
+    errorHotToast(error.response.data.message);
   }
 };
 
@@ -61,7 +58,7 @@ export const loginUser = async (credentials: loginType) => {
     );
     return response.data;
   } catch (error: any) {
-    errorToast(error.response.data.message, "rerror");
+    errorHotToast(error.response.data.message);
   }
 };
 
@@ -69,7 +66,7 @@ export const logoutUser = async () => {
   try {
     await axios.get(`${server_url}/api/auth/logout`);
   } catch (error: any) {
-    errorToast(error.response.data.message, "loerror");
+    errorHotToast(error.response.data.message);
   }
 };
 
@@ -80,11 +77,11 @@ export const forgotPassword = async (email: string) => {
       { email }
     );
     if (response?.data.status === "success") {
-      successToast(response?.data.message, "svsuccess");
+      successHotToast(response?.data.message);
     }
     return response.data;
   } catch (error: any) {
-    errorToast(error.response.data.message, "sverror");
+    errorHotToast(error.response.data.message);
   }
 };
 
@@ -98,11 +95,11 @@ export const restorePassword = async (
       credentials
     );
     if (response?.data.status === "success") {
-      successToast(response?.data.message, "svsuccess");
+      successHotToast(response?.data.message);
     }
     return response.data;
   } catch (error: any) {
-    errorToast(error.response.data.message, "sverror");
+    errorHotToast(error.response.data.message);
   }
 };
 
@@ -116,12 +113,12 @@ export const updatePassword = async (token: string, credentials: any) => {
       }
     );
     if (response?.data.status === "success") {
-      successToast(response?.data.message, "rsuccess");
+      successHotToast(response?.data.message);
     }
 
     return response.data;
   } catch (error: any) {
-    errorToast(error.response.data.message, "rerror");
+    errorHotToast(error.response.data.message);
   }
 };
 
@@ -132,11 +129,11 @@ export const emergencyReset = async (userID: any, email: string) => {
       { email }
     );
     if (response?.data.status === "success") {
-      successToast(response?.data.message, "rsuccess");
+      successHotToast(response?.data.message);
     }
 
     return response.data;
   } catch (error: any) {
-    errorToast(error.response.data.message, "rerror");
+    errorHotToast(error.response.data.message);
   }
 };

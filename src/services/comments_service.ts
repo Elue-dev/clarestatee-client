@@ -1,4 +1,4 @@
-import { errorToast, successToast } from "../utils/alerts";
+import { errorHotToast } from "../utils/alerts";
 import axios from "axios";
 
 //@ts-ignore
@@ -19,12 +19,9 @@ export const createComment = async (
       commentData,
       { headers: { authorization: `Bearer ${token}` } }
     );
-    // if (response?.data.status === "success") {
-    //   successToast(response?.data.message, "addcsuccess");
-    // }
     return response.data;
   } catch (error: any) {
-    errorToast(error.response.data.message, "addcerr");
+    errorHotToast(error.response.data.message);
   }
 };
 
@@ -34,12 +31,9 @@ export const removeComment = async (commenID: string, token: string) => {
       `${server_url}/api/comments/${commenID}`,
       { headers: { authorization: `Bearer ${token}` } }
     );
-    // if (response?.data.status === "success") {
-    //   successToast(response?.data.message, "delcomsuccess");
-    // }
     return response.data;
   } catch (error: any) {
-    errorToast(error.response.data.message, "delcomcerr");
+    errorHotToast(error.response.data.message);
   }
 };
 
@@ -54,11 +48,8 @@ export const updateComment = async (
       comment,
       { headers: { authorization: `Bearer ${token}` } }
     );
-    // if (response?.data.status === "success") {
-    //   successToast(response?.data.message, "delcomsuccess");
-    // }
     return response.data;
   } catch (error: any) {
-    errorToast(error.response.data.message, "delcomcerr");
+    errorHotToast(error.response.data.message);
   }
 };

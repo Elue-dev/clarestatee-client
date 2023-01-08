@@ -11,6 +11,7 @@ import ScrollToTop from "./utils/scroll_to_top";
 import { logoutUser } from "./services/auth_services";
 import useNetworkStatus from "./hooks/useNetworkStatus";
 import OfflinePage from "./pages/offline_page/OfflinePage";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ function App() {
             <Header />
             <AllRoutes />
             <ScrollToTop />
+            <Toaster />
             <ToastContainer
               toastStyle={{
                 backgroundColor: "rgba(44, 134, 179, 0.364)",

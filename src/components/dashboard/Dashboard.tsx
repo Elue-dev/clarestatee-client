@@ -21,7 +21,7 @@ import { AiOutlineEye } from "react-icons/ai";
 import Loader from "../../utils/Loader";
 import { motion } from "framer-motion";
 import { updatePassword } from "../../services/auth_services";
-import { errorToast } from "../../utils/alerts";
+import { errorHotToast } from "../../utils/alerts";
 
 const passwordStates = {
   oldPassword: "",
@@ -117,10 +117,7 @@ export default function Dashboard() {
     e.preventDefault();
 
     if (!oldPassword || !newPassword || !confirmNewPassword) {
-      return errorToast(
-        "Please provide all three password credentials",
-        "uperror"
-      );
+      return errorHotToast("Please provide all three password credentials");
     }
 
     try {

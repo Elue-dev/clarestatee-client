@@ -1,4 +1,4 @@
-import { errorToast, successToast } from "../utils/alerts";
+import { errorHotToast, successHotToast } from "../utils/alerts";
 import axios from "axios";
 
 //@ts-ignore
@@ -12,11 +12,11 @@ export const createProperty = async (propertyData: any, token: string) => {
       { headers: { authorization: `Bearer ${token}` } }
     );
     if (response?.data.status === "success") {
-      successToast(response?.data.message, "addpsuccess");
+      successHotToast(response?.data.message);
     }
     return response.data;
   } catch (error: any) {
-    errorToast(error.response.data.message, "addperr");
+    errorHotToast(error.response.data.message);
   }
 };
 
@@ -25,7 +25,7 @@ export const getAllProperties = async () => {
     const response = await axios.get(`${server_url}/api/properties`);
     return response.data;
   } catch (error: any) {
-    errorToast(error.response.data.message, "addperr");
+    errorHotToast(error.response.data.message);
   }
 };
 
@@ -38,11 +38,11 @@ export const removeProperty = async (propertyID: string, token: string) => {
       }
     );
     if (response?.data.status === "success") {
-      successToast(response?.data.message, "delcsuccess");
+      successHotToast(response?.data.message);
     }
     return response.data;
   } catch (error: any) {
-    errorToast(error.response.data.message, "delperr");
+    errorHotToast(error.response.data.message);
   }
 };
 
@@ -52,11 +52,11 @@ export const getSingleProperty = async (propertySlug: string) => {
       `${server_url}/api/properties/${propertySlug}`
     );
     if (response?.data.status === "success") {
-      successToast(response?.data.message, "delcsuccess");
+      successHotToast(response?.data.message);
     }
     return response.data;
   } catch (error: any) {
-    errorToast(error.response.data.message, "delperr");
+    errorHotToast(error.response.data.message);
   }
 };
 
@@ -77,10 +77,10 @@ export const updateProperty = async (
       }
     );
     if (response?.data.status === "success") {
-      successToast(response?.data.message, "delcsuccess");
+      successHotToast(response?.data.message);
     }
     return response.data;
   } catch (error: any) {
-    errorToast(error.response.data.message, "delperr");
+    errorHotToast(error.response.data.message);
   }
 };

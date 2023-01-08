@@ -18,7 +18,7 @@ import {
   selectIsLoggedIn,
 } from "../../redux/slices/auth_slice";
 import moment from "moment";
-import { errorToast } from "../../utils/alerts";
+import { errorHotToast } from "../../utils/alerts";
 import { useNavigate } from "react-router-dom";
 import Notiflix from "notiflix";
 import { Link } from "react-router-dom";
@@ -51,23 +51,17 @@ export default function RightDetails({ property, refetch }: any) {
 
   const addReview = async () => {
     if (!isLoggedIn) {
-      errorToast("You have to be logged in to add reviews", "addreverror");
+      errorHotToast("You have to be logged in to add reviews");
       navigate("/auth/login");
       return;
     } else if (!review) {
-      return errorToast("Please add your review", "addreverror2");
+      return errorHotToast("Please add your review");
     } else if (!rating) {
-      return errorToast("Please leave a rating", "addrateerror");
+      return errorHotToast("Please leave a rating");
     } else if (currentUser._id === property.addedBy._id) {
-      return errorToast(
-        "You cannot add reviews to properties you added",
-        "addratueerror"
-      );
+      return errorHotToast("You cannot add reviews to properties you added");
     } else if (revUserIDS.includes(currentUser._id)) {
-      return errorToast(
-        "You cannot add multiple reviews to a property",
-        "addreverrorsec"
-      );
+      return errorHotToast("You cannot add multiple reviews to a property");
     }
 
     const reviewData = {
@@ -159,13 +153,13 @@ export default function RightDetails({ property, refetch }: any) {
     e.preventDefault();
 
     if (!isLoggedIn) {
-      errorToast("Please log in first.", "cterror");
+      errorHotToast("Please log in first");
       navigate("/auth/login");
       return;
     }
 
     if (!subject || !message) {
-      return errorToast("Both subject and message are required", "cterror");
+      return errorHotToast("Both subject and message are required");
     }
 
     const contactData = { message, subject };

@@ -1,6 +1,5 @@
-import { errorToast, successToast } from "../utils/alerts";
+import { errorHotToast } from "../utils/alerts";
 import axios from "axios";
-import { string } from "yup";
 
 interface revDataType {
   review: string;
@@ -21,12 +20,9 @@ export const createReview = async (
       revData,
       { headers: { authorization: `Bearer ${token}` } }
     );
-    // if (response?.data.status === "success") {
-    //   successToast(response?.data.message, "rsuccess");
-    // }
     return response.data;
   } catch (error: any) {
-    errorToast(error.response.data.message, "rerror");
+    errorHotToast(error.response.data.message);
   }
 };
 
@@ -38,11 +34,8 @@ export const removeReview = async (reviewID: string, token: string) => {
         headers: { authorization: `Bearer ${token}` },
       }
     );
-    // if (response?.data.status === "success") {
-    //   successToast(response?.data.message, "rsuccess");
-    // }
     return response.data;
   } catch (error: any) {
-    errorToast(error.response.data.message, "rerror");
+    errorHotToast(error.response.data.message);
   }
 };
