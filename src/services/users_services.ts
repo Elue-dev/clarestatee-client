@@ -20,7 +20,6 @@ export const updateUser = async (
     if (response?.data.status === "success") {
       successHotToast(response?.data.message);
     }
-
     return response.data;
   } catch (error: any) {
     errorHotToast(error.response.data.message);

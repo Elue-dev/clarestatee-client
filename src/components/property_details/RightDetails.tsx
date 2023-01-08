@@ -54,10 +54,10 @@ export default function RightDetails({ property, refetch }: any) {
       errorHotToast("You have to be logged in to add reviews");
       navigate("/auth/login");
       return;
-    } else if (!review) {
-      return errorHotToast("Please add your review");
     } else if (!rating) {
       return errorHotToast("Please leave a rating");
+    } else if (!review) {
+      return errorHotToast("Please add your review");
     } else if (currentUser._id === property.addedBy._id) {
       return errorHotToast("You cannot add reviews to properties you added");
     } else if (revUserIDS.includes(currentUser._id)) {

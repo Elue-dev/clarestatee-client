@@ -15,7 +15,7 @@ import {
   SAVE_URL,
   selectIsLoggedIn,
 } from "../../../redux/slices/auth_slice";
-import { errorToast } from "../../../utils/alerts";
+import { errorHotToast } from "../../../utils/alerts";
 import {
   createComment,
   removeComment,
@@ -89,7 +89,7 @@ export default function Comments({ propertyID }: idType) {
       navigate("/auth/login");
       setLoading(false);
       setComment("");
-      errorToast("You have to be logged in to add comments", "unauthcomm");
+      errorHotToast("You have to be logged in to add comments");
     } else {
       setShowCommentForm(true);
     }
@@ -98,7 +98,7 @@ export default function Comments({ propertyID }: idType) {
   const addComment = async (e: FormEvent) => {
     e.preventDefault();
     if (!comment) {
-      return errorToast("Please add your comment", "addcommerror");
+      return errorHotToast("Please add your comment");
     }
     try {
       setLoading(true);
@@ -158,7 +158,7 @@ export default function Comments({ propertyID }: idType) {
 
   const submitUpdatedComment = async () => {
     if (!comment) {
-      return errorToast("Please add your comment", "updtcommerror");
+      return errorHotToast("Please add your comment");
     }
 
     try {
