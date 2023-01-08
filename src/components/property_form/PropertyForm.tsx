@@ -8,7 +8,7 @@ import "./propertyForm.scss";
 
 const availabilityOptions = [
   { value: "Available", label: "Available " },
-  { value: "Unavailable", label: "Not Available" },
+  { value: "Not Available", label: "Not Available" },
 ];
 
 const purposeOptions = [
