@@ -92,20 +92,21 @@ export default function Users() {
       <div className="table">
         {users.length === 0 ? (
           <h2>
-            <b>No Product(s) Found.</b>
+            <Loader />
           </h2>
         ) : (
           <table>
             <thead>
               <tr>
                 <th>S/N</th>
+                <th>Photo</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Photo</th>
                 <th>Email</th>
                 <th>Phone Number</th>
                 <th>Bio</th>
                 <th>Date Joined</th>
+                <th>Last Updated</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -116,8 +117,9 @@ export default function Users() {
                   photo,
                   first_name,
                   last_name,
-                  createdAt,
                   email,
+                  createdAt,
+                  updatedAt,
                   phone,
                   bio,
                 } = user;
@@ -142,6 +144,7 @@ export default function Users() {
                     <td>{phone}</td>
                     <td>{bio}</td>
                     <td>{new Date(createdAt).toDateString()}</td>
+                    <td>{new Date(updatedAt).toDateString()}</td>
                     <td className="icons">
                       <FaTrashAlt
                         size={18}
