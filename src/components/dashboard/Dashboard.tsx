@@ -75,6 +75,18 @@ export default function Dashboard() {
     e.preventDefault();
 
     let imageUrl;
+
+    if (
+      fName === user.first_name &&
+      lName === user.last_name &&
+      uPhone === user.phone &&
+      uEmail === user.email &&
+      uBio === user.bio &&
+      !userPhoto
+    ) {
+      return errorHotToast("You have not made any changes to your profile");
+    }
+
     if (userPhoto && userPhoto?.type.includes("image")) {
       const image = new FormData();
       image.append("file", userPhoto);
@@ -87,6 +99,7 @@ export default function Dashboard() {
       );
       const imageData = await response.json();
       imageUrl = imageData.url.toString();
+      setUserPhoto(null);
     }
 
     const userData = {
