@@ -26,6 +26,20 @@ export const updateUser = async (
   }
 };
 
+export const deleteUser = async (userID: string, token: string) => {
+  try {
+    const response = await axios.delete(`${server_url}/api/users/${userID}`, {
+      headers: { authorization: `Bearer ${token}` },
+    });
+    if (response?.data.status === "success") {
+      successHotToast(response?.data.message);
+    }
+    return response.data;
+  } catch (error: any) {
+    errorHotToast(error.response.data.message);
+  }
+};
+
 export const getUserProperties = async (token: string, credentials: any) => {
   try {
     const response = await axios.patch(
