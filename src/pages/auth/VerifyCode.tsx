@@ -88,13 +88,6 @@ export default function VerifyCode() {
     } catch (error) {
       setLoading_sec(false);
     }
-
-    setLoading_sec(true);
-    const response = await sendVerificationCode(email);
-    if (response) {
-      setShowInput(false);
-    }
-    setLoading_sec(false);
   };
 
   return (
