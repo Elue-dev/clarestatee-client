@@ -51,9 +51,6 @@ export const getSingleProperty = async (propertySlug: string) => {
     const response = await axios.get(
       `${server_url}/api/properties/${propertySlug}`
     );
-    if (response?.data.status === "success") {
-      successHotToast(response?.data.message);
-    }
     return response.data;
   } catch (error: any) {
     errorHotToast(error.response.data.message);

@@ -48,7 +48,7 @@ export default function Users() {
     try {
       const res = await deleteUser(userID, token);
       if (res) {
-        window.location.reload();
+        fetchAllUsers();
       }
     } catch (error) {
       console.log(error);
@@ -113,7 +113,7 @@ export default function Users() {
             <tbody>
               {currentItems?.map((user, index) => {
                 const {
-                  id,
+                  _id,
                   photo,
                   first_name,
                   last_name,
@@ -124,7 +124,7 @@ export default function Users() {
                   bio,
                 } = user;
                 return (
-                  <tr key={id}>
+                  <tr key={_id}>
                     <td>{index + 1}</td>
                     <td>
                       <img
@@ -149,7 +149,7 @@ export default function Users() {
                       <FaTrashAlt
                         size={18}
                         color="red"
-                        onClick={() => confirmDelete(id)}
+                        onClick={() => confirmDelete(_id)}
                       />
                     </td>
                   </tr>
