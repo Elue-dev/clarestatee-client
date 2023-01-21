@@ -94,7 +94,7 @@ export default function PropertyDetail() {
                 </p>
               </div>
               <h3>
-                NGN {new Intl.NumberFormat().format(property.price)}
+                ₦{new Intl.NumberFormat().format(property.price)}
                 {property.purpose === "Rent"
                   ? "/year"
                   : property.purpose === "Shortlet"

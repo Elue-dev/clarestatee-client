@@ -20,7 +20,6 @@ import ReactPaginate from "react-paginate";
 import Select from "react-select";
 import styles from "./allProperties.module.scss";
 import DOMPurify from "dompurify";
-// import { animateScroll as scroll } from "react-scroll";
 
 const sortOptions = [
   { value: "latest", label: "Sorting: Latest" },
@@ -295,7 +294,7 @@ export default function AllProperties() {
                         ></div>
                         <div className={styles["price_"]}>
                           <p>
-                            NGN {new Intl.NumberFormat().format(price)}
+                            ₦{new Intl.NumberFormat().format(price)}
                             <span>
                               {purpose === "Rent"
                                 ? "/year"

@@ -274,6 +274,7 @@ export default function Dashboard() {
                   <textarea
                     name="uBio"
                     value={uBio}
+                    rows={5}
                     onChange={handleInputChange}
                   />
                 </div>
@@ -325,7 +326,7 @@ export default function Dashboard() {
                         </div>
                         <div>
                           <b>Property Price:</b>
-                          &nbsp;NGN {new Intl.NumberFormat().format(price)}
+                          &nbsp;₦{new Intl.NumberFormat().format(price)}
                         </div>
                         <div
                           className={

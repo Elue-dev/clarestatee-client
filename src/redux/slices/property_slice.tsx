@@ -3,6 +3,7 @@ import { RootState } from "../store";
 
 const initialState = {
   cities: [],
+  properties: [],
 };
 
 const product_slice = createSlice({
@@ -21,11 +22,15 @@ const product_slice = createSlice({
       //@ts-ignore
       state.cities = cities;
     },
+    SET_PROPERTIES: (state, action) => {
+      state.properties = action.payload;
+    },
   },
 });
 
-export const { SET_CITIES } = product_slice.actions;
+export const { SET_CITIES, SET_PROPERTIES } = product_slice.actions;
 
 export const selectCities = (state: RootState) => state.property.cities;
+export const selectProperties = (state: RootState) => state.property.properties;
 
 export default product_slice.reducer;

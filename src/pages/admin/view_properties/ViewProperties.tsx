@@ -174,7 +174,7 @@ export default function ViewProperties() {
                     <td>{location}</td>
                     <td>{new Date(createdAt).toDateString()}</td>
                     <td>
-                      NGN {new Intl.NumberFormat().format(price)}
+                      ₦{new Intl.NumberFormat().format(price)}
                       {purpose === "Rent"
                         ? "/year"
                         : purpose === "Shortlet"

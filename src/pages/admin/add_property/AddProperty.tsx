@@ -5,7 +5,7 @@ import PropertyForm from "../../../components/property_form/PropertyForm";
 import { createProperty } from "../../../services/property_service";
 import { useSelector } from "react-redux";
 import { getUserToken } from "../../../redux/slices/auth_slice";
-import { errorToast } from "../../../utils/alerts";
+import { errorHotToast } from "../../../utils/alerts";
 
 const initialState = {
   name: "",
@@ -94,32 +94,24 @@ export default function AddProperty() {
     e.preventDefault();
 
     if (!images.length) {
-      return errorToast("Please add images for this property", "uierr");
+      return errorHotToast("Please add images for this property");
     }
 
     if (images.length <= 4) {
-      return errorToast(
-        "Please add at least 5 images for this property",
-        "uierr2"
-      );
+      return errorHotToast("Please add at least 5 images for this property");
     }
 
     if (features.length <= 4) {
-      return errorToast(
-        "Please add at least 5 features of this property",
-        "ferr"
-      );
+      return errorHotToast("Please add at least 5 features of this property");
     }
 
     if (availability === "") {
-      return errorToast("Please select property availability", "averr");
+      return errorHotToast("Please select property availability");
     }
 
     if (purpose === "") {
-      return errorToast("Please select property purpose", "puerr");
+      return errorHotToast("Please select property purpose");
     }
-
-    console.log(...propertyData);
 
     try {
       setLoading(true);

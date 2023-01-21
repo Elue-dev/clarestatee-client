@@ -68,7 +68,7 @@ export default function PropertiesLayout({ filteredProperties }: any) {
                         {location}
                       </p>
                       <p className={styles["property__price"]}>
-                        <span>NGN{new Intl.NumberFormat().format(price)}</span>
+                        <span>₦{new Intl.NumberFormat().format(price)}</span>
                         {purpose === "Rent"
                           ? "/year"
                           : purpose === "Shortlet"
