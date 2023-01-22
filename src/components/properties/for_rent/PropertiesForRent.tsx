@@ -15,11 +15,14 @@ export default function PropertiesForRent() {
     return await axios.get(`${server_url}/api/properties`);
   };
 
-  const { data, isLoading, isSuccess } = useQuery(
+  const { data, isLoading, isSuccess, refetch } = useQuery(
     "properties",
     fetchProperties,
     {
       refetchOnWindowFocus: false,
+      onSuccess: () => {
+        dispatch(SET_CITIES(properties));
+      },
     }
   );
 
@@ -33,9 +36,7 @@ export default function PropertiesForRent() {
     (property: any) => property.purpose === "Rent"
   );
 
-  if (isSuccess) {
-    dispatch(SET_CITIES(properties));
-  }
+  refetch();
 
   return (
     <>
