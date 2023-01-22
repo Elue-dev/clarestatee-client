@@ -24,9 +24,6 @@ export default function PropertiesForSale() {
     fetchProperties,
     {
       refetchOnWindowFocus: false,
-      onSuccess: () => {
-        dispatch(SET_CITIES(properties));
-      },
     }
   );
 
@@ -41,6 +38,10 @@ export default function PropertiesForSale() {
   );
 
   refetch();
+
+  if (isSuccess) {
+    dispatch(SET_CITIES(properties));
+  }
 
   return (
     <>

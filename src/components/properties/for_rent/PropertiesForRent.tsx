@@ -20,9 +20,6 @@ export default function PropertiesForRent() {
     fetchProperties,
     {
       refetchOnWindowFocus: false,
-      onSuccess: () => {
-        dispatch(SET_CITIES(properties));
-      },
     }
   );
 
@@ -37,6 +34,10 @@ export default function PropertiesForRent() {
   );
 
   refetch();
+
+  if (isSuccess) {
+    dispatch(SET_CITIES(properties));
+  }
 
   return (
     <>
