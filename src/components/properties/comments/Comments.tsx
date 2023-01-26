@@ -1,8 +1,8 @@
 import { useState, FormEvent, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { FaCommentMedical, FaUserEdit } from "react-icons/fa";
-import { MdOutlineDateRange, MdOutlineDeleteForever } from "react-icons/md";
+import { FaCommentMedical } from "react-icons/fa";
+import { MdOutlineDeleteForever } from "react-icons/md";
 import { FaRegComment } from "react-icons/fa";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 import styles from "./comments.module.scss";
@@ -206,27 +206,24 @@ export default function Comments({ propertyID }: idType) {
           </>
         ) : (
           comments.map((com: any, index: number) => {
-            const { comment, user, createdAt, _id, updatedAt } = com;
+            console.log(com);
+
+            const { comment, user, createdAt, _id } = com;
             return (
               //@ts-ignore
               <ul key={index} className={contents}>
                 <li>
-                  <p>{comment}</p>
+                  <p className={styles.comment}>{comment}</p>
                   <br />
                   <div className={styles["comment__name"]}>
-                    <FaUserEdit /> {`${user.first_name} ${user.last_name}`}
+                    <img src={user.photo} alt="" />
+                    {`${user.first_name} ${user.last_name}`}
                   </div>
                   <div className={styles["comment__date"]}>
                     {currentUser?._id === user._id ? (
-                      <>
-                        <MdOutlineDateRange />
-                        Added by you: {moment(createdAt).fromNow()}
-                      </>
+                      <span>Added by you: {moment(createdAt).fromNow()}</span>
                     ) : (
-                      <>
-                        <MdOutlineDateRange />
-                        {moment(createdAt).fromNow()}
-                      </>
+                      <span>{moment(createdAt).fromNow()}</span>
                     )}
                   </div>
                 </li>
