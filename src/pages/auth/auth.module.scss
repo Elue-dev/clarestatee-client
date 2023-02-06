@@ -116,12 +116,11 @@
             }
           }
         }
-        .submit__btn {
+        .submit__btn,
+        .guest__submit__btn {
           width: 100%;
           margin-top: 0.2rem;
-          background: $color-secondary;
           font-weight: 700;
-          color: #000;
           border-radius: 0.3rem;
           font-size: 1.1rem;
           padding: 0.5rem;
@@ -131,6 +130,14 @@
           @include mQ(500px) {
             padding: 0.5rem;
           }
+        }
+        .submit__btn {
+          background: $color-secondary;
+          color: #000;
+        }
+        .guest__submit__btn {
+          background: #333;
+          color: #fff;
         }
         .auth__redirect {
           padding-top: 0.6rem;

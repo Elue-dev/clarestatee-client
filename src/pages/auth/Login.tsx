@@ -24,6 +24,7 @@ export default function Login() {
   const [credentials, setCredentials] = useState(initialState);
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [guestLoading, setGuestLoading] = useState(false);
   const [error, setError] = useState("");
   const passwordRef = useRef<any | undefined>();
   const previousURL = useSelector(selectPreviousURL);
@@ -93,6 +94,28 @@ export default function Login() {
     }
   };
 
+  const loginAsGuest = async () => {
+    try {
+      setGuestLoading(true);
+      setError("");
+      const loginDetails = {
+        emailOrPhone: "guestuser@clarestate.com",
+        password: import.meta.env.VITE_REACT_APP_GUEST_PASSWORD,
+      };
+      const response = await loginUser(loginDetails);
+      if (response) {
+        dispatch(SET_ACTIVE_USER(response.user));
+        dispatch(SET_USER_TOKEN(response.token));
+        redirectUser();
+      }
+
+      setGuestLoading(false);
+    } catch (error) {
+      console.log(error);
+      setGuestLoading(false);
+    }
+  };
+
   return (
     <section className={styles.auth}>
       <div className={styles["auth__wrapper"]}>
@@ -152,6 +175,25 @@ export default function Login() {
             {!loading && (
               <button type="submit" className={styles["submit__btn"]}>
                 Continue
+              </button>
+            )}
+
+            {guestLoading && (
+              <button
+                type="button"
+                disabled
+                className={styles["guest__submit__btn"]}
+              >
+                <PulseLoader loading={guestLoading} size={10} color={"#fff"} />
+              </button>
+            )}
+            {!guestLoading && (
+              <button
+                type="submit"
+                className={styles["guest__submit__btn"]}
+                onClick={loginAsGuest}
+              >
+                Login as Guest
               </button>
             )}
 
