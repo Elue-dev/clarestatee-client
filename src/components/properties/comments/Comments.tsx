@@ -223,7 +223,7 @@ export default function Comments({ propertyID }: idType) {
                     {currentUser?._id === user._id ? (
                       <span>Added by you: {moment(createdAt).fromNow()}</span>
                     ) : (
-                      <span>{moment(createdAt).fromNow()}</span>
+                      <span> Added {moment(createdAt).fromNow()}</span>
                     )}
                   </div>
                 </li>

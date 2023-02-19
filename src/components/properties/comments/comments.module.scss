@@ -38,8 +38,9 @@
       width: auto;
     }
     .comment {
-      font-size: 1.2rem;
+      font-size: 1rem;
       padding-top: 0.6rem;
+      color: #000;
     }
     .add__comment__btn {
       margin-bottom: 1rem;
@@ -66,6 +67,7 @@
           font-weight: 500;
           margin-bottom: 0.6rem;
           font-size: 0.9rem;
+          color: #666;
           :first-child {
             color: rgb(115, 115, 115);
             font-size: 0.8rem;
