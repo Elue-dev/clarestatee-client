@@ -22,6 +22,7 @@ export default function ForgotPassword() {
       setLoading(true);
       await forgotPassword(email);
       setLoading(false);
+      navigate("/auth/login");
     } catch (error) {
       setLoading(false);
       console.log(error);
