@@ -15,11 +15,17 @@ import Loader from "../../../utils/Loader";
 export default function QueriedProperty() {
   const queryString = useLocation().search;
   const queryParams = new URLSearchParams(queryString);
-  const city = queryParams.get("city");
-  const purpose = queryParams.get("purpose");
+  const cityText = queryParams.get("city");
+  const purposeText = queryParams.get("purpose");
   const [loading, setLoading] = useState(true);
-
   const [properties, setProperties] = useState([]);
+
+  const capitalizeFirstLetter = (word: string) => {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  };
+
+  const city = capitalizeFirstLetter(cityText);
+  const purpose = capitalizeFirstLetter(purposeText);
 
   useEffect(() => {
     getQueriedProperties();
@@ -30,7 +36,6 @@ export default function QueriedProperty() {
       `${server_url}/api/properties?city=${city}&purpose=${purpose}`
     );
     setProperties(response.data?.properties);
-
     setLoading(false);
   };
 

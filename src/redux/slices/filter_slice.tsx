@@ -36,43 +36,48 @@ const filterSlice = createSlice({
       const { properties, sort } = action.payload;
 
       let tempProperties = [];
-      if (sort === "latest") {
-        tempProperties = properties;
-      }
-      if (sort === "lowest-price") {
-        tempProperties = properties.slice().sort((a: any, b: any) => {
-          return a.price - b.price;
-        });
-      }
-      if (sort === "highest-price") {
-        tempProperties = properties.slice().sort((a: any, b: any) => {
-          return b.price - a.price;
-        });
-      }
-      if (sort === "Available") {
-        tempProperties = properties.filter(
-          (property: any) => property.availability === "Available"
-        );
-      }
-      if (sort === "Not Available") {
-        tempProperties = properties.filter(
-          (property: any) => property.availability === "Not Available"
-        );
-      }
-      if (sort === "For Sale") {
-        tempProperties = properties.filter(
-          (property: any) => property.purpose === "Sale"
-        );
-      }
-      if (sort === "For Rent") {
-        tempProperties = properties.filter(
-          (property: any) => property.purpose === "Rent"
-        );
-      }
-      if (sort === "For Shortlet") {
-        tempProperties = properties.filter(
-          (property: any) => property.purpose === "Shortlet"
-        );
+
+      switch (sort) {
+        case "latest":
+          tempProperties = properties;
+          break;
+        case "lowest-price":
+          tempProperties = properties.slice().sort((a: any, b: any) => {
+            return a.price - b.price;
+          });
+          break;
+        case "highest-price":
+          tempProperties = properties.slice().sort((a: any, b: any) => {
+            return b.price - a.price;
+          });
+          break;
+        case "Available":
+          tempProperties = properties.filter(
+            (property: any) => property.availability === "Available"
+          );
+          break;
+        case "Not Available":
+          tempProperties = properties.filter(
+            (property: any) => property.availability === "Not Available"
+          );
+          break;
+        case "For Sale":
+          tempProperties = properties.filter(
+            (property: any) => property.purpose === "Sale"
+          );
+          break;
+        case "For Rent":
+          tempProperties = properties.filter(
+            (property: any) => property.purpose === "Rent"
+          );
+          break;
+        case "For Shortlet":
+          tempProperties = properties.filter(
+            (property: any) => property.purpose === "Shortlet"
+          );
+          break;
+        default:
+          tempProperties = properties;
       }
 
       state.filteredProperties = tempProperties;

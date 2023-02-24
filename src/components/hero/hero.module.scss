@@ -111,6 +111,18 @@
           width: 100%;
         }
       }
+      .select__city {
+        border-radius: 0.1rem;
+        color: #000;
+        border: 9px solid #fff;
+        font-weight: 600;
+        font-size: 1.04rem;
+        outline: 0;
+        @include mQ(600px) {
+          text-align: center;
+          width: 100%;
+        }
+      }
     }
   }
 }

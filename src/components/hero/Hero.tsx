@@ -65,12 +65,19 @@ export default function Hero() {
               onChange={(option) => setPurpose(option.value)}
               className={styles["select__purpose"]}
             />
-            <Select
+            {/* <Select
               options={cityOptions}
               placeholder="Select city"
               //@ts-ignore
               onChange={(option) => setCity(option.value)}
               className={styles["select__purpose"]}
+            /> */}
+            <input
+              type="text"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              placeholder="Location e.g Abuja"
+              className={styles["select__city"]}
             />
             <button type="submit">Search</button>
           </div>
