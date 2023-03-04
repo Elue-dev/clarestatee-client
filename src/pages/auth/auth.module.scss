@@ -148,6 +148,12 @@
             font-weight: 700;
           }
         }
+        .verfying {
+          color: $color-secondary;
+          text-align: center;
+          font-weight: 700;
+          animation: opacity 0.4s infinite alternate;
+        }
         .resend__label {
           margin-bottom: 0;
         }
@@ -219,5 +225,14 @@
         display: none;
       }
     }
+  }
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

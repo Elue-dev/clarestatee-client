@@ -42,31 +42,26 @@ export default function VerifyCode() {
     setOtp([...otp.map((v) => "")]);
   };
 
-  const verifyCode = async (e: FormEvent) => {
-    e.preventDefault();
-    setError("");
+  useEffect(() => {
+    verifyCode();
+  }, [otp]);
 
+  const verifyCode = async () => {
     const code = otp.join("");
 
-    if (code.length === 0) {
-      return setError("Please enter your verification code");
-    } else if (code.length < 6) {
-      return setError("You verification code should be 6 digits");
-    } else {
-      setError("");
-    }
+    if (code.length >= 6) {
+      setLoading(true);
 
-    setLoading(true);
-    const response = await verifyEmail(code, userID);
-    if (response) {
-      console.log(response);
-      setOtp([...otp.map((v) => "")]);
-      dispatch(SET_ACTIVE_USER(response.user));
-      dispatch(SET_USER_TOKEN(response.token));
-      navigate("/");
-      console.log(loading);
+      const response = await verifyEmail(code, userID);
+
+      if (response) {
+        setOtp([...otp.map((v) => "")]);
+        dispatch(SET_ACTIVE_USER(response.user));
+        dispatch(SET_USER_TOKEN(response.token));
+        navigate("/");
+      }
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const resendCode = async () => {
@@ -120,28 +115,20 @@ export default function VerifyCode() {
                 );
               })}
             </div>
+            {loading && <p className={styles.verfying}>VERIFYING...</p>}
 
             {otp.join("").length > 0 && (
               <p className={styles.clear} onClick={clearField}>
                 Clear All
               </p>
             )}
-
-            {loading && (
-              <button type="button" disabled className={styles["submit__btn"]}>
-                <PulseLoader loading={loading} size={10} color={"#000"} />
-              </button>
-            )}
-            {!loading && (
-              <button type="submit" className={styles["submit__btn"]}>
-                Verify
-              </button>
-            )}
           </form>
           <br />
-          <p onClick={() => setShowInput(!showInput)}>
-            Didn't get a code? <b className={styles.resend}>Resend Code</b>
-          </p>
+          {!loading && (
+            <p onClick={() => setShowInput(!showInput)}>
+              Didn't get a code? <b className={styles.resend}>Resend Code</b>
+            </p>
+          )}
           <br />
           <form
             style={{
