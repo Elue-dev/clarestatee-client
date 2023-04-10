@@ -293,7 +293,8 @@ export default function Dashboard() {
         </div>
         <div className={styles["right__dashboard"]}>
           <h1>Properties you added</h1>
-          {isLoading ? (
+
+          {isLoading && (
             <h2 className={styles["no__results"]}>
               <FadeLoader
                 loading={loading}
@@ -303,12 +304,11 @@ export default function Dashboard() {
                 color="rgb(18, 140, 200)"
               />
             </h2>
-          ) : (
+          )}
+          {!isLoading && (
             <>
               {properties.length === 0 ? (
-                <h3 className={styles.noprop}>
-                  You have not added any properties yet.
-                </h3>
+                <h3>You have not added any properties yet</h3>
               ) : (
                 <div className={styles["users__prop"]}>
                   <h3>
@@ -319,14 +319,14 @@ export default function Dashboard() {
                   {properties.map((property: any) => {
                     const { name, price, slug, purpose } = property;
                     return (
-                      <div className={styles.card} key={slug}>
+                      <div className={styles.card}>
                         <div>
                           <b>Property Name:</b>
                           &nbsp;{name}
                         </div>
                         <div>
                           <b>Property Price:</b>
-                          &nbsp;₦{new Intl.NumberFormat().format(price)}
+                          &nbsp;NGN {new Intl.NumberFormat().format(price)}
                         </div>
                         <div
                           className={
